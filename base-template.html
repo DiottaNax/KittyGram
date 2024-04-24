@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KittyGram: home</title>
+    <!-- Includo il css esterno -->
+    <link rel="stylesheet" href="./css/style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <title>KittyGram: Home</title>
   </head>
-  <body
-    class="d-flex justify-content-center py-4"
-    style="background-color: #fff8e7"
-  >
-    <header class="nav p-2 fixed-top bg-white">
+  <body class="d-flex justify-content-center py-4">
+    <!-- Top navbar -->
+    <header class="nav p-2 fixed-top shadow-sm bg-white">
       <div class="container">
         <div class="row">
           <div class="col text-start mt-2">
@@ -50,7 +50,7 @@
             </svg>
           </div>
           <div class="col text-center mt-1 w-300">
-            <img src="./img/KittyGram_Logo.png" alt="Kittygram" width=""/>
+            <img src="./img/KittyGram_Logo.png" alt="Kittygram" width="200" />
           </div>
           <div class="col text-end mt-2">
             <svg
@@ -85,16 +85,16 @@
     </header>
     <main class="container align-items-center justify-content-center">
       <!-- Example posts for testing -->
-      <section class="mt-5 p-4 bg-white">
-        <div class="row mt-2">
-          <div class="col inline text-start mb-3">
-            <h2>New Post!</h2>
+      <section class="mt-5 p-4 shadow-sm rounded-5 bg-white">
+        <div class="row">
+          <div class="col text-start">
+            <h2>New Post</h2>
           </div>
           <div class="col text-end">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
+              width="25"
+              height="25"
               fill="currentColor"
               class="bi bi-bookmark"
               viewBox="0 0 16 16"
@@ -104,21 +104,34 @@
               />
             </svg>
           </div>
-          <img
-            src="img/gatto esempio.jpeg"
-            class="rounded mx-auto d-block "
-            alt="gatto1"
-            style="max-width: 100"
-          />
-          <div class="row mt-2 justify-content-end">
-            <div class="col text-start">
+        </div>
+        <img
+          src="img/gatto esempio.jpeg"
+          class="rounded mx-auto d-block"
+          alt="gatto1"
+          style="max-width: 100"
+        />
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus
+          diam vitae venenatis malesuada. Sed bibendum ante vel congue suscipit.
+          Morbi eu mollis lacus. Suspendisse potenti. Sed elementum ante leo, at
+          pellentesque nisl vulputate sit amet. Sed tristique gravida felis, eu
+          euismod nulla fermentum at. Nam volutpat mollis interdum. Quisque
+          tristique commodo egestas. In sapien magna, tempor vitae sollicitudin
+          ac, maximus volutpat massa. Integer vestibulum tortor bibendum odio
+          consequat, non consectetur dolor varius. Nam nisl neque, ultrices quis
+          ultricies vitae, dictum ac tellus. Nulla facilisi.
+        </p>
+
+        <div class="row mt-2">
+          <div class="col inline text-start">
             <p>@username</p>
           </div>
           <div class="col-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
+              width="25"
+              height="25"
               fill="currentColor"
               class="bi bi-heart"
               viewBox="0 0 16 16"
@@ -131,7 +144,7 @@
           <div class="col-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="30"
+              width="25"
               class="bi bi-chat-left-dots"
               viewBox="0 0 16 16"
             >
@@ -144,26 +157,17 @@
             </svg>
           </div>
         </div>
-
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus
-          diam vitae venenatis malesuada. Sed bibendum ante vel congue suscipit.
-          Morbi eu mollis lacus. Suspendisse potenti. Sed elementum ante leo, at
-          pellentesque nisl vulputate sit amet. Sed tristique gravida felis, eu
-          euismod nulla fermentum at. Nam volutpat mollis interdum.
-        </p>
       </section>
-
-      <section class="mt-5 p-4 bg-white">
-        <div class="row mt-2">
-          <div class="col inline text-start mb-3">
-            <h2>New Post!</h2>
+      <section class="mt-5 p-4 shadow-sm rounded-5 bg-white">
+        <div class="row">
+          <div class="col text-start">
+            <h2>New Post</h2>
           </div>
           <div class="col text-end">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
+              width="25"
+              height="25"
               fill="currentColor"
               class="bi bi-bookmark"
               viewBox="0 0 16 16"
@@ -173,21 +177,34 @@
               />
             </svg>
           </div>
-          <img
-            src="img/gatto 2.jpeg"
-            class="rounded mx-auto d-block"
-            alt="gatto1"
-            style="max-width: 100"
-          />
-          <div class="row mt-2 justify-content-end">
-            <div class="col text-start">
+        </div>
+        <img
+          src="img/gatto 2.jpeg"
+          class="rounded mx-auto d-block"
+          alt="gatto1"
+          style="max-width: 100"
+        />
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus
+          diam vitae venenatis malesuada. Sed bibendum ante vel congue suscipit.
+          Morbi eu mollis lacus. Suspendisse potenti. Sed elementum ante leo, at
+          pellentesque nisl vulputate sit amet. Sed tristique gravida felis, eu
+          euismod nulla fermentum at. Nam volutpat mollis interdum. Quisque
+          tristique commodo egestas. In sapien magna, tempor vitae sollicitudin
+          ac, maximus volutpat massa. Integer vestibulum tortor bibendum odio
+          consequat, non consectetur dolor varius. Nam nisl neque, ultrices quis
+          ultricies vitae, dictum ac tellus. Nulla facilisi.
+        </p>
+
+        <div class="row mt-2">
+          <div class="col inline text-start">
             <p>@username</p>
           </div>
           <div class="col-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
+              width="25"
+              height="25"
               fill="currentColor"
               class="bi bi-heart"
               viewBox="0 0 16 16"
@@ -200,7 +217,7 @@
           <div class="col-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="30"
+              width="25"
               class="bi bi-chat-left-dots"
               viewBox="0 0 16 16"
             >
@@ -213,21 +230,7 @@
             </svg>
           </div>
         </div>
-
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus
-          diam vitae venenatis malesuada. Sed bibendum ante vel congue suscipit.
-          Morbi eu mollis lacus. Suspendisse potenti. Sed elementum ante leo, at
-          pellentesque nisl vulputate sit amet. Sed tristique gravida felis, eu
-          euismod nulla fermentum at. Nam volutpat mollis interdum.
-        </p>
       </section>
     </main>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>
