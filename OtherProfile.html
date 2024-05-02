@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="js/UserProfile.js"></script>
     
-    <title>User Profile</title>
+    <title>Other Profile</title>
   </head>
 
 
@@ -52,18 +52,34 @@
 
     <!-- user-info container -->
     <div class="container d-flex justify-content-center mt-5 py-5">
-        <img src="/img/User_ProfilePic.PNG" class="rounded-circle" alt="profile-pic" width="150" height="150">
+        <img src="/img/Nax_ProfilePic.jpg" class="rounded-circle" alt="profile-pic" width="150" height="150">
         <ul>
-            <li class="list-group-item"><h2> Astro Baleno </h2></li>
-            <li class="list-group-item"><h4> @astrobaleno </h4></li>
-            <button type="button" class="btn btn-light mt-4 opacity-100" onclick="window.location.href='UserSettings.html'">Modifica Profilo</button>
+            <li class="list-group-item"><h2> Federico Diotallevi </h2></li>
+            <li class="list-group-item"><h4> @nax </h4></li>
+            <button id="followButton" type="button" class="btn btn-light mt-4 opacity-100" onclick="toggleFollow()">Following</button>
+</div>
+
+<script>
+  function toggleFollow() {
+    var button = document.getElementById("followButton");
+    if (button.innerText === "Following") {
+      button.innerText = "Follow";
+      button.classList.remove("btn-light");
+      button.classList.add("btn-primary");
+    } else {
+      button.innerText = "Following";
+      button.classList.remove("btn-primary");
+      button.classList.add("btn-light");
+    }
+  }
+</script>
         </ul>
     </div>
 
     <!-- 3 bottoni per numero di: POST, FOLLOWERS, SEGUITI -->
     <div class="container d-flex justify-content-between mb-5 align-items-center">
-      <span>3 post</span>
-      <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#followersModal">3 follower</button>
+      <span>2 post</span>
+      <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#followersModal">2 follower</button>
       <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#followingModal">1 seguiti</button>
     </div>
 
@@ -80,9 +96,9 @@
             <!-- Lista di utenti seguaci -->
             <ul id="followersList" class="list-group">
               <li class="list-group-item d-flex align-items-center">
-                <img src="img/Nax_ProfilePic.JPG" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
+                <img src="img/User_ProfilePic.PNG" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
                 <div>
-                  <h6 class="mb-0">nax</h6>            
+                  <h6 class="mb-0">astrobaleno</h6>            
                 </div>
               </li>
               <!-- secondo follower-->
@@ -90,13 +106,6 @@
                 <img src="img/Saint_ProfilePic.JPG" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
                 <div>
                   <h6 class="mb-0">saint</h6>            
-                </div>
-              </li>
-              <!-- terzo follower-->
-              <li class="list-group-item d-flex align-items-center">
-                <img src="img/Morgan_ProfilePic.JPG" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
-                <div>
-                  <h6 class="mb-0">morgan</h6>            
                 </div>
               </li>
             </ul>
@@ -120,9 +129,9 @@
             <!-- Lista di utenti seguiti -->
             <ul id="followingList" class="list-group">
               <li class="list-group-item d-flex align-items-center">
-                <img src="img/Nax_ProfilePic.JPG" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
+                <img src="img/User_ProfilePic.PNG" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
                 <div>
-                  <h6 class="mb-0">nax</h6>            
+                  <h6 class="mb-0">astrobaleno</h6>            
                 </div>
               </li>
             </ul>
@@ -136,7 +145,7 @@
 
     <!-- bio -->
     <div class="container d-flex justify-content-center mt-3">
-      <h6 class="text-center"><em>" Si alza il vento... bisogna tentare di vivere. "</em></h6>
+      <h6 class="text-center"><em>" Troppi demoni abitano la mia capa, prego Dio che sia un sogno e che mi danni se questo è tutto vero. "</em></h6>
     </div>
 
 
@@ -145,21 +154,14 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card mb-3">
-                    <img src="/img/cat-example1.jfif" class="card-img-top w-100" onclick="redirectToUserPost('/img/cat-example1.jfif')" alt="example1">
+                    <img src="/img/cat-example4.jpg" class="card-img-top w-100" onclick="redirectToUserPost('/img/cat-example4.jpg')" alt="example1">
                     <div class="card-body">
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card mb-3">
-                    <img src="/img/cat-example2.jfif" class="card-img-top w-100" onclick="redirectToUserPost('/img/cat-example2.jfif')" alt="example2">
-                    <div class="card-body">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-3">
-                    <img src="/img/cat-example3.jfif" class="card-img-top w-100" onclick="redirectToUserPost('/img/cat-example3.jfif')" alt="example3">
+                    <img src="/img/cat-example5.jpg" class="card-img-top w-100" onclick="redirectToUserPost('/img/cat-example5.jpg')" alt="example1">
                     <div class="card-body">
                     </div>
                 </div>
