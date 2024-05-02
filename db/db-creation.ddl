@@ -19,13 +19,20 @@ CREATE TABLE IF NOT EXISTS ACCOUNT (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(25) NOT NULL UNIQUE,
     email VARCHAR(319) NOT NULL UNIQUE,
-    password VARCHAR(512) NOT NULL, -- to hash
+    password CHAR(512) NOT NULL, -- to hash
+    salt CHAR(128) NOT NULL,
     first_name VARCHAR(25) NOT NULL,
     last_name VARCHAR(25) NOT NULL,
     cell VARCHAR(15),
     user_bio VARCHAR(255),
     profile_pic INT DEFAULT 0,
     city_id INT
+);
+
+CREATE TABLE IF NOT EXISTS LOGIN_ATTEMPTS (
+    user_id INT NOT NULL,
+    date_and_time DATETIME NOT NULL,
+    PRIMARY KEY (user_id, date_and_time)
 );
 
 CREATE TABLE IF NOT EXISTS ADOPTION (
@@ -147,6 +154,10 @@ ALTER TABLE NOTIFICATION
 ALTER TABLE NOTIFICATION 
     ADD FOREIGN KEY (post_id)
     REFERENCES POST(post_id) ON DELETE CASCADE;
+
+ALTER TABLE LOGIN_ATTEMPTS
+    ADD FOREIGN KEY (user_id)
+    REFERENCES ACCOUNT(user_id) ON DELETE CASCADE;
 
 -- Index Section
 -- _____________ 
