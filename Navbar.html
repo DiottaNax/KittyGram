@@ -37,19 +37,17 @@
 <!-- Finestra modale "NEW POST" -->
 <div class="modal fade" id="newpostModal" tabindex="-1" aria-labelledby="newpostModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
+      <div class="modal-content" style="background-color: var(--bg-color)"> <!-- stile specifico del colore della finestra -->
           <div class="modal-header">
               <h5 class="modal-title" id="newpostModalLabel">Create a new post</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-              <div class="mb-3">
-                  <label for="fileInput" class="form-label">Select Photo or Video:</label>
-                  <input type="file" class="form-control" id="fileInput" accept="image/*,video/*">
-              </div>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <div class="modal-body d-flex justify-content-center"> <!-- Centra il contenuto orizzontalmente -->
+            <div class="mb-3">
+              <label class="btn btn-secondary">
+                Select Photo or Video <input type="file" style="display: none;">
+              </label>              
+            </div>
           </div>
       </div>
   </div>
@@ -72,7 +70,7 @@
         <div class="flex-grow-1">
             <h6 class="mb-0"><strong>nax</strong> started following you</h6>
         </div>
-        <button id="followButton" type="button" class="btn btn-light ml-auto opacity-100" onclick="toggleFollow()">Following</button>
+        <button id="followButtonNavbar" type="button" class="btn btn-light ml-auto opacity-100" onclick="toggleFollowNavbar()">Following</button>
       </div>
       <div class="d-flex align-items-center mb-3">
         <img src="img/Morgan_ProfilePic.jpg" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
