@@ -1,49 +1,56 @@
-
-:root{
-    --primary-color: #573C0C;
-    --secondary-color: #FFE51F;
-    --bg-color: #fff8e7;
-    --btn-primary-color: #FFE51F;
-    --btn-secondary-color: #fff8e7;
+:root {
+  --primary-color: #573c0c;
+  --secondary-color: #ffe51f;
+  --bg-color: #fff8e7;
+  --btn-primary-color: #ffe51f;
+  --btn-secondary-color: #fff8e7;
 }
 
-body, header, .card, nav {
-    background-color: var(--bg-color) !important;
+body,
+header,
+.card,
+nav {
+  background-color: var(--bg-color) !important;
 }
 
 .card {
-    padding: 3% !important;
-    width: 450px;
-    max-width: 450px;
-    border-radius: 50px !important;
+  padding: 3% !important;
+  width: 450px;
+  max-width: 450px;
+  border-radius: 50px !important;
 }
 
-.btn-bd-primary{
-    background-color: var(--secondary-color) !important;
-    border-color: var(--primary-color) !important;
-    color: var(--primary-color) !important;
-    border-radius: 20px !important;
+.btn-bd-primary {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  border-radius: 20px !important;
 }
 
-.btn-bd-primary:hover{
-    filter: brightness(105%) !important;
+.btn-bd-primary:hover {
+  filter: brightness(105%) !important;
 }
 
-.btn-bd-secondary{
-    background-color: var(--btn-secondary-color) !important;
-    border-color: var(--primary-color) !important;
-    color: var(--primary-color) !important;
-    border-radius: 20px !important;
+.btn-bd-secondary {
+  background-color: var(--btn-secondary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  border-radius: 20px !important;
 }
 
-.btn:hover{
-    box-shadow: 0 0 7px 0 var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
+.btn:hover {
+  box-shadow: 0 0 7px 0 var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
 }
 
 .form-control:focus {
   box-shadow: 0 0 7px 0 var(--primary-color) !important;
   border-color: var(--primary-color) !important;
+}
+
+a {
+  color: var(--primary-color) !important;
+  text-decoration: none;
 }
 
 /* Media query for mobile devices */
