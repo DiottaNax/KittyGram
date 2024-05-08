@@ -16,6 +16,8 @@
     <!-- Collega il file JavaScript di Bootstrap tramite CDN (è necessario per alcuni componenti di Bootstrap come il carousel, il modal, ecc.) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script src="./js/login.js"></script>
+
     <title>Login Page</title>
   </head>
 
@@ -59,9 +61,7 @@
         </div>
         <hr />
         <div class="mt-3 justify-content-center">
-          <button type="submit" class="btn btn-bd-secondary w-100">
-            Sign-up
-          </button>
+          <button type="button" class="btn btn-bd-secondary w-100" id="signupId" name="signup">Sign Up</button>
         </div>
       </form>
     </div>
