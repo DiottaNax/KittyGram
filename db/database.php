@@ -21,9 +21,9 @@ class DatabaseHelper{
             $stmt->bind_param('i', $user_id);
             // Eseguo la query creata.
             $stmt->execute();
-            $stmt->store_result();
+            $result = $stmt->get_result();
             // Verifico l'esistenza di più di 5 tentativi di login falliti.
-            if ($stmt->num_rows > 5) {
+            if ($result->num_rows > 5) {
                 return true;
             } else {
                 return false;
@@ -33,7 +33,7 @@ class DatabaseHelper{
 
     public function getAccountFromUsername($username)
     {
-        $stmt = $this->db->prepare("SELECT id, username, password, salt FROM account WHERE username = ? LIMIT 1");
+        $stmt = $this->db->prepare("SELECT user_id, username, password, salt FROM account WHERE username = ? LIMIT 1");
         $stmt->bind_param('s', $username); // esegue il bind del parametro '$email'.
         $stmt->execute(); // esegue la query appena creata.
         $stmt->store_result();
@@ -54,6 +54,20 @@ class DatabaseHelper{
         $query = "SELECT * FROM ACCOUNT WHERE username = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result && $result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isEmailTaken($email)
+    {
+        $query = "SELECT * FROM ACCOUNT WHERE email = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result && $result->num_rows > 0) {
