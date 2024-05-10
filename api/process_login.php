@@ -1,20 +1,27 @@
 <?php
 
-require ('../db/db-config.php');
-include ('../utils/login_utilities.php');
+require_once ('../db/db-config.php');
+require_once ('../utils/login_utilities.php');
 
-sec_session_start(); // usiamo la nostra funzione per avviare una sessione php sicura
+$result['success'] = false;
+$result['message'] = "No Post request found";
 if (isset($_POST['username'], $_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password']; // Recupero la password criptata.
-    if (login($email, $password, $dbh) == true) {
-        // Login eseguito
-        echo 'Success: You have been logged in!';
+    $loginResult = login($username, $password, $dbh);
+    if ($loginResult['success'] == true) {
+        $result['success'] = true;
+        $result['message'] = "Correct ( or guessed :) ) password!\nYou're being redirected to home page...";
     } else {
-        // Login fallito
-        header('Location: ./login.php?error=1');
+        if ($loginResult["disabled"] == true) {
+            $result['message'] = "Account disabled!\nNot smart enough to bruteforce??";
+        } else {
+            $result['message'] = "Invalid username or password!\nTrying to force login?? >:(";
+        }
     }
 } else {
-    // Le variabili corrette non sono state inviate a questa pagina dal metodo POST.
-    echo 'Invalid Userrname or Password';
+    $result['message'] = "Something went bad with the request!";
 }
+
+header('Content-Type: application/json');
+echo json_encode($result);
