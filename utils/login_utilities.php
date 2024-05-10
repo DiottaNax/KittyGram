@@ -17,35 +17,37 @@ function login($username, $password, DatabaseHelper $dbh)
 {
    $accountResult = $dbh->getAccountFromUsername($username);
    if ($accountResult) {
-      $userId = $accountResult['user_id'];
+      $userId = $accountResult['id'];
       $dbPassword = $accountResult['password'];
+      $dbUsername = $accountResult['username'];
       $salt = $accountResult['salt'];
       $password = hash('sha512', $password.$salt);
+
+      // Initialize loginResult with default values
+      $loginResult['disabled'] = false;
+      $loginResult['success'] = false;
       if ($accountResult['isDisabled']) {
-            // Account tried to login too many times
-            return false;
+         // Account tried to login too many times
+         $loginResult['disabled'] = true;
       } else {
          if ($dbPassword == $password) {
-            // Password corretta!            
+            // Password corretta!
             $user_browser = $_SERVER['HTTP_USER_AGENT']; // Recupero il parametro 'user-agent' relativo all'utente corrente.
             $user_id = preg_replace("/[^0-9]+/", "", $userId); // ci proteggiamo da un attacco XSS
             $_SESSION['user_id'] = $userId;
-            $username = preg_replace("/[^a-zA-Z0-9_\-]+/", "", $username); // ci proteggiamo da un attacco XSS
-            $_SESSION['username'] = $username;
+            $sessionUsername = preg_replace("/[^a-zA-Z0-9_\-]+/", "", $dbUsername); // ci proteggiamo da un attacco XSS
+            $_SESSION['username'] = $sessionUsername;
             $_SESSION['login_string'] = hash('sha512', $password.$user_browser); // Contains user's browser info codified with it's password
-            // Login eseguito con successo.
-            return true;
+            $loginResult['success'] = true;
          } else {
             // Wrong password, add a new login attempt
-            $now = time();
+            $now = date('Y-m-d H:i:s', time());
             $dbh->addLoginAttempt($userId, $now);
-            // It will return false at the end of function
          }
       }
    }
 
-   // Else: no user found
-   return false;
+   return $loginResult;
 }
 
 function login_check(mysqli $db)
@@ -56,7 +58,7 @@ function login_check(mysqli $db)
       $login_string = $_SESSION['login_string'];
       $username = $_SESSION['username'];
       $user_browser = $_SERVER['HTTP_USER_AGENT'];
-      if ($stmt = $db->prepare("SELECT password FROM members WHERE id = ? LIMIT 1")) {
+      if ($stmt = $db->prepare("SELECT password FROM account WHERE id = ? LIMIT 1")) {
          $stmt->bind_param('i', $userId); // esegue il bind del parametro '$userId'.
          $stmt->execute(); // Esegue la query creata.
          $stmt->store_result();
