@@ -1,11 +1,9 @@
 <?php
 
-require_once ("./utils/login_utilities.php");
-
-sec_session_start();
+require_once ("db/db-config.php");
 
 if (isset($_SESSION['user_id'])) {
-    // TODO   
+    require ("base-template.php");
 } else {
-    require ("login.html");
+    require ("login.php");
 }
