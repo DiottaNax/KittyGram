@@ -1,6 +1,6 @@
 <?php
 
-require_once ("../db/db-config.php");
+require_once ("../db-config.php");
 require_once ("../utils/login_utilities.php");
 
 $result['success'] = false;
