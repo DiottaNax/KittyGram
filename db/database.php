@@ -105,6 +105,30 @@ class DatabaseHelper{
             return 0;
         }
     }
-
+    public function getNotificationsById($user_id) {
+        $query = "
+            SELECT notification_id,message,post_id,from_user_id as user_from_id,ur.username as username_from,seen,
+            for_user_id as user_for_id,ui.username as username_for
+            FROM NOTIFICATION INNER JOIN ACCOUNT ui ON NOTIFICATION.for_user_id = ui.user_id 
+            INNER JOIN ACCOUNT ur ON NOTIFICATION.from_user_id = ur.user_id
+            WHERE NOTIFICATION.for_user_id = ? AND NOTIFICATION.seen = 0
+            ORDER BY date, notification_id
+        ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function viewedNotification($idNotification){
+        $query = "UPDATE notification SET seen = 1 WHERE notification_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idNotification);
+        $stmt->execute();
+        var_dump($stmt->error);
+        return true;
+    }
+    
 }
 
