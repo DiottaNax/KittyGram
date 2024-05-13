@@ -11,50 +11,31 @@
                 <?php endif; ?>
             </div>
             <div class="col-7">
-                <p class="mb-0">
-                @<?php 
+                <a class="link-offset-2 link-underline mb-0" href=" <?php echo "open-post.php?postId=" . $notification["user_from_id"]?>">
+                    @<?php
                     echo $notification["username_from"];
-                    switch($notification["message"]) {
-                        case "Follow":
-                            echo(" has followed you");
-                            break;
-                        case "Comment":
-                            echo(" has commented");
-                            break;
-                        case "Reply":
-                            echo(" replied to your comment");
-                            break;
-                        case "Like":
-                            echo(" likes your idea");
-                            break;
-                        default:
-                            echo("An error occurred");
-                    }
+                    ?>
+                </a>
+                <p>
+                    <?php
+                        echo $notification["message"];
                     ?>
                 </p>
             </div>
+
+            <?php if(isset($notification['post_id'])): ?>
+                
             <div class="col d-flex justify-content-end align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" class="open-not bi bi-arrow-up-right-circle ms-2" viewBox="0 0 16 16" data-link="
-                <?php 
-                switch($notification["message"]) {
-                    case "Follow":
-                        echo("profile.php?id=" . $notification["user_from_id"]);
-                        break;
-                    case "Comment":
-                    case "Reply":
-                    case "Like":
-                        echo("open-post.php?postId=" . $notification["post_id"]);
-                        break;
-                    default:
-                }
-                ?>
-                ">
+                <?php echo("open-post.php?postId=" . $notification["post_id"]);?>">
                     <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.854 10.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707z"/>
                 </svg>
             </div>
+
+            <?php endif; ?>
         </div>
     </div>
     <?php endforeach; ?>
 <?php else: ?>
-    <p class="text-center">There are no notifications :(</p>
+    <p class="text-center">No notification yet, running out of kitties &#x1F640;??</p>
 <?php endif; ?>
