@@ -25,7 +25,6 @@ if (isset($_POST['username'], $_POST['email'], $_POST['name'], $_POST['surname']
     else {
         $dbh->addAccount($username, $email, $name, $surname, $password, $salt);
         login($username, $password, $dbh);
-        $_SESSION['$username'] = $username;
         $result['success'] = true;
     }
 }
