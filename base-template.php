@@ -13,7 +13,9 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <title>KittyGram: <?php echo $templateParams["title"]; ?></title>
+    <script src="./js/notification-viewed.js"></script>
+
+    <title>Home Page</title>
     <?php
         if(isset($templateParams["js"])):
             foreach($templateParams["js"] as $script):
@@ -25,14 +27,6 @@
         ?>
   </head>
   <body class="d-flex justify-content-center py-4">
-    
-  <!-- PHP per impostare il session_id -->
-  <?php
-  // Avvia la sessione
-  session_start();
-  // Imposta il valore del session_id
-  $_SESSION['user_id'] = '68795';
-  ?>
 
     <!-- Top navbar -->
     <header class="nav p-2 fixed-top shadow-sm bg-white">
@@ -40,6 +34,9 @@
         <div class="row">
           
           <div class="col text-start mt-2">
+
+            <p class="mt-2">&#x1F63C;<?php echo $_SESSION['username'] ?></p>
+            
           <a href="index.php" title="home">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +70,7 @@
             </svg>
           </a>
           </div>
-          <div class="col text-center mt-1 w-300">
+          <div class="col text-center mt-2 w-300">
             <a href=""><img src="./img/KittyGram_Logo.png" alt="Kittygram" width="200" /></a>
           </div>
           <div class="col text-end mt-2">
@@ -95,7 +92,7 @@
           </div>
           <div class="col text-end mt-2">
             <svg
-              data-bs-toggle="modal" 
+              data-bs-toggle="modal"
               data-bs-target="#notification-modal"
               xmlns="http://www.w3.org/2000/svg"
               width="30"
@@ -105,12 +102,23 @@
             <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
             </svg>
             <?php
-                        $templateParams["notifications"] = $dbh->getNotificationsById($_SESSION["user_id"]);
-                        if(!empty($templateParams["notifications"])):
-                        ?>
-                        <span class="badge bg-danger"><?php echo(count($templateParams["notifications"])); ?></span>
-                        <?php endif; ?>
+              $templateParams["notifications"] = $dbh->getNotificationsById($_SESSION["user_id"]);
+              if(!empty($templateParams["notifications"])):
+            ?>
+              <span class="badge bg-danger"><?php echo(count($templateParams["notifications"])); ?></span>
+            <?php 
+              endif; 
+            ?>
           </div>
+          <div clas="col text-end mt-2">
+            <a title="logout" href="./api/logout.php">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+                <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+              </svg>
+            </a>
+          </div>
+          
         </div>
       </div>
     </header>
