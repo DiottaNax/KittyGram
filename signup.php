@@ -32,26 +32,26 @@
           <label for="nameId">Name</label>
         </div>
         <div class="col g-3 form-floating">
-          <input type="email" class="form-control" name="email" id="emailId" aria-label="Email address" placeholder="Email address" required>
-          <label for="emailId">Email address</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col g-3 form-floating">
           <input type="text" class="form-control" name="surname" id="surnameId" placeholder="Last name" aria-label="Last name" required>
           <label for="surnameId">Last name</label>
         </div>
-        <div class="col g-3 form-floating">
-          <input type="password" class="form-control" name="password" id="passwordId" aria-label="Password" placeholder="Password" required>
-          <label for="passwordId">Password</label>
-        </div>
       </div>
       <div class="row">
+        <div class="col g-3 form-floating">
+          <input type="email" class="form-control" name="email" id="emailId" aria-label="Email address" placeholder="Email address" required>
+          <label for="emailId">Email address</label>
+        </div>
         <div class="col g-3">
             <div class="form-floating">
                 <input type="text" class="form-control" name="username" id="usernameId" placeholder="Username" aria-label="Username" required>
                 <label for="usernameId">Username</label>
             </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col g-3 form-floating">
+          <input type="password" class="form-control" name="password" id="passwordId" aria-label="Password" placeholder="Password" required>
+          <label for="passwordId">Password</label>
         </div>
         <div class="col g-3">
             <div class="form-floating">
