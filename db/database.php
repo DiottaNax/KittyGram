@@ -134,6 +134,41 @@ class DatabaseHelper
         return true;
     }
 
+    public function getLikes($userID, $idPost)
+    {
+        $query = "
+            SELECT COUNT(*) AS numberLikes
+            FROM post_like
+            WHERE user_id = ? AND post_id = ?
+        ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si", $userId, $idPost);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        return $row["numberLikes"];
+    }
+
+    public function getHome($user_id)
+    {
+        $query = "SELECT POST.post_id, POST.description, POST.date, MEDIA.file_name,ACCOUNT.username, ACCOUNT.user_id
+        FROM POST
+        JOIN ACCOUNT ON POST.user_id = ACCOUNT.user_id
+        JOIN FOLLOW ON ACCOUNT.user_id = FOLLOW.followed
+        JOIN MEDIA ON POST.post_id = MEDIA.post_id
+        WHERE FOLLOW.follower = ?
+        ORDER BY POST.date DESC";
+
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getMediaFromId($media_id)
     {
         $query = "SELECT file_name FROM MEDIA WHERE media_id = ?";
@@ -157,6 +192,46 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function addMedia($fileName)
+    {
+        $query = "INSERT INTO MEDIA (file_name) VALUES (?)";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $fileName);
+        $stmt->execute();
+        return $stmt->insert_id;
+
+    }
+
+    public function getFollowedByUsername($username)
+    {
+        $query = "SELECT followed FROM FOLLOW JOIN ACCOUNT ON FOLLOW.follower = ACCOUNT.user_id WHERE ACCOUNT.username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+
+    }
+
+    public function getUserByUsername($username)
+    {
+        $query = "
+            SELECT first_name, last_name, description, email,user_id,profile_pic_id
+            FROM account 
+            WHERE username = ?
+        ";
+        //get all the user's data by username, except the password and the salt
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+
     public function getFollowerFromId($user_id)
     {
         $stmt = $this->db->prepare("SELECT COUNT(followed) AS num_followed FROM FOLLOW WHERE followed = ?");
@@ -179,7 +254,8 @@ class DatabaseHelper
         return $following;
     }
 
-    public function getNumPostFromId($user_id) {
+    public function getNumPostFromId($user_id)
+    {
         $stmt = $this->db->prepare("SELECT COUNT(*) AS num_posts FROM POST WHERE user_id = ?");
         $stmt->bind_param('i', $user_id); // esegue il bind del parametro '$email'.
         $stmt->execute(); // esegue la query appena creata.
@@ -189,5 +265,22 @@ class DatabaseHelper
         return $numPost;
     }
 
+    public function insertPost($user_id, $description)
+    {
+        $query = "INSERT INTO POST (user_id, description,date) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $date = date("Y-m-d");
+        $stmt->bind_param("iss", $user_id, $description, $date);
+        $stmt->execute();
+        return $stmt->insert_id;
+    }
+    public function deletePost($post_id)
+    {
+        $query = "DELETE FROM POST WHERE post_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        return $stmt->affected_rows;
+    }
 }
 
