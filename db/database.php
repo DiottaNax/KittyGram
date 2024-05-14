@@ -129,6 +129,27 @@ class DatabaseHelper{
         var_dump($stmt->error);
         return true;
     }
+
+    public function getMediaFromId($media_id) {
+        $query = "SELECT file_name FROM MEDIA WHERE media_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $media_id);
+        $stmt->execute();
+        $stmt->bind_result($file_name);
+        $stmt->fetch();
+
+        return $file_name;
+    }
+
+    function getMediasByPostId($post_id) {
+        $query = "SELECT file_name FROM MEDIA WHERE post_id = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     
 }
 
