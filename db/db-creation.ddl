@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS ACCOUNT (
     salt VARCHAR(512) NOT NULL,
     first_name VARCHAR(25) NOT NULL,
     last_name VARCHAR(25) NOT NULL,
-    user_bio VARCHAR(255),
+    user_bio VARCHAR(255) NOT NULL DEFAULT " ",
     profile_pic_id INT DEFAULT 1,
     city_id INT
 );
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS POST (
 );
 
 CREATE TABLE IF NOT EXISTS NOTIFICATION (
-    notification_id INT NOT NULL,
+    notification_id INT NOT NULL AUTO_INCREMENT,
     for_user_id INT NOT NULL,
     from_user_id INT NOT NULL,
     post_id INT,
