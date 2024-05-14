@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS ACCOUNT (
     first_name VARCHAR(25) NOT NULL,
     last_name VARCHAR(25) NOT NULL,
     user_bio VARCHAR(255),
-    profile_pic_id INT DEFAULT 0,
+    profile_pic_id INT DEFAULT 1,
     city_id INT
 );
 
@@ -215,3 +215,5 @@ CREATE INDEX REF_POST_ACCOU_IND
 
 CREATE UNIQUE INDEX ID_CITY_IND
     ON CITY (city_id);
+
+INSERT INTO MEDIA (media_id, file_name) VALUES (1, "default-pic.png");
