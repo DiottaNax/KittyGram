@@ -94,7 +94,6 @@
       </div>
     </div>
   </header>
-  <?php require $templateParams["name"]; ?>
 
   <!-- Notification window -->
   <?php require_once ("notification-modal.php"); ?>
