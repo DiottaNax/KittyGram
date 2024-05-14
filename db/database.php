@@ -1,9 +1,11 @@
 <?php
 
-class DatabaseHelper{
+class DatabaseHelper
+{
     private $db;
-    
-    public function __construct($dbname, $servername = "localhost", $username = "root", $password = "", $port = 3306){
+
+    public function __construct($dbname, $servername = "localhost", $username = "root", $password = "", $port = 3306)
+    {
         $this->db = new mysqli($servername, $username, $password, $dbname, $port);
         if ($this->db->connect_error) {
             die("Connection failed: " . $this->db->connect_error);
@@ -31,13 +33,13 @@ class DatabaseHelper{
 
     public function getAccountFromUsername($username)
     {
-        $stmt = $this->db->prepare("SELECT user_id, username, password, salt FROM account WHERE username = ? LIMIT 1");
+        $stmt = $this->db->prepare("SELECT user_id, username, password, salt, first_name, last_name, user_bio, profile_pic_id, city_id FROM account WHERE username = ? LIMIT 1");
         $lowerUsername = strtolower($username);
         $stmt->bind_param('s', $lowerUsername); // esegue il bind del parametro '$email'.
         $stmt->execute(); // esegue la query appena creata.
         $stmt->store_result();
         $account = array();
-        $stmt->bind_result($account['id'], $account['username'], $account['password'], $account['salt']); // recupera il risultato della query e lo memorizza nelle relative variabili.
+        $stmt->bind_result($account['id'], $account['username'], $account['password'], $account['salt'], $account['first_name'], $account['last_name'], $account['user_bio'], $account['profile_pic'], $account['city_id']); // recupera il risultato della query e lo memorizza nelle relative variabili.
         $stmt->fetch();
         $account['isDisabled'] = $this->checkBrute($account['id']) == true;
         return $account;
@@ -105,7 +107,8 @@ class DatabaseHelper{
             return 0;
         }
     }
-    public function getNotificationsById($user_id) {
+    public function getNotificationsById($user_id)
+    {
         $query = "
             SELECT notification_id,message,post_id,from_user_id as user_from_id,ur.username as username_from,seen,
             for_user_id as user_for_id,ui.username as username_for
@@ -118,19 +121,21 @@ class DatabaseHelper{
         $stmt->bind_param('i', $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
-    
+
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    public function viewedNotification($idNotification){
+    public function viewedNotification($idNotification)
+    {
         $query = "UPDATE notification SET seen = 1 WHERE notification_id = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i',$idNotification);
+        $stmt->bind_param('i', $idNotification);
         $stmt->execute();
         var_dump($stmt->error);
         return true;
     }
 
-    public function getMediaFromId($media_id) {
+    public function getMediaFromId($media_id)
+    {
         $query = "SELECT file_name FROM MEDIA WHERE media_id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $media_id);
@@ -141,7 +146,8 @@ class DatabaseHelper{
         return $file_name;
     }
 
-    function getMediasByPostId($post_id) {
+    function getMediasByPostId($post_id)
+    {
         $query = "SELECT file_name FROM MEDIA WHERE post_id = ?";
 
         $stmt = $this->db->prepare($query);
@@ -150,6 +156,38 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    
+
+    public function getFollowerFromId($user_id)
+    {
+        $stmt = $this->db->prepare("SELECT COUNT(followed) AS num_followed FROM FOLLOW WHERE followed = ?");
+        $stmt->bind_param('i', $user_id); // esegue il bind del parametro '$email'.
+        $stmt->execute(); // esegue la query appena creata.
+        $stmt->bind_result($followers); // recupera il risultato della query e lo memorizza nelle relative variabili.
+        $stmt->fetch();
+
+        return $followers;
+    }
+
+    public function getFollowingFromId($user_id)
+    {
+        $stmt = $this->db->prepare("SELECT COUNT(follower) AS num_following FROM FOLLOW WHERE follower = ?");
+        $stmt->bind_param('i', $user_id); // esegue il bind del parametro '$email'.
+        $stmt->execute(); // esegue la query appena creata.
+        $stmt->bind_result($following); // recupera il risultato della query e lo memorizza nelle relative variabili.
+        $stmt->fetch();
+
+        return $following;
+    }
+
+    public function getNumPostFromId($user_id) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) AS num_posts FROM POST WHERE user_id = ?");
+        $stmt->bind_param('i', $user_id); // esegue il bind del parametro '$email'.
+        $stmt->execute(); // esegue la query appena creata.
+        $stmt->bind_result($numPost); // recupera il risultato della query e lo memorizza nelle relative variabili.
+        $stmt->fetch();
+
+        return $numPost;
+    }
+
 }
 
