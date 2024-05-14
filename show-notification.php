@@ -11,7 +11,7 @@
                 <?php endif; ?>
             </div>
             <div class="col-7">
-                <a class="link-offset-2 link-underline mb-0" href=" <?php echo "open-post.php?postId=" . $notification["user_from_id"]?>">
+                <a class="link-offset-2 link-underline mb-0" href=" <?php echo "open-profile.php?username=" . $notification["username_from"]?>">
                     @<?php
                     echo $notification["username_from"];
                     ?>
