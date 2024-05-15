@@ -26,30 +26,17 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
 
   <body>
     <!-- Inclusione della navbar -->
-    <div id="navbarContainer"> <?php echo require_once ("navbar.php") ?></div>
+    <?php require_once("./components/navbar.php") ?>
 
     <!-- Inclusione della finestra modale dei follower -->
-    <div id="followersModalContainer"> <?php echo require_once ("followersModal.php") ?></div>
+    <div id="followersModalContainer"> <?php echo require_once ("./modals/followers-modal.php") ?></div>
 
     <!-- Inclusione della finestra modale dei seguiti -->
-    <div id="followingModalContainer"> <?php echo require_once ("followingModal.php") ?> </div>
+    <div id="followingModalContainer"> <?php echo require_once ("./modals/following-modal.php") ?> </div>
 
-    <!-- user-info container -->
-    <div class="container d-flex justify-content-center mt-5 py-5">
-      <img src="./img/<?php echo $dbh->getMediaFromId($accountResult['profile_pic']); ?>" class="rounded-circle"
-        alt="profile-pic" width="150" height="150" />
-      <ul>
-        <li class="list-group-item">
-          <h2><?php echo $accountResult['first_name'] . " " . $accountResult['last_name']; ?></h2>
-        </li>
-        <li class="list-group-item">
-          <h4>@<?php echo $accountResult['username'] ?></h4>
-        </li>
-        <button id="followButton" type="button" class="btn btn-light mt-4 opacity-100" onclick="toggleFollow()">
-          Following
-        </button>
-      </ul>
-    </div>
+    <sidebar>
+      <?php require_once("./components/profile-sidebar.php"); ?>
+    </sidebar>
 
     <!-- 3 bottoni per numero di: POST, FOLLOWERS, SEGUITI -->
     <div class="container d-flex justify-content-between mb-5 align-items-center">
