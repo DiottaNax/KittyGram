@@ -10,14 +10,12 @@
         <!-- Add Post -->
         <div class="row">
             <div class="col text-start mt-2">
-                <a href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-plus-circle"
-                        viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                        <path
-                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                    </svg>
-                </a>
+                <svg data-bs-toggle="modal" data-bs-target="#new-post-modal" xmlns="http://www.w3.org/2000/svg"
+                    width="30" height="30" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                </svg>
             </div>
 
             <!-- Open Profile -->
@@ -52,8 +50,8 @@
             </div>
             <div class="col text-end mt-2">
                 <a title="logout" href="./api/logout.php">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                        class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-box-arrow-in-right"
+                        viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
                             d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z" />
                         <path fill-rule="evenodd"
@@ -66,3 +64,4 @@
 </header>
 
 <?php require_once ("./modals/notification-modal.php"); ?>
+<?php require_once ("./modals/new-post-modal.php"); ?>
