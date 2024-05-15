@@ -26,16 +26,16 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
 
   <body>
     <!-- Inclusione della navbar -->
-    <div id="navbarContainer"> <?php echo require_once ("navbar.php") ?></div>
+    <?php require_once("./components/navbar.php") ?>
 
     <!-- Inclusione della finestra modale dei follower -->
-    <div id="followersModalContainer"> <?php echo require_once ("followersModal.php") ?></div>
+    <div id="followersModalContainer"> <?php echo require_once ("./modals/followers-modal.php") ?></div>
 
     <!-- Inclusione della finestra modale dei seguiti -->
-    <div id="followingModalContainer"> <?php echo require_once ("followingModal.php") ?> </div>
+    <div id="followingModalContainer"> <?php echo require_once ("./modals/following-modal.php") ?> </div>
 
     <sidebar>
-    <?php require_once("./components/profile-sidebar.php"); ?>
+      <?php require_once("./components/profile-sidebar.php"); ?>
     </sidebar>
 
     <!-- 3 bottoni per numero di: POST, FOLLOWERS, SEGUITI -->

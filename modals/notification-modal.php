@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <?php
-                require("show-notification.php");
+                require("./api/show-notification.php");
                 ?>
             </div>
         </div>
