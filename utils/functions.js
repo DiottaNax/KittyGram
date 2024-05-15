@@ -4,7 +4,7 @@ function reload() {
 
 function setupAdoptionCheckbox() {
   const adoptionCheckbox = document.getElementById("adoption");
-  const cityInput = document.getElementById("city");
+  const cityInput = document.getElementById("city_name");
 
   adoptionCheckbox.addEventListener("change", function () {
     if (this.checked) {
