@@ -16,15 +16,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Include il tuo file JavaScript separato -->
     <script src="js/UserPost.js"></script>
-    <script src="js/Navbar.js"></script>
+ 
 
-    <title>User Profile</title>
+    <title>User Post</title>
   </head>
   
 
   <body>
     <!-- Inclusione della navbar -->
-    <div id="navbarContainer"></div>
+    <div id="navbarContainer"> <?php echo require_once ("navbar.php") ?></div>
 
     <!-- Spazio aggiunto tra navbar e container del post e dei commenti -->
     <div class="mt-5"></div>

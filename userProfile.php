@@ -30,11 +30,11 @@
 
     <!-- user-info container -->
     <div class="container d-flex justify-content-center mt-5 py-5">
-        <img src="/img/User_ProfilePic.PNG" class="rounded-circle" alt="profile-pic" width="150" height="150">
+        <img src="./img/User_ProfilePic.PNG" class="rounded-circle" alt="profile-pic" width="150" height="150">
         <ul>
             <li class="list-group-item"><h2> Astro Baleno </h2></li>
             <li class="list-group-item"><h4> @astrobaleno </h4></li>
-            <button type="button" class="btn btn-light mt-4 opacity-100" onclick="window.location.href='UserSettings.html'">Modifica Profilo</button>
+            <button type="button" class="btn btn-light mt-4 opacity-100" onclick="window.location.href='userSettings.php'">Modifica Profilo</button>
         </ul>
     </div>
 
@@ -56,17 +56,17 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card mb-3">
-                    <img src="/img/cat-example1.jfif" class="card-img-top w-100" onclick="redirectToUserPost('/img/cat-example1.jfif')" alt="example1">
+                    <img src="./img/cat-example1.jfif" class="card-img-top w-100" onclick="redirectToUserPost('./img/cat-example1.jfif')" id="post1" alt="example1">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card mb-3">
-                    <img src="/img/cat-example2.jfif" class="card-img-top w-100" onclick="redirectToUserPost('/img/cat-example2.jfif')" alt="example2">
+                    <img src="./img/cat-example2.jfif" class="card-img-top w-100" onclick="redirectToUserPost('./img/cat-example2.jfif')" id="post2" alt="example2">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card mb-3">
-                    <img src="/img/cat-example3.jfif" class="card-img-top w-100" onclick="redirectToUserPost('/img/cat-example3.jfif')" alt="example3">
+                    <img src="./img/cat-example3.jfif" class="card-img-top w-100" onclick="redirectToUserPost('./img/cat-example3.jfif')" id="post3" alt="example3">
                 </div>
             </div>
         </div>

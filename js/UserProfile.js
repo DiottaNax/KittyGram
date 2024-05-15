@@ -1,3 +1,3 @@
     function redirectToUserPost(imagePath) {
-        window.location.href = 'UserPost.html?image=' + encodeURIComponent(imagePath);
+        window.location.href = 'userPost.php?image=' + encodeURIComponent(imagePath);
     }

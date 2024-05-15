@@ -1,6 +1,6 @@
 // Funzione per includere la finestra modale dei follower
 function includeFollowersModal() {
-    fetch('FollowersModal.html')
+    fetch('followersModal.php')
         .then(response => response.text())
         .then(data => {
             document.getElementById('followersModalContainer').innerHTML = data;
@@ -9,7 +9,7 @@ function includeFollowersModal() {
 
 // Funzione per includere la finestra modale dei seguiti
 function includeFollowingModal() {
-    fetch('FollowingModal.html')
+    fetch('followingModal.php')
         .then(response => response.text())
         .then(data => {
             document.getElementById('followingModalContainer').innerHTML = data;

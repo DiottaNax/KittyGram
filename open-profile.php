@@ -75,13 +75,13 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
         <div class="col-md-4">
           <div class="card mb-3">
             <img src="./img/cat-example4.jpg" class="card-img-top w-100"
-              onclick="redirectToUserPost('/img/cat-example4.jpg')" alt="example1" />
+              onclick="redirectToUserPost('./img/cat-example4.jpg')" alt="example1" />
           </div>
         </div>
         <div class="col-md-4">
           <div class="card mb-3">
             <img src="./img/cat-example5.jpg" class="card-img-top w-100"
-              onclick="redirectToUserPost('/img/cat-example5.jpg')" alt="example1" />
+              onclick="redirectToUserPost('./img/cat-example5.jpg')" alt="example2" />
           </div>
         </div>
       </div>
