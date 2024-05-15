@@ -58,7 +58,7 @@
           <a href=""><img src="./img/KittyGram_Logo.png" alt="Kittygram" width="200" /></a>
         </div>
         <div class="col text-end mt-2">
-          <a href="userProfile.php">
+          <a href="open-profile.php?username=<?php echo $_SESSION['username'] ?>">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-person-circle"
               viewBox="0 0 16 16">
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
