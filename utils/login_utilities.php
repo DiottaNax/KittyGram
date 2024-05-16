@@ -16,6 +16,9 @@ function sec_session_start()
 function login($username, $password, DatabaseHelper $dbh)
 {
    $accountResult = $dbh->getAccountFromUsername($username);
+   // Initialize loginResult with default values
+   $loginResult['disabled'] = false;
+   $loginResult['success'] = false;
    if ($accountResult) {
       $userId = $accountResult['id'];
       $dbPassword = $accountResult['password'];
@@ -23,9 +26,6 @@ function login($username, $password, DatabaseHelper $dbh)
       $salt = $accountResult['salt'];
       $password = hash('sha512', $password.$salt);
 
-      // Initialize loginResult with default values
-      $loginResult['disabled'] = false;
-      $loginResult['success'] = false;
       if ($accountResult['isDisabled']) {
          // Account tried to login too many times
          $loginResult['disabled'] = true;
