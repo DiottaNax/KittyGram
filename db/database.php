@@ -309,5 +309,29 @@ class DatabaseHelper
         $stmt->execute();
         return $stmt->affected_rows;
     }
+
+    public function searchAccountStartingWith($preamble) {
+        // Search all users whose username, name or surname starts with preamble in this order of matching
+        $query = "SELECT username, file_name 
+                    FROM account
+                    LEFT JOIN media ON account.profile_pic_id = media.media_id
+                    WHERE account.user_id != ?
+                        AND (account.username LIKE ?
+                        OR account.first_name LIKE ?
+                        OR account.last_name LIKE ?)
+                    ORDER BY 
+                        CASE
+                            WHEN account.username LIKE ? THEN 1
+                            WHEN account.first_name LIKE ? THEN 2
+                            WHEN account.last_name LIKE ? THEN 3
+                            ELSE 4
+                        END;";
+        $pattern = $preamble . "%"; // Make a SQL-Pattern-like
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("issssss", $_SESSION['user_id'], $pattern, $pattern, $pattern, $pattern, $pattern, $pattern);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
