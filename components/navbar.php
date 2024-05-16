@@ -1,6 +1,6 @@
-<header class="nav p-2 fixed-top shadow-sm bg-white">
+<script src="./js/searchUser.js"></script>
 
-    <!-- Include modals -->
+<header class="nav p-2 fixed-top shadow-sm bg-white">
 
     <!-- Notification window -->
 
@@ -9,6 +9,14 @@
 
         <!-- Add Post -->
         <div class="row">
+            <!-- Search -->
+            <div class="col text-start mt-2">
+                <svg xmlns="http://www.w3.org/2000/svg"  data-bs-toggle="modal" data-bs-target="#searchModal" width="30" height="30" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+                </svg>
+            </div>
+
             <div class="col text-start mt-2">
                 <svg data-bs-toggle="modal" data-bs-target="#new-post-modal" xmlns="http://www.w3.org/2000/svg"
                     width="30" height="30" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -63,5 +71,7 @@
     </div>
 </header>
 
+<!-- Include modals -->
 <?php require_once ("./modals/notification-modal.php"); ?>
 <?php require_once ("./modals/new-post-modal.php"); ?>
+<?php require_once ("./modals/search-modal.php"); ?>
