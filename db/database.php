@@ -192,12 +192,12 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addMedia($fileName)
+    public function addMedia($fileName, $post_id)
     {
-        $query = "INSERT INTO MEDIA (file_name) VALUES (?)";
+        $query = "INSERT INTO MEDIA (file_name,post_id) VALUES (?,?)";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("s", $fileName);
+        $stmt->bind_param("si", $fileName, $post_id);
         $stmt->execute();
         return $stmt->insert_id;
 
@@ -292,15 +292,16 @@ class DatabaseHelper
         return $numPost;
     }
 
-    public function insertPost($user_id, $description)
+    public function insertPost($user_id, $description, $city)
     {
-        $query = "INSERT INTO POST (user_id, description,date) VALUES (?, ?)";
+        $query = "INSERT INTO POST (user_id, description, date) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $date = date("Y-m-d");
         $stmt->bind_param("iss", $user_id, $description, $date);
         $stmt->execute();
-        return $stmt->insert_id;
+        return $this->db->insert_id;
     }
+
     public function deletePost($post_id)
     {
         $query = "DELETE FROM POST WHERE post_id = ?";
