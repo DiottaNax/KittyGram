@@ -42,7 +42,7 @@ class DatabaseHelper
         $stmt->bind_result($account['id'], $account['username'], $account['password'], $account['salt'], $account['first_name'], $account['last_name'], $account['user_bio'], $account['profile_pic'], $account['city_id']); // recupera il risultato della query e lo memorizza nelle relative variabili.
         $stmt->fetch();
         $account['isDisabled'] = $this->checkBrute($account['id']) == true;
-        return $account;
+        return $stmt->num_rows() > 0 ? $account : false ;
     }
 
     public function getAccountFromUserOrEmail($userOrEmail)
@@ -217,7 +217,7 @@ class DatabaseHelper
     public function getUserByUsername($username)
     {
         $query = "
-            SELECT first_name, last_name, description, email,user_id,profile_pic_id
+            SELECT first_name, last_name, description, email, user_id, profile_pic_id
             FROM account 
             WHERE username = ?
         ";
@@ -252,6 +252,33 @@ class DatabaseHelper
         $stmt->fetch();
 
         return $following;
+    }
+
+    public function getFollowedAccount($user_id) {
+        $query = "SELECT username, file_name
+                    FROM account LEFT JOIN follow ON account.user_id = follow.followed
+                    LEFT JOIN media ON account.profile_pic_id = media.media_id
+                    WHERE follow.follower = ?;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getFollowersAccount($user_id)
+    {
+        $query = "SELECT username, file_name
+                    FROM account LEFT JOIN follow ON account.user_id = follow.follower
+                    LEFT JOIN media ON account.profile_pic_id = media.media_id
+                    WHERE follow.followed = ?;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function getNumPostFromId($user_id)

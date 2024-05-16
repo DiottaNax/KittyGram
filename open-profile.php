@@ -42,10 +42,10 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
     <div class="container d-flex justify-content-between mb-5 align-items-center">
       <p><?php echo $dbh->getNumPostFromId($accountResult['id']) ?> post</p>
       <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#followersModal">
-        <p><?php echo $dbh->getFollowerFromId($accountResult['id']) ?> follower</p>
+        <?php echo $dbh->getFollowerFromId($accountResult['id']) ?> follower
       </button>
       <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#followingModal">
-        <p><?php echo $dbh->getFollowingFromId($accountResult['id']) ?> following</p>
+        <?php echo $dbh->getFollowingFromId($accountResult['id']) ?> following
       </button>
     </div>
 
