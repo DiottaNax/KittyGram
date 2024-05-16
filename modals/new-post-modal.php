@@ -33,3 +33,4 @@
     </div>
 </div>
 <script src="./utils/functions.js"></script>
+<script src="./js/new-post.js"></script>
