@@ -19,8 +19,20 @@
 
 <body class="d-flex justify-content-center py-4">
 
-  <!-- Top navbar -->
-  <?php require_once("./components/navbar.php") ?>
+
+  <div class="row justify-content-center">
+    <div class="col-lg mt-2">
+      <header class="d-flex px-4 mt-5s">
+        <h2>Home Page</h2>
+        <main class="container">
+          <?php require ($templateParams["name"]); ?>
+        </main>
+      </header>
+    </div>
+  </div>
+
+
+  <?php require_once ("./components/navbar.php") ?>
 </body>
 
 </html>
