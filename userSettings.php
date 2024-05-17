@@ -17,7 +17,7 @@
     <script src="js/UserSettings.js"></script>
     <!-- Inclusione della navbar -->
     <?php require_once("./components/navbar.php") ?>
-    
+
 
     <?php
         session_start();
@@ -67,22 +67,38 @@
             </div>
         </div>
         
+
+        <div class="mb-3 row">  
+            <div class="col-6">
+                <label for="name" class="form-label text-start">Name</label>
+                <input type="name" class="form-control" placeholder="Type your new Name" id="name" name="name">
+            </div>
+            <div class="col-6">
+                <label for="surname" class="form-label text-start">Surname</label>
+                <input type="surname" class="form-control" placeholder="Type your new Surname" id="surname" name="surname">
+            </div>
+        </div>
+
         <div class="mb-3">  
             <label for="username" class="form-label text-start">Username</label>
             <input type="username" class="form-control" placeholder="<?php echo htmlspecialchars($_SESSION['username']); ?>" id="username" name="username">
         </div>
+
         <div class="mb-3">  
             <label for="bio" class="form-label">Bio</label>
             <input type="bio" class="form-control" placeholder="Type your new Bio" id="bio" name="bio">
         </div>
+
         <div class="mb-3">  
             <label for="email" class="form-label">Email address</label>
             <input type="email" class="form-control" placeholder="Type your new Email" id="email" name="email">
         </div>
+
         <div class="mb-5">
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Type your new Password">
         </div>
+
         <div class="mb-3 justify-content-center">
             <button type="button" class="btn btn-bd-primary w-100" style="background-color: #493400; color: white;" onclick="redirectToProfile(<?php echo $_SESSION['username']?>)">Save Changes</button>
         </div>
