@@ -19,6 +19,10 @@ function previewFile() {
     if (file) {
         reader.readAsDataURL(file);
     } else {
-        preview.src = "/images/User_ProfilePic.PNG"; // Default image if no file is selected
+        preview.src=profilePictureUrl; // Default image if no file is selected
     }
+}
+
+function redirectToProfile(username) {
+    window.location.href = "./open-profile.php?username=" + username;
 }

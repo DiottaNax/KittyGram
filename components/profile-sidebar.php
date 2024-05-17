@@ -1,3 +1,4 @@
+
 <div class="container d-flex justify-content-center mt-5 py-5">
     <img src="./img/<?php echo $dbh->getMediaFromId($accountResult['profile_pic']); ?>" class="rounded-circle"
         alt="profile-pic" width="150" height="150" />
@@ -12,7 +13,7 @@
         <li class="list-group-item">
         <!-- Put follow buttton if username is different from session username, modify profile otherwise -->
             <?php if ($accountResult['username'] == $_SESSION['username']): ?>
-                <button type="button" class="btn btn-light mt-4 opacity-100" onclick="window.location.href='UserSettings.html'">
+                <button type="button" class="btn btn-light mt-4 opacity-100" onclick="document.location.href='userSettings.php?username=<?php echo urlencode($_SESSION['username']); ?>'">
                     Modifica Profilo
                 </button>
             <?php else: ?>
