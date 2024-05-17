@@ -200,7 +200,6 @@ class DatabaseHelper
         $stmt->bind_param("si", $fileName, $post_id);
         $stmt->execute();
         return $stmt->insert_id;
-
     }
 
     public function getFollowedByUsername($username)
@@ -292,7 +291,7 @@ class DatabaseHelper
         return $numPost;
     }
 
-    public function insertPost($user_id, $description, $city)
+    public function addPost($user_id, $description, $city)
     {
         $query = "INSERT INTO POST (user_id, description, date) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);

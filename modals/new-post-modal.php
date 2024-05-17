@@ -7,30 +7,31 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="#" method="POST" id="new-post" enctype="multipart/form-data">
+                <form id="addPostForm" name="addPostForm" enctype="multipart/form-data" action="./api/new-post.php" method="POST">
                     <div class="mb-2">
-                        <label for="img">Images</label>
-                        <input type="file" class="form-control" id="img" name="img" multiple />
+                        <label for="imgpost">Images</label>
+                        <input type="file" class="form-control" id="imgpost" name="imgpost[]" multiple />
                     </div>
                     <div class="mb-2">
                         <label for="description">Description</label>
                         <textarea class="form-control" id="description" name="description" required></textarea>
                     </div>
                     <div class="mb-2 form-check">
-                        <input type="checkbox" class="form-check-input" id="adoption" name="adoption" checked>
+                        <input type="checkbox" class="form-check-input" id="adoption" name="adoption">
                         <label class="form-check-label" for="adoption">Adoption</label>
                     </div>
                     <div class="mb-2">
                         <label for="city_name">City</label>
-                        <input type="text" class="form-control" id="city_name" name="city_name">
+                        <input type="text" class="form-control" id="cityName" name="cityName" disabled>
                     </div>
-                    <p id="result-post"></p>
+                    <p id="uploadResult"></p>
                     <label for="login" hidden>Post it!</label>
-                    <input class="btn w-100 my-2" type="submit" id="login" name="post" value="Post it!" />
+                    <input class="btn w-100 my-2" type="submit" id="post" name="post" value="Post it!" />
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 <script src="./utils/functions.js"></script>
-<script src="./js/new-post.js"></script>
+<script src="./js/addPost.js"></script>
