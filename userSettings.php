@@ -52,7 +52,7 @@
   <body>
 
     <div class="card mw-75 m-3 p-5 border-1 mt-5">
-    <h1 class="text-center">Modifica Profilo</h1>
+    <h1 class="text-center">Edit Profile</h1>
     
     <form class="text-left align-items-center py-5" action="**your_script.php**" method="post">
         <div class="mb-4">
