@@ -42,7 +42,7 @@ class DatabaseHelper
         $stmt->bind_result($account['id'], $account['username'], $account['password'], $account['salt'], $account['first_name'], $account['last_name'], $account['user_bio'], $account['profile_pic'], $account['city_id']); // recupera il risultato della query e lo memorizza nelle relative variabili.
         $stmt->fetch();
         $account['isDisabled'] = $this->checkBrute($account['id']) == true;
-        return $stmt->num_rows() > 0 ? $account : false ;
+        return $stmt->num_rows() > 0 ? $account : false;
     }
 
     public function getAccountFromUserOrEmail($userOrEmail)
@@ -149,6 +149,70 @@ class DatabaseHelper
 
         return $row["numberLikes"];
     }
+    public function insertLike($idPost, $userID)
+    {
+        $query = "
+            INSERT INTO post_like (post_id, user_id)
+            VALUES (?, ?)
+        ";
+        //insert a new like
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $idPost, $userID);
+        $stmt->execute();
+        $result = array("user_id" => $userID, "post_id" => $idPost);
+
+        return $result;
+    }
+
+    public function removelike($idPost, $userID)
+    {
+        $query = "
+            DELETE FROM post_like
+            WHERE post_id = ? AND user_id = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $idPost, $user_id);
+        $result = $stmt->execute();
+
+        return $result;
+    }
+
+    public function getUserIdByIdPost($idPost)
+    {
+        $query = "
+            SELECT user_id
+            FROM post
+            WHERE post_id = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $idPost);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Utilizza fetch_assoc per ottenere un'associazione chiave-valore
+        $row = $result->fetch_assoc();
+
+        // Restituisci direttamente il valore dell'username
+        return $row["user_id"];
+    }
+
+    public function insertNotification($messagge, $usernameReceiver, $usernameSender, $seen)
+    {
+        $query = "
+            INSERT INTO notifica (message, seen, for_user_id, from_user_id)
+            VALUES (?, ?, ?, ?)
+        ";
+        //insert a new notification
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("siss", $message, $seen, $usernameReceiver, $usernameSender);
+        $stmt->execute();
+
+        return $stmt->insert_id;
+    }
 
     public function getHome($user_id)
     {
@@ -253,7 +317,8 @@ class DatabaseHelper
         return $following;
     }
 
-    public function getFollowedAccount($user_id) {
+    public function getFollowedAccount($user_id)
+    {
         $query = "SELECT username, file_name
                     FROM account LEFT JOIN follow ON account.user_id = follow.followed
                     LEFT JOIN media ON account.profile_pic_id = media.media_id
@@ -310,7 +375,8 @@ class DatabaseHelper
         return $stmt->affected_rows;
     }
 
-    public function searchAccountStartingWith($preamble) {
+    public function searchAccountStartingWith($preamble)
+    {
         // Search all users whose username, name or surname starts with preamble in this order of matching
         $query = "SELECT username, file_name 
                     FROM account
