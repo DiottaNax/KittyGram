@@ -6,6 +6,10 @@
   --btn-secondary-color: #fff8e7;
 }
 
+.bg-white {
+  background-color: #ffffff !important;
+}
+
 body,
 header,
 .card,
@@ -13,8 +17,9 @@ nav {
   background-color: var(--bg-color) !important;
 }
 
-.card {
-  padding: 3% !important;
+.card,
+.article {
+  padding: 5% !important;
   width: 450px;
   max-width: 450px;
   border-radius: 50px !important;
