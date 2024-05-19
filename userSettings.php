@@ -71,17 +71,17 @@
         <div class="mb-3 row">  
             <div class="col-6">
                 <label for="name" class="form-label text-start">Name</label>
-                <input type="name" class="form-control" placeholder="Type your new Name" id="name" name="name">
+                <input type="name" class="form-control" placeholder="Type your new Name" id="name" maxlength="25" name="name">
             </div>
             <div class="col-6">
                 <label for="surname" class="form-label text-start">Surname</label>
-                <input type="surname" class="form-control" placeholder="Type your new Surname" id="surname" name="surname">
+                <input type="surname" class="form-control" placeholder="Type your new Surname" id="surname" maxlength="25" name="surname">
             </div>
         </div>
 
         <div class="mb-3">  
             <label for="username" class="form-label text-start">Username</label>
-            <input type="username" class="form-control" placeholder="<?php echo htmlspecialchars($_SESSION['username']); ?>" id="username" name="username">
+            <input type="username" class="form-control" placeholder="<?php echo htmlspecialchars($_SESSION['username']); ?>" id="username" maxlength="25" name="username">
         </div>
 
         <div class="mb-3">  
@@ -91,7 +91,7 @@
 
         <div class="mb-3">  
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" placeholder="Type your new Email" id="email" name="email">
+            <input type="email" class="form-control" placeholder="Type your new Email" id="email" maxlength="319" name="email">
         </div>
 
         <div class="mb-3 row">
