@@ -32,5 +32,31 @@ body, header, .card, nav {
   box-shadow: 0 0 7px 0 var(--primary-color) !important;
   border-color: var(--primary-color) !important;
 }
-  
+
+.active-indicator {
+    display: flex !important;
+    height: 2px !important;
+    width: 50% !important; /* Modifica questa percentuale per restringere o allargare la barra */
+    max-width: 300px !important; /* Limite massimo di larghezza */
+}
+
+.active-indicator-container {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.active-indicator .half-bar {
+    flex: 1 !important;
+}
+
+.half-bar-left.active,
+.half-bar-right.active {
+    background-color: #000 !important;
+}
+
+.half-bar-left.inactive,
+.half-bar-right.inactive {
+    background-color: #9a9589 !important;
+}
+ 
   

@@ -20,33 +20,6 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
     <script src="./js/UserProfile.js"></script>
     <title>KittyGram Profile: <?php echo $accountResult['username'] ?></title>
 
-    <style>
-        .active-indicator {
-            display: flex;
-            height: 2px;
-            width: 50%; /* Modifica questa percentuale per restringere o allargare la barra */
-            max-width: 300px; /* Limite massimo di larghezza */
-        }
-
-        .active-indicator-container {
-            display: flex;
-            justify-content: center;
-        }
-
-        .active-indicator .half-bar {
-            flex: 1;
-        }
-
-        .half-bar-left.active,
-        .half-bar-right.active {
-            background-color: #000;
-        }
-
-        .half-bar-left.inactive,
-        .half-bar-right.inactive {
-            background-color: #9a9589;
-        }
-    </style>
   </head>
 
   <body>
