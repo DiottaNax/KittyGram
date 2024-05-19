@@ -1,6 +1,6 @@
 
 <div class="container d-flex justify-content-center mt-5 py-5">
-    <img src="./img/<?php echo $dbh->getMediaFromId($accountResult['profile_pic']); ?>" class="rounded-circle"
+    <img src="./img/<?php echo $accountResult['pic']; ?>" class="rounded-circle"
         alt="profile-pic" width="150" height="150" />
     <ul>
         <li class="list-group-item">

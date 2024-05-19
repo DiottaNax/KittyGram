@@ -15,7 +15,7 @@ function sec_session_start()
 
 function login($username, $password, DatabaseHelper $dbh)
 {
-   $accountResult = $dbh->getAccountFromUsername($username);
+   $accountResult = $dbh->getLoginInfo($username);
    // Initialize loginResult with default values
    $loginResult['disabled'] = false;
    $loginResult['success'] = false;
@@ -35,7 +35,7 @@ function login($username, $password, DatabaseHelper $dbh)
             $user_browser = $_SERVER['HTTP_USER_AGENT']; // Recupero il parametro 'user-agent' relativo all'utente corrente.
             $user_id = preg_replace("/[^0-9]+/", "", $userId); // ci proteggiamo da un attacco XSS
             $_SESSION['user_id'] = $user_id;
-            $sessionUsername = preg_replace("/[^a-zA-Z0-9_\-]+/", "", $dbUsername); // ci proteggiamo da un attacco XSS
+            $sessionUsername = preg_replace("/[^a-zA-Z0-9_\-\.]+/", "", $dbUsername); // ci proteggiamo da un attacco XSS
             $_SESSION['username'] = $sessionUsername;
             $_SESSION['login_string'] = hash('sha512', $password.$user_browser); // Contains user's browser info codified with it's password
             $loginResult['success'] = true;

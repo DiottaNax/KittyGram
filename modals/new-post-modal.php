@@ -21,7 +21,7 @@
                         <label class="form-check-label" for="adoption">Adoption</label>
                     </div>
                     <div class="mb-2">
-                        <label for="city_name">City</label>
+                        <label for="cityName">City</label>
                         <input type="text" class="form-control" id="cityName" name="cityName" disabled>
                     </div>
                     <p id="uploadResult"></p>
