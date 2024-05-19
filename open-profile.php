@@ -72,8 +72,6 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybA8dKA7OiLh30NQ9c3QkXKZ47GOFT05/t6onKI7NUh1P4j8/" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-qn5H6zS9hZ6KOvu20rDDVftU2pwDAZ9FAs9piEqyzkn2zt5fcAtVycLCjCEp3kkk" crossorigin="anonymous"></script>
 
     <nav class="navbar navbar-expand">
       <div class="container-fluid">
