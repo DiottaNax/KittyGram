@@ -31,32 +31,33 @@ class DatabaseHelper
         return false;
     }
 
-    public function getAccountFromUsername($username)
+    public function getLoginInfo($username)
     {
-        $stmt = $this->db->prepare("SELECT user_id, username, password, salt, first_name, last_name, user_bio, profile_pic_id, city_id FROM account WHERE username = ? LIMIT 1");
+        $stmt = $this->db->prepare("SELECT user_id, username, password, salt FROM account WHERE username = ? LIMIT 1");
         $lowerUsername = strtolower($username);
         $stmt->bind_param('s', $lowerUsername); // esegue il bind del parametro '$email'.
-        $stmt->execute(); // esegue la query appena creata.
-        $stmt->store_result();
-        $account = array();
-        $stmt->bind_result($account['id'], $account['username'], $account['password'], $account['salt'], $account['first_name'], $account['last_name'], $account['user_bio'], $account['profile_pic'], $account['city_id']); // recupera il risultato della query e lo memorizza nelle relative variabili.
-        $stmt->fetch();
-        $account['isDisabled'] = $this->checkBrute($account['id']) == true;
-        return $stmt->num_rows() > 0 ? $account : false;
-    }
-
-    public function getAccountFromUserOrEmail($userOrEmail)
-    {
-        $stmt = $this->db->prepare("SELECT user_id, username, password, salt FROM account WHERE username = ? OR email = ? LIMIT 1");
-        $stmt->bind_param('ss', $userOrEmail, $userOrEmail); // esegue il bind del parametro '$email'.
         $stmt->execute(); // esegue la query appena creata.
         $stmt->store_result();
         $account = array();
         $stmt->bind_result($account['id'], $account['username'], $account['password'], $account['salt']); // recupera il risultato della query e lo memorizza nelle relative variabili.
         $stmt->fetch();
         $account['isDisabled'] = $this->checkBrute($account['id']) == true;
-        return $account;
+        return $stmt->num_rows() > 0 ? $account : false;
     }
+
+    public function getAccountFromUsername($username)
+    {
+        $query = "SELECT user_id as id, username, file_name as pic, first_name, last_name, user_bio, email FROM account
+                    LEFT JOIN media ON account.profile_pic_id = media.media_id
+                    WHERE account.username = ?
+                    LIMIT 1;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC)[0]; // Return the first element of the array
+    }
+
 
     public function addLoginAttempt($userId, $time)
     {

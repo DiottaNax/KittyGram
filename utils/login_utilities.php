@@ -15,7 +15,7 @@ function sec_session_start()
 
 function login($username, $password, DatabaseHelper $dbh)
 {
-   $accountResult = $dbh->getAccountFromUsername($username);
+   $accountResult = $dbh->getLoginInfo($username);
    // Initialize loginResult with default values
    $loginResult['disabled'] = false;
    $loginResult['success'] = false;
