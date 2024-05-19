@@ -19,6 +19,34 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
     ?>
     <script src="./js/UserProfile.js"></script>
     <title>KittyGram Profile: <?php echo $accountResult['username'] ?></title>
+
+    <style>
+        .active-indicator {
+            display: flex;
+            height: 2px;
+            width: 50%; /* Modifica questa percentuale per restringere o allargare la barra */
+            max-width: 300px; /* Limite massimo di larghezza */
+        }
+
+        .active-indicator-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .active-indicator .half-bar {
+            flex: 1;
+        }
+
+        .half-bar-left.active,
+        .half-bar-right.active {
+            background-color: #000;
+        }
+
+        .half-bar-left.inactive,
+        .half-bar-right.inactive {
+            background-color: #9a9589;
+        }
+    </style>
   </head>
 
   <body>
@@ -53,11 +81,26 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
       </h6>
     </div>
 
-    <!-- barra di "POST" e "ADOPTIONS" -->
+
+    <!-------------- divisione di "POST" e "ADOPTIONS" -------------->
     <?php
-    // Determina la pagina corrente
-    $current_route = isset($_GET['route']) ? $_GET['route'] : 'posts';
+      // Determina la pagina corrente
+      $current_route = isset($_GET['route']) && ($_GET['route'] == 'posts' || $_GET['route'] == 'adoptions') ? $_GET['route'] : 'posts';
     ?>
+
+    <!-- Contenitore esterno per centrare la barra indicatore attivo -->
+    <div class=" container-fluid justify-content-center ">
+        <!-- Contenitore della barra indicatore attivo -->
+        <div class="active-indicator-container">
+            <div class="active-indicator">
+                <div class="half-bar half-bar-left <?php echo $current_route == 'posts' ? 'active' : 'inactive'; ?>"></div>
+                <div class="half-bar half-bar-right <?php echo $current_route == 'adoptions' ? 'active' : 'inactive'; ?>"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybA8dKA7OiLh30NQ9c3QkXKZ47GOFT05/t6onKI7NUh1P4j8/" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-qn5H6zS9hZ6KOvu20rDDVftU2pwDAZ9FAs9piEqyzkn2zt5fcAtVycLCjCEp3kkk" crossorigin="anonymous"></script>
 
     <nav class="navbar navbar-expand">
       <div class="container-fluid">
@@ -86,7 +129,7 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
 
 
 
-    <?php if(!isset($_GET['route']) || $_GET['route'] == 'post'): ?>
+    <?php if(!isset($_GET['route']) || $_GET['route'] != 'adoptions'): ?>
     <!-- posts container -->
     <div class="container mt-5" id="userPostsContainer">
       <div class="row">
