@@ -58,6 +58,10 @@ a {
   text-decoration: none;
 }
 
+.liked {
+  fill: red !important;
+}
+
 /* Media query for mobile devices */
 @media (max-width: 768px) {
   .card {

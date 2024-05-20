@@ -148,7 +148,7 @@ class DatabaseHelper
         return true;
     }
 
-    public function getLikes($userID, $idPost)
+    public function userLikesPost($idPost, $userId)
     {
         $query = "
             SELECT COUNT(*) AS numberLikes
@@ -156,14 +156,15 @@ class DatabaseHelper
             WHERE user_id = ? AND post_id = ?
         ";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("si", $userId, $idPost);
+        $stmt->bind_param("ii", $userId, $idPost);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
         return $row["numberLikes"];
     }
-    public function insertLike($idPost, $userID)
+
+    public function addLike($post_id, $user_id)
     {
         $query = "
             INSERT INTO post_like (post_id, user_id)
@@ -172,14 +173,14 @@ class DatabaseHelper
         //insert a new like
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ii", $idPost, $userID);
+        $stmt->bind_param("ii", $post_id, $user_id);
         $stmt->execute();
-        $result = array("user_id" => $userID, "post_id" => $idPost);
+        $result = array("user_id" => $user_id, "post_id" => $post_id);
 
         return $result;
     }
 
-    public function removelike($idPost, $userID)
+    public function removelike($post_id, $user_id)
     {
         $query = "
             DELETE FROM post_like
@@ -187,13 +188,13 @@ class DatabaseHelper
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ii", $idPost, $user_id);
+        $stmt->bind_param("ii", $post_id, $user_id);
         $result = $stmt->execute();
 
         return $result;
     }
 
-    public function getUserIdByIdPost($idPost)
+    public function getPostOwnerId($post_id)
     {
         $query = "
             SELECT user_id
@@ -202,7 +203,7 @@ class DatabaseHelper
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $idPost);
+        $stmt->bind_param("i", $post_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -213,20 +214,23 @@ class DatabaseHelper
         return $row["user_id"];
     }
 
-    public function insertNotification($messagge, $usernameReceiver, $usernameSender, $seen)
+    public function addNotification($message, $usernameReceiver, $usernameSender, $post_id = null)
     {
+        $date = date('Y-m-d H:i:s', time());
         $query = "
-            INSERT INTO notifica (message, seen, for_user_id, from_user_id)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO notification (message, for_user_id, from_user_id, post_id, date)
+            VALUES (?, ?, ?, ?, '$date')
         ";
         //insert a new notification
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("siss", $message, $seen, $usernameReceiver, $usernameSender);
+        $stmt->bind_param("sssi", $message, $usernameReceiver, $usernameSender, $post_id);
         $stmt->execute();
 
         return $stmt->insert_id;
     }
+
+
 
     public function getHome($user_id)
     {
