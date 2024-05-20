@@ -58,6 +58,19 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC)[0]; // Return the first element of the array
     }
 
+    public function getAccountFromId($user_id)
+    {
+        $query = "SELECT user_id as id, username, file_name as pic, first_name, last_name, user_bio, email FROM account
+                    LEFT JOIN media ON account.profile_pic_id = media.media_id
+                    WHERE account.user_id = ?
+                    LIMIT 1;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC)[0]; // Return the first element of the array
+    }
+
 
     public function addLoginAttempt($userId, $time)
     {
@@ -254,7 +267,13 @@ class DatabaseHelper
         $stmt->bind_param("i", $post_id);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $files = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $files[] = $row['file_name'];
+        }
+
+        return $files;
     }
 
     public function addMedia($fileName, $post_id)
@@ -399,6 +418,33 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    private function getComments($post_id) {
+        $query = "SELECT `username`, `file_name` as 'profile_pic', `message`, `date` FROM `comment`
+                    LEFT JOIN (account LEFT JOIN media on account.profile_pic_id = media.media_id)
+                        ON comment.user_id = account.user_id
+                    WHERE comment.post_id = ?;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $result = $stmt -> get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getPost ($post_id) {
+        $query = "SELECT * FROM `post` WHERE post.post_id = ? LIMIT 1";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]; // first row of results
+        if(isset($result['user_id'])) {
+            $result['owner'] = $this->getAccountFromId($result['user_id']);
+            $result['media'] = $this->getMediasByPostId($post_id);
+            $result['comment'] = $this->getComments($post_id);
+        }
+
+        return $result;
     }
 }
 

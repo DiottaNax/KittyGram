@@ -1,3 +1,13 @@
+<?php
+require_once ("db-config.php");
+
+if (isset($_GET['post_id'])) {
+    $post = $dbh->getPost($_GET['post_id']);
+}
+
+if(isset($post)):
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -16,7 +26,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Include il tuo file JavaScript separato -->
     <script src="js/UserPost.js"></script>
- 
 
     <title>User Post</title>
   </head>
@@ -24,7 +33,7 @@
 
   <body>
     <!-- Inclusione della navbar -->
-    <div id="navbarContainer"> <?php echo require_once ("navbar.php") ?></div>
+    <?php echo require_once ("./components/navbar.php") ?>
 
     <!-- Spazio aggiunto tra navbar e container del post e dei commenti -->
     <div class="mt-5"></div>
@@ -34,16 +43,16 @@
         <div class="row">
             <!-- Colonna per l'immagine del post -->
             <div class="col-md-7 mt-4">
-                <img id="postImage" class="card-img-top" style="max-height: 600px; max-width: 600px;" alt="Immagine del post">
+                <img src="./img/<?php echo $post['media'][0] ?>" id="postImage" class="card-img-top" style="max-height: 600px; max-width: 600px;" alt="Immagine del post">
             </div>
             <!-- Colonna per la descrizione del post e i commenti -->
             <div class="col-md-5 mt-4">
                   <div class="card">
                     <div class="d-flex mb-3 mt-3">
-                        <img src="img/User_ProfilePic.PNG" class="rounded-circle me-2 ms-2" alt="Avatar utente" style="width: 40px; height: 40px;">
+                        <img src="img/<?php echo $post['owner']['pic'] ?>" class="rounded-circle me-2 ms-2" alt="Avatar utente" style="width: 40px; height: 40px;">
                         <div>
-                            <h6 class="mb-0">astrobaleno</h6>
-                            <p class="mb-0">Nessuno può sfuggire al destino scelto...</p>
+                            <h6 class="mb-0"><?php echo $post['owner']['username'] ?></h6>
+                            <p class="mb-0"><?php echo $post['description'] ?></p>
                         </div>
                     </div>
                   </div>
@@ -52,30 +61,19 @@
                 <div class="card mt-3">
                     <div class="card-body">
                         <h5 class="card-title">Commenti</h5>
-                        <!-- primo commento -->
                         <hr class="my-4 border-transparent">
-                        <div class="d-flex mb-3">
-                            <img src="img/Nax_ProfilePic.JPG" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
-                            <div>
-                                <h6 class="mb-0">nax</h6>
-                                <p class="mb-0">oggi studi??</p>
+
+                        <!-- includo tutti i commenti -->
+                        <?php foreach($post['comment'] as $comment): ?>
+                            <div class="d-flex mb-3">
+                                <img src="img/<?php echo $comment['profile_pic'] ?>" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
+                                <div>
+                                    <h6 class="mb-0">@<?php echo $comment['username'] ?></h6>
+                                    <p class="mb-0"><?php echo $comment['message'] ?></p>
+                                </div>
                             </div>
-                        </div>
-                        <!-- secondo commento -->
-                        <div class="d-flex mb-3">
-                            <img src="img/User_ProfilePic.PNG" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
-                            <div>
-                                <h6 class="mb-0">astrobaleno</h6>
-                                <p class="mb-0">zio pera lasciami in pace</p>
-                            </div>
-                        </div>
-                         <!-- terzo commento -->
-                         <div class="d-flex mb-3">
-                          <img src="img\Saint_ProfilePic.jpeg" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
-                          <div>
-                              <h6 class="mb-0">Saint</h6>
-                              <p class="mb-0">sgommare</p>
-                          </div>
+                        <?php endforeach; ?>
+
                       </div>
                     </div>
                 </div>
@@ -85,3 +83,7 @@
 
   </body>
 </html>
+
+<?php else:
+    header('Location: ./index.php');
+endif;
