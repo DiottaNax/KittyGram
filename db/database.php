@@ -446,5 +446,24 @@ class DatabaseHelper
 
         return $result;
     }
+
+    public function getUserPosts($idOrUsername) {
+        $query = "SELECT post_id FROM post
+                    LEFT JOIN account ON post.user_id = account.user_id
+                    WHERE account.username = ?
+                        OR account.user_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si", $idOrUsername, $idOrUsername);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        foreach($result as $post) {
+            $post['medias'] = $this->getMediasByPostId($post['post_id']);
+        }
+
+        return $result;
+    }
+
+
 }
 
