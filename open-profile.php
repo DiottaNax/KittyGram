@@ -20,6 +20,7 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
     <script src="./js/FollowButton.js"></script>
     <?php
     $accountResult = $dbh->getAccountFromUsername($_GET['username']);
+    $posts = $dbh->getUserPosts($_GET['username']);
     ?>
     <script src="./js/UserProfile.js"></script>
     <title>KittyGram Profile: <?php echo $accountResult['username'] ?></title>
@@ -59,7 +60,7 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
     <!-- bio -->
     <div class="container d-flex justify-content-center mt-3">
       <h6 class="text-center">
-        <em><?php echo $accountResult['user_bio']; ?></em>
+        <em><?php var_dump($posts)/*echo $accountResult['user_bio'];*/ ?></em>
       </h6>
     </div>
 
@@ -115,14 +116,14 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
       <div class="row">
         <div class="col-md-4">
           <div class="card mb-3">
-            <img src="./img/cat-example4.jpg" class="card-img-top w-100"
-              onclick="redirectToUserPost('./img/cat-example4.jpg')" alt="example1" />
+            <a href="open-post.php?post_id=1"> <img src="./img/cat-example4.jpg" class="card-img-top w-100"
+             alt="example1" /> </a>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card mb-3">
             <img src="./img/cat-example5.jpg" class="card-img-top w-100"
-              onclick="redirectToUserPost('./img/cat-example5.jpg')" alt="example2" />
+            onclick="document.location.href='open-post.php?username=<?php echo urlencode($_SESSION['username']); ?>'" alt="example2" />
           </div>
         </div>
       </div>
@@ -133,17 +134,17 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
         <div class="row">
             <div class="col-md-4">
                 <div class="card mb-3">
-                    <img src="./img/cat-example1.jfif" class="card-img-top w-100" onclick="redirectToUserPost('./img/cat-example1.jfif')" id="post1" alt="example1">
+                    <img src="./img/cat-example1.jfif" class="card-img-top w-100" onclick="document.location.href='open-post.php?username=<?php echo urlencode($_SESSION['username']); ?>'" id="post1" alt="example1">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card mb-3">
-                    <img src="./img/cat-example2.jfif" class="card-img-top w-100" onclick="redirectToUserPost('./img/cat-example2.jfif')" id="post2" alt="example2">
+                    <img src="./img/cat-example2.jfif" class="card-img-top w-100" onclick="document.location.href='open-post.php?username=<?php echo urlencode($_SESSION['username']); ?>'" id="post2" alt="example2">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card mb-3">
-                    <img src="./img/cat-example3.jfif" class="card-img-top w-100" onclick="redirectToUserPost('./img/cat-example3.jfif')" id="post3" alt="example3">
+                    <img src="./img/cat-example3.jfif" class="card-img-top w-100" onclick="document.location.href='open-post.php?username=<?php echo urlencode($_SESSION['username']); ?>'" id="post3" alt="example3">
                 </div>
             </div>
         </div>
