@@ -58,5 +58,19 @@ body, header, .card, nav {
 .half-bar-right.inactive {
     background-color: #9a9589 !important;
 }
- 
+
+.heart-fill-red {
+    fill: red !important;
+}
+
+.smaller-text {
+    font-size: 0.8em; /* Puoi regolare questa dimensione secondo le tue esigenze */
+}
+
+.transparent-input {
+    background-color: transparent !important;
+    border: none !important; /* Rimuove il bordo della casella di input */
+    box-shadow: none !important; /* Rimuove l'ombra */
+    outline: none !important; /* Rimuove l'outline al focus */
+}
   
