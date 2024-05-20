@@ -23,8 +23,14 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
     ?>
     <script src="./js/UserProfile.js"></script>
     <title>KittyGram Profile: <?php echo $accountResult['username'] ?></title>
+
+    <!-- Script Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
   </head>
 
+
+  
   <body>
     <!-- Inclusione della navbar -->
     <?php require_once("./components/navbar.php") ?>
@@ -57,11 +63,24 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
       </h6>
     </div>
 
-    <!-- barra di "POST" e "ADOPTIONS" -->
+
+    <!-------------- divisione di "POST" e "ADOPTIONS" -------------->
     <?php
-    // Determina la pagina corrente
-    $current_route = isset($_GET['route']) ? $_GET['route'] : 'posts';
+      // Determina la pagina corrente
+      $current_route = isset($_GET['route']) && ($_GET['route'] == 'posts' || $_GET['route'] == 'adoptions') ? $_GET['route'] : 'posts';
     ?>
+
+    <!-- Contenitore esterno per centrare la barra indicatore attivo -->
+    <div class=" container-fluid justify-content-center ">
+        <!-- Contenitore della barra indicatore attivo -->
+        <div class="active-indicator-container">
+            <div class="active-indicator">
+                <div class="half-bar half-bar-left <?php echo $current_route == 'posts' ? 'active' : 'inactive'; ?>"></div>
+                <div class="half-bar half-bar-right <?php echo $current_route == 'adoptions' ? 'active' : 'inactive'; ?>"></div>
+            </div>
+        </div>
+    </div>
+
 
     <nav class="navbar navbar-expand">
       <div class="container-fluid">
@@ -90,7 +109,7 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
 
 
 
-    <?php if(!isset($_GET['route']) || $_GET['route'] == 'post'): ?>
+    <?php if(!isset($_GET['route']) || $_GET['route'] != 'adoptions'): ?>
     <!-- posts container -->
     <div class="container mt-5" id="userPostsContainer">
       <div class="row">
@@ -130,6 +149,7 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
         </div>
     </div>
     <?php endif; ?>
+    
   </body>
 
   </html>
