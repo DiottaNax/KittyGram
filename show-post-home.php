@@ -41,7 +41,7 @@
                 </div>
                 <!-- Row for comments and likes -->
                     <div class="col text-end mb-2">
-                        <button class="btn" type=" button" data-bs-toggle="modal" data-bs-target="#comments-modal"
+                        <button class="btn comment" type=" button" data-bs-toggle="modal" data-bs-target="#comment-modal"
                             data-postid=<?php echo $post["post_id"]; ?>>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                 class=" bi bi-chat" viewBox="0 0 16 16">
@@ -80,3 +80,4 @@
     </div>
 <?php endif; ?>
 <script src="./js/like.js"></script>
+<?php require_once ("./modals/comment-modal.php") ?>
