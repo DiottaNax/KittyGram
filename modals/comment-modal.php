@@ -1,3 +1,5 @@
+<?php $account = $dbh->getAccountFromUsername($_SESSION['username']); ?>
+
 <link rel="stylesheet" href="css/style.css"> <!-- Assicurati di aggiornare il percorso corretto -->
 <div class="modal fade" id="comment-modal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="comments"
     aria-hidden="true">
@@ -15,11 +17,10 @@
                 <div class="container">
                     <form action="#" id="commentForm" method="POST">
                         <div class="row d-flex justify-content">
-                            <div class="col-9">
-                                <label for="commentText" hidden>Nuovo commento</label>
-                                <input type="text" class="form-control w-100" id="commentText" name="commentText"
-                                    aria-label="Commenta" placeholder="Aggiungi qui un commento" required>
-                            </div>
+                        <div class="d-flex align-items-center">
+                            <img src="img/<?php echo $account['pic'] ?>" class="rounded-circle me-2 ms-2" alt="Avatar utente" style="width: 20px; height: 20px;">
+                            <textarea class="form-control transparent-input" placeholder="Add a comment..." id="comment" maxlength=200></textarea>  
+                        </div>
                             <input type="hidden" id="postHidden" value="" />
                             <div class="col-1">
                                 <button type="submit" class="btn" id="sendComment">Invia</button>
