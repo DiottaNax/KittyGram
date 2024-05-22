@@ -194,6 +194,40 @@ class DatabaseHelper
         return $result;
     }
 
+    public function insertComment($text, $idPost, $username, $date)
+    {
+        $query = "
+            INSERT INTO comment (message, post_id, user_id, date)
+            VALUES (?, ?, ?, ?)
+        ";
+        //insert a new comment
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("siss", $text, $idPost, $username, $date);
+        $stmt->execute();
+
+        return $stmt->insert_id;
+    }
+
+    public function getCommentsById($idPost)
+    {
+        $query = "
+            SELECT a.username, a.user_id, c.comment_id, c.date, c.message, m.file_name AS profile_pic
+            FROM comment c 
+            INNER JOIN account a ON c.user_id = a.user_id
+            LEFT JOIN media m ON a.profile_pic_id = m.media_id
+            WHERE c.post_id = ?
+            ORDER BY c.date DESC
+            ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $idPost);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getPostOwnerId($post_id)
     {
         $query = "
@@ -424,7 +458,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    private function getComments($post_id) {
+    private function getComments($post_id)
+    {
         $query = "SELECT `username`, `file_name` as 'profile_pic', `message`, `date` FROM `comment`
                     LEFT JOIN (account LEFT JOIN media on account.profile_pic_id = media.media_id)
                         ON comment.user_id = account.user_id
@@ -432,17 +467,18 @@ class DatabaseHelper
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $post_id);
         $stmt->execute();
-        $result = $stmt -> get_result();
+        $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPost ($post_id) {
+    public function getPost($post_id)
+    {
         $query = "SELECT * FROM `post` WHERE post.post_id = ? LIMIT 1";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $post_id);
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]; // first row of results
-        if(isset($result['user_id'])) {
+        if (isset($result['user_id'])) {
             $result['owner'] = $this->getAccountFromId($result['user_id']);
             $result['media'] = $this->getMediasByPostId($post_id);
             $result['comment'] = $this->getComments($post_id);
@@ -451,7 +487,8 @@ class DatabaseHelper
         return $result;
     }
 
-    public function getUserPosts($idOrUsername) {
+    public function getUserPosts($idOrUsername)
+    {
         $query = "SELECT post_id FROM post
                     LEFT JOIN account ON post.user_id = account.user_id
                     WHERE account.username = ?
@@ -461,7 +498,7 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-        foreach($result as $post) {
+        foreach ($result as $post) {
             $post['medias'] = $this->getMediasByPostId($post['post_id']);
         }
 
