@@ -83,14 +83,14 @@ CREATE TABLE IF NOT EXISTS POST (
 );
 
 CREATE TABLE IF NOT EXISTS NOTIFICATION (
-    notification_id INT NOT NULL AUTO_INCREMENT,
+    notification_id INT AUTO_INCREMENT,
     for_user_id INT NOT NULL,
     from_user_id INT NOT NULL,
     post_id INT,
     date DATE NOT NULL,
     message VARCHAR(255) NOT NULL,
     seen INT NOT NULL default 0,
-    PRIMARY KEY (for_user_id, notification_id)
+    PRIMARY KEY (notification_id)
 );
 
 -- Add Foreign Keys
