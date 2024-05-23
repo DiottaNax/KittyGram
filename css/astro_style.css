@@ -79,4 +79,7 @@ body, header, .card, nav {
     overflow-y: auto; /* Abilita lo scorrimento verticale */
 }
 
+.modal-body {
+    background-color: #FEEFC6; 
+}
   

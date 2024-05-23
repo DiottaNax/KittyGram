@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/style.css"> 
 <div class="modal fade" id="new-post-modal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="AddNewPost"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
@@ -14,7 +15,7 @@
                     </div>
                     <div class="mb-2">
                         <label for="description">Description</label>
-                        <textarea class="form-control" id="description" name="description" required></textarea>
+                        <textarea class="form-control" id="description" name="description" maxlength="100" required></textarea>
                     </div>
                     <div class="mb-2 form-check">
                         <input type="checkbox" class="form-check-input" id="adoption" name="adoption">
