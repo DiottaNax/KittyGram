@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS COMMENT (
     post_id INT NOT NULL,
     user_id INT NOT NULL,
     message VARCHAR(200) NOT NULL,
-    date DATE NOT NULL,
+    date DATETIME NOT NULL,
     PRIMARY KEY (comment_id, post_id)
 );
 
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS NOTIFICATION (
     for_user_id INT NOT NULL,
     from_user_id INT NOT NULL,
     post_id INT,
-    date DATE NOT NULL,
+    date DATETIME NOT NULL,
     message VARCHAR(255) NOT NULL,
     seen INT NOT NULL default 0,
     PRIMARY KEY (notification_id)
