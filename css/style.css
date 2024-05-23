@@ -62,6 +62,11 @@ a {
   fill: red !important;
 }
 
+.like {
+  border: 0px !important;
+  box-shadow: 0px !important;
+}
+
 /* Media query for mobile devices */
 @media (max-width: 768px) {
   .card {

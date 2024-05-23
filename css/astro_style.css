@@ -2,9 +2,9 @@
 :root{
     --primary-color: #573C0C;
     --secondary-color: #FFE51F;
-    --bg-color: #FEEFC6;
+    --bg-color: #FEEFC6 !important;
     --btn-primary-color: #FFE51F;
-    --btn-secondary-color: FEEFC6;
+    --btn-secondary-color: #FEEFC6;
 }
 
 body, header, .card, nav {
@@ -73,4 +73,10 @@ body, header, .card, nav {
     box-shadow: none !important; /* Rimuove l'ombra */
     outline: none !important; /* Rimuove l'outline al focus */
 }
+
+.comment-container {
+    max-height: 200px; /* Altezza massima del contenitore dei commenti */
+    overflow-y: auto; /* Abilita lo scorrimento verticale */
+}
+
   

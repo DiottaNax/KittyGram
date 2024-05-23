@@ -7,10 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const adoptionsContainer = document.getElementById('adoptionsContainer');
     const likeIcon = document.getElementById('likeIcon');
     const commentInput = document.getElementById('comment');
-    const sendButton = document.createElement('button');
-    sendButton.textContent = 'Send';
-    sendButton.classList.add('btn', 'btn-primary');
-    sendButton.style.display = 'none';
+    const sendButton = document.getElementById('sendButton');
 
     console.log("postSwitch:", postSwitch);
     console.log("taggedSwitch:", taggedSwitch);
@@ -69,10 +66,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 sendButton.style.display = 'none';
             }
         });
-
-        // Aggiungi il bottone "Send" accanto alla casella di input del commento
-        commentInput.parentNode.appendChild(sendButton);
     } else {
         console.error('commentInput not found');
+    }
+
+    //codice per icona del commento
+    if (commentIcon && commentInput) {
+        commentIcon.addEventListener('click', function() {
+            commentInput.focus();
+        });
+    } else {
+        console.error('commentIcon or commentInput not found');
     }
 });
