@@ -46,7 +46,7 @@ if(isset($post)):
         <div class="row">
             <!-- Colonna per l'immagine del post -->
             <div class="col-md-7 mt-4">
-                <img src="./img/<?php echo $post['media'][0] ?>" id="postImage" class="card-img-top" style="max-height: 600px; max-width: 600px;" alt="Immagine del post">
+                <img src="./img/<?php echo $post['media'][0] ?>" id="postImage" class="card-img-top mb-4" style="max-height: 600px; max-width: 600px;" alt="Immagine del post">
             </div>
             <!-- Colonna per la descrizione del post e i commenti -->
             <div class="col-md-5 mt-4">
