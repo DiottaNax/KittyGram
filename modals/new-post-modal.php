@@ -25,7 +25,7 @@
                         <input type="text" class="form-control" id="cityName" name="cityName" disabled>
                     </div>
                     <p id="uploadResult"></p>
-                    <label for="login" hidden>Post it!</label>
+                    <label for="post" hidden>Post it!</label>
                     <input class="btn w-100 my-2" type="submit" id="post" name="post" value="Post it!" />
                 </form>
             </div>
