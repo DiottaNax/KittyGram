@@ -60,7 +60,7 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
     <!-- bio -->
     <div class="container d-flex justify-content-center mt-3">
       <h6 class="text-center">
-        <em><?php var_dump($posts)/*echo $accountResult['user_bio'];*/ ?></em>
+        <em><?php echo $accountResult['user_bio']; ?></em>
       </h6>
     </div>
 
@@ -114,18 +114,14 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
     <!-- posts container -->
     <div class="container mt-5" id="userPostsContainer">
       <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-3">
-            <a href="open-post.php?post_id=1"> <img src="./img/cat-example4.jpg" class="card-img-top w-100"
-             alt="example1" /> </a>
+        <?php foreach($posts as $post): ?>
+          <div class="col-md-4">
+            <div class="card mb-3">
+              <a href="open-post.php?post_id=<?php echo $post['post_id']?>"> <img src="./img/<?php echo $post['medias'][0] ?>" class="card-img-top w-100"
+              alt="example1" /> </a>
+            </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-3">
-            <img src="./img/cat-example5.jpg" class="card-img-top w-100"
-            onclick="document.location.href='open-post.php?username=<?php echo urlencode($_SESSION['username']); ?>'" alt="example2" />
-          </div>
-        </div>
+        <?php endforeach; ?>
       </div>
     </div>
     <?php elseif($_GET['route'] == 'adoptions'): ?>

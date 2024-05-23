@@ -498,9 +498,10 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-        foreach ($result as $post) {
+        $result = array_map(function ($post) {
             $post['medias'] = $this->getMediasByPostId($post['post_id']);
-        }
+            return $post;
+        }, $result);
 
         return $result;
     }
