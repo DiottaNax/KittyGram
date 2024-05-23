@@ -16,11 +16,14 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     
-    <script src="./js/FollowButton.js"></script>
     <?php
     $accountResult = $dbh->getAccountFromUsername($_GET['username']);
     $posts = $dbh->getUserPosts($_GET['username']);
+    $followers = $dbh->getFollowersAccount($accountResult['id']);
+    $following = $dbh->getFollowedAccount($accountResult['id']);
     ?>
     <script src="./js/UserProfile.js"></script>
     <title>KittyGram Profile: <?php echo $accountResult['username'] ?></title>
@@ -50,10 +53,10 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
     <div class="container d-flex justify-content-between mb-5 align-items-center">
       <p><?php echo $dbh->getNumPostFromId($accountResult['id']) ?> post</p>
       <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#followersModal">
-        <?php echo $dbh->getFollowerFromId($accountResult['id']) ?> follower
+        <?php echo count($followers) ?> follower
       </button>
       <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#followingModal">
-        <?php echo $dbh->getFollowingFromId($accountResult['id']) ?> following
+        <?php echo count($following) ?> following
       </button>
     </div>
 

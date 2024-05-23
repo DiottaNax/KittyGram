@@ -31,6 +31,15 @@ class DatabaseHelper
         return false;
     }
 
+    public function getIdFromUsername($username)
+    {
+        $stmt = $this->db->prepare("SELECT user_id FROM account WHERE account.username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]['user_id'];
+    }
+
     public function getLoginInfo($username)
     {
         $stmt = $this->db->prepare("SELECT user_id, username, password, salt FROM account WHERE username = ? LIMIT 1");
@@ -352,29 +361,6 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-
-    public function getFollowerFromId($user_id)
-    {
-        $stmt = $this->db->prepare("SELECT COUNT(followed) AS num_followed FROM FOLLOW WHERE followed = ?");
-        $stmt->bind_param('i', $user_id); // esegue il bind del parametro '$email'.
-        $stmt->execute(); // esegue la query appena creata.
-        $stmt->bind_result($followers); // recupera il risultato della query e lo memorizza nelle relative variabili.
-        $stmt->fetch();
-
-        return $followers;
-    }
-
-    public function getFollowingFromId($user_id)
-    {
-        $stmt = $this->db->prepare("SELECT COUNT(follower) AS num_following FROM FOLLOW WHERE follower = ?");
-        $stmt->bind_param('i', $user_id); // esegue il bind del parametro '$email'.
-        $stmt->execute(); // esegue la query appena creata.
-        $stmt->bind_result($following); // recupera il risultato della query e lo memorizza nelle relative variabili.
-        $stmt->fetch();
-
-        return $following;
-    }
-
     public function getFollowedAccount($user_id)
     {
         $query = "SELECT username, file_name
@@ -498,14 +484,59 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-        $result = array_map(function ($post) {
+        foreach ($result as &$post) { // & prevents to create a copy of post
             $post['medias'] = $this->getMediasByPostId($post['post_id']);
-            return $post;
-        }, $result);
+        }
 
         return $result;
     }
 
+    public function addFollow($follower, $followed)
+    {
+        $follower_id = $this->getIdFromUsername($follower);
+        $followed_id = $this->getIdFromUsername($followed);
 
+        if (isset($follower_id, $followed_id)) {
+            $query = "INSERT INTO follow (follower, followed) VALUES (?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("ii", $follower_id, $followed_id);
+            $stmt->execute();
+            return true;
+        }
+
+        return false;
+    }
+
+    public function removeFollow($follower, $followed)
+    {
+        $follower_id = $this->getIdFromUsername($follower);
+        $followed_id = $this->getIdFromUsername($followed);
+
+        if (isset($follower_id, $followed_id)) {
+            $query = "DELETE FROM follow WHERE follow.follower = ? AND follow.followed = ?;";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("ii", $follower_id, $followed_id);
+            $stmt->execute();
+            return true;
+        }
+
+        return false;
+    }
+
+    public function isFollowing($follower, $followed) {
+        $follower_id = $this->getIdFromUsername($follower);
+        $followed_id = $this->getIdFromUsername($followed);
+
+        if (isset($follower_id, $followed_id)) {
+            $query = "SELECT * FROM follow WHERE follow.follower = ? AND follow.followed = ? LIMIT 1;";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("ii", $follower_id, $followed_id);
+            $stmt->execute();
+            $stmt->store_result();
+            return $stmt->num_rows();
+        }
+
+        return 0;
+    }
 }
 

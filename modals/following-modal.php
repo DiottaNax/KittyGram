@@ -8,7 +8,7 @@
     <div class="modal-body">
       <!-- Lista di utenti seguiti -->
       <ul id="followingList" class="list-group">
-        <?php foreach ($dbh->getFollowedAccount($accountResult['id']) as $follow): ?>
+        <?php foreach ($following as $follow): ?>
           <li class="list-group-item d-flex align-items-center">
             <div>
               <img src="img/<?php echo $follow['file_name'] ?>" class="rounded-circle me-2" alt="Avatar utente"

@@ -1,25 +1,39 @@
-function toggleFollow() {
-    var button = document.getElementById("followButton");
-    if (button.innerText === "Following") {
+function toggleFollow(button) {
+  const follower = button.getAttribute("follower");
+  const followed = button.getAttribute("followed");
+  const option = button.innerText === "Follow" ? "follow" : "unfollow";
+
+  const followForm = new FormData();
+  followForm.append("follower", follower);
+  followForm.append("followed", followed);
+  followForm.append("option", option);
+  console.log("Follower: " + follower);
+  console.log("Followed" + followed);
+  console.log("option" + option);
+
+  axios.post("api/follow.php", followForm).then((response) => {
+    console.log(response.data);
+    if (response.data["success"]) {
+      if (option === "unfollow") {
+        // User follows the other one and wants to unfollow
         button.innerText = "Follow";
         button.classList.remove("btn-light");
         button.classList.add("btn-primary");
-    } else {
+      } else if (option === "follow") {
+        // User doesn't follow the other one and wants to unfollow
         button.innerText = "Following";
         button.classList.remove("btn-primary");
         button.classList.add("btn-light");
+      }
+
+      location.reload();
     }
+  });
 }
 
-function toggleFollowNavbar() {
-    var button = document.getElementById("followButtonNavbar");
-    if (button.innerText === "Following") {
-        button.innerText = "Follow";
-        button.classList.remove("btn-light");
-        button.classList.add("btn-primary");
-    } else {
-        button.innerText = "Following";
-        button.classList.remove("btn-primary");
-        button.classList.add("btn-light");
-    }
-}
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("followButton").addEventListener("mouseup", () => {
+    const button = document.getElementById("followButton");
+    toggleFollow(button);
+  });
+});
