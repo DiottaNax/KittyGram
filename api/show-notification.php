@@ -1,6 +1,9 @@
+<?php
+require_once ("db-config.php");
+?>
 <?php if (!empty($templateParams["notifications"])): ?>
     <?php foreach ($templateParams["notifications"] as $notification): ?>
-        <div class="notification container mb-2 p-3 rounded-5" data-id="<?php echo $notification["notification_id"]; ?>" <?php if ($notification["seen"]) {
+        <div class="notification container mb-2 p-0 rounded-5" data-id="<?php echo $notification["notification_id"]; ?>" <?php if ($notification["seen"]) {
                echo ('style="opacity: 0.5;"');
            } ?>>
             <div class="row">
@@ -23,6 +26,7 @@
                     <?php endif; ?>
                 </div>
                 <div class="col-7">
+                    <img src="./img/default-pic.png" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
                     <a class="link-offset-2 link-underline mb-0"
                         href=" <?php echo "open-profile.php?username=" . $notification["username_from"] ?>">
                         @<?php
@@ -37,18 +41,17 @@
                 </div>
 
                 <?php if (isset($notification['post_id'])): ?>
-                    <a class="justify-content-end align-items-center" href="<?php echo ("open-post.php?post_id=" . $notification["post_id"]); ?>">
+                    <?php $post=$dbh->getPost($notification['post_id']) ?>
                     <div class="col d-flex justify-content-end align-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" class="open-not bi bi-arrow-up-right-circle ms-2"
-                            viewBox="0 0 16 16" data-link="
-                <?php echo ("open-post.php?postId=" . $notification["post_id"]); ?>">
-                            <path fill-rule="evenodd"
-                                d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.854 10.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707z" />
-                        </svg>
+                        <a href="<?php echo ("open-post.php?postId=" . $notification["post_id"]); ?>">
+                            <img src="./img/<?php echo $post['media'][0] ?>" alt="Post image" style="width: 50px; height: 50px;">
+                            </img>
+                        </a>
                     </div>
                     </a>
 
                 <?php endif; ?>
+                <hr/>
             </div>
         </div>
     <?php endforeach; ?>
