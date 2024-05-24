@@ -572,9 +572,9 @@ class DatabaseHelper
         $query = "UPDATE account SET ";
         $account = $this->getAccountFromUsername($username);
 
-        if(isset($account)) {
+        /*if(isset($account)) {
             if()
-        }
+        }*/
 
         return false;
     }
