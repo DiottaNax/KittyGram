@@ -29,21 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (response.data['success']) {
         document.getElementById("commentArea").innerText = "";
 
-        // fill fields for a notification post request
-        let notificationForm = new FormData();
-        notificationForm.append("sender_username", writer);
-        notificationForm.append("receiver_username", post_owner);
-        notificationForm.append("post_id", post_id);
         const messageEnding = response.data["comment"].length > 60 ? "..." : "";
-        const notificationMessage = response.data["comment"].substring(0, 60) + messageEnding;
-        notificationForm.append("message", " commented your post: \"" + notificationMessage + "\"");
+        const notificationMessage = "Commented your post: \"" +  response.data["comment"].substring(0, 60) + messageEnding +"\"";
 
-        axios
-          .post("./api/send-notification.php", notificationForm)
-          .then((response) => {
-            console.log("notification response:");
-            console.log(response.data);
-        });
+        sendNotificationUsingUsernames(writer, post_owner, notificationMessage, post_id);
       }
     })
   });

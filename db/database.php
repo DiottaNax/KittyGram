@@ -33,11 +33,11 @@ class DatabaseHelper
 
     public function getIdFromUsername($username)
     {
-        $stmt = $this->db->prepare("SELECT user_id FROM account WHERE account.username = ?");
+        $stmt = $this->db->prepare("SELECT user_id FROM account WHERE account.username = ? LIMIT 1");
         $stmt->bind_param("s", $username);
         $stmt->execute();
-
-        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]['user_id'];
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0];
+        return count($result) > 0 ? $result['user_id'] : 0;
     }
 
     public function getLoginInfo($username)
