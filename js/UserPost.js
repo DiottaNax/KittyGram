@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const userPostsContainer = document.getElementById('userPostsContainer');
     const adoptionsContainer = document.getElementById('adoptionsContainer');
     const likeIcon = document.getElementById('likeIcon');
-    const commentInput = document.getElementById('comment');
+    const commentInput = document.getElementById('commentArea');
     const sendButton = document.getElementById('sendButton');
 
     console.log("postSwitch:", postSwitch);
@@ -56,7 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (commentInput) {
         // Aggiungi evento di ascolto per l'input nella casella di commento
-        commentInput.addEventListener('input', function() {
+        commentInput.addEventListener('submit', function () {
+            event.preventDefault()
             // Verifica se la casella di input ha un valore
             if (this.value.trim() !== '') {
                 // Se ha un valore, mostra il bottone "Send"
