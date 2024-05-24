@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="./css/astro_style.css" />
+<link rel="stylesheet" href="./css/style.css" />
 
 <?php
 

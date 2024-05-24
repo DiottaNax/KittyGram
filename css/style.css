@@ -1,51 +1,31 @@
-:root {
-  --primary-color: #573c0c;
-  --secondary-color: #ffe51f;
-  --bg-color: #fff8e7;
-  --btn-primary-color: #ffe51f;
-  --btn-secondary-color: #fff8e7;
+
+:root{
+    --primary-color: #573C0C;
+    --secondary-color: #FFE51F;
+    --bg-color: #FEEFC6 !important;
+    --btn-primary-color: #FFE51F;
+    --btn-secondary-color: #FEEFC6;
 }
 
-.bg-white {
-  background-color: #ffffff !important;
+body, header, .card, nav {
+    background-color: var(--bg-color) !important;
 }
 
-body,
-header,
-.card,
-nav {
-  background-color: var(--bg-color) !important;
+.btn-primary{
+    background-color: var(--secondary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
 }
 
-.card,
-.article {
-  padding: 5% !important;
-  width: 450px;
-  max-width: 450px;
-  border-radius: 50px !important;
+.btn-secondary{
+    background-color: var(--btn-secondary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
 }
 
-.btn-bd-primary {
-  background-color: var(--secondary-color) !important;
-  border-color: var(--primary-color) !important;
-  color: var(--primary-color) !important;
-  border-radius: 20px !important;
-}
-
-.btn-bd-primary:hover {
-  filter: brightness(105%) !important;
-}
-
-.btn-bd-secondary {
-  background-color: var(--btn-secondary-color) !important;
-  border-color: var(--primary-color) !important;
-  color: var(--primary-color) !important;
-  border-radius: 20px !important;
-}
-
-.btn:hover {
-  box-shadow: 0 0 7px 0 var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
+.btn:hover{
+    box-shadow: 0 0 7px 0 var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
 }
 
 .form-control:focus {
@@ -53,27 +33,103 @@ nav {
   border-color: var(--primary-color) !important;
 }
 
-a {
-  color: var(--primary-color) !important;
-  text-decoration: none;
+.active-indicator {
+    display: flex !important;
+    height: 2px !important;
+    width: 50% !important; /* Modifica questa percentuale per restringere o allargare la barra */
+    max-width: 300px !important; /* Limite massimo di larghezza */
 }
 
-.liked {
-  fill: red !important;
+.active-indicator-container {
+    display: flex !important;
+    justify-content: center !important;
 }
 
-.like {
-  border: 0px !important;
-  box-shadow: 0px !important;
+.active-indicator .half-bar {
+    flex: 1 !important;
 }
+
+.half-bar-left.active,
+.half-bar-right.active {
+    background-color: #000 !important;
+}
+
+.half-bar-left.inactive,
+.half-bar-right.inactive {
+    background-color: #9a9589 !important;
+}
+
+.heart-fill-red {
+    fill: red !important;
+}
+
+.smaller-text {
+    font-size: 0.8em; /* Puoi regolare questa dimensione secondo le tue esigenze */
+}
+
+.transparent-input {
+    background-color: transparent !important;
+    border: none !important; /* Rimuove il bordo della casella di input */
+    box-shadow: none !important; /* Rimuove l'ombra */
+    outline: none !important; /* Rimuove l'outline al focus */
+}
+
+.comment-container {
+    max-height: 200px; /* Altezza massima del contenitore dei commenti */
+    overflow-y: auto; /* Abilita lo scorrimento verticale */
+}
+
+
+
+
+
+/* imported from old style.css */
+
+
+#submitId, #submitSignup {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    border-radius: 20px !important;
+}
+  
+/*
+.btn-bd-primary:hover {
+    filter: brightness(105%) !important;
+} */
+  
+#signupId {
+    background-color: var(--btn-secondary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    border-radius: 20px !important;
+}
+
+#loginCard, #signupCard,
+.article {
+  padding: 5% !important;
+  width: 450px;
+  max-width: 450px;
+  border-radius: 50px !important;
+}
+  
+  .liked {
+    fill: red !important;
+  }
+  
+  .like {
+    border: 0px !important;
+    box-shadow: 0px !important;
+  }
 
 /* Media query for mobile devices */
 @media (max-width: 768px) {
-  .card {
-    width: fit-content; /* Set width to 100% for mobile */
-    max-width: 450px !important;
-    padding: 0px !important;
-    margin: 0px !important;
-    border: 0px !important;
+    .card {
+      width: fit-content; /* Set width to 100% for mobile */
+      max-width: 450px !important;
+      padding: 0px !important;
+      margin: 0px !important;
+      border: 0px !important;
+    }
   }
-}
+  

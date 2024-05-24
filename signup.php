@@ -20,7 +20,7 @@
 
 <body class="container-fluid d-flex justify-content-center align-items-center py-5">
 
-  <div class="card m-3 border-1">
+  <div id="signupCard" class="card m-3 border-1">
     <header class="text-center w-300 mt-5">
       <img class="w-100" src="./img/KittyGram_Logo.png" alt="KittyGram logo" >
     </header>
@@ -64,7 +64,7 @@
       <label class="text-center mt-5" id="resultId" name="result"></label>
 
       <div class="mt-1 justify-content-center">
-        <button type="submit" class="btn btn-bd-primary w-100">Signup</button>
+        <button type="submit" class="btn btn-bd-primary w-100" id="submitSignup">Sign Up</button>
       </div>
     </form>
   </div>

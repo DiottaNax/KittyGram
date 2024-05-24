@@ -26,7 +26,7 @@
   <body
     class="container-fluid d-flex justify-content-center align-items-center py-5"
   >
-    <div class="card m-4 border-1">
+    <div id="loginCard" class="card m-4 border-1">
       <header class="text-center w-300 m-3">
         <img
           class="w-100"
