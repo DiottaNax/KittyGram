@@ -24,6 +24,7 @@ function toggleFollow(button) {
         button.innerText = "Following";
         button.classList.remove("btn-primary");
         button.classList.add("btn-light");
+        sendNotificationUsingUsernames(follower, followed, "started following you!");
       }
 
       location.reload();
