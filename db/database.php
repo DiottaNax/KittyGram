@@ -278,11 +278,10 @@ class DatabaseHelper
 
     public function getHome($user_id)
     {
-        $query = "SELECT POST.post_id, POST.description, POST.date, MEDIA.file_name,ACCOUNT.username, ACCOUNT.user_id
+        $query = "SELECT POST.post_id
         FROM POST
         JOIN ACCOUNT ON POST.user_id = ACCOUNT.user_id
         JOIN FOLLOW ON ACCOUNT.user_id = FOLLOW.followed
-        JOIN MEDIA ON POST.post_id = MEDIA.post_id
         WHERE FOLLOW.follower = ?
         ORDER BY POST.date DESC";
 
@@ -290,9 +289,15 @@ class DatabaseHelper
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $user_id);
         $stmt->execute();
-        $result = $stmt->get_result();
+        $posts_id = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        $feed = array();
+        $i = 0;
+        foreach($posts_id as $post_id) {
+            $feed[$i] = $this->getPost($post_id['post_id']);
+            $i++;
+        }
 
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $feed;
     }
 
     public function getMediaFromId($media_id)
