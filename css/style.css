@@ -79,7 +79,29 @@ body, header, .card, nav {
     overflow-y: auto; /* Abilita lo scorrimento verticale */
 }
 
+.custom-link {
+    color: black; /* Colore del testo nero */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    font-weight: bold; /* Imposta il testo in grassetto */
+}
 
+/* Optional: Puoi aggiungere ulteriori stili per il comportamento al passaggio del mouse */
+.custom-link:hover {
+    color: black; /* Mantieni il colore nero al passaggio del mouse */
+    text-decoration: none; /* Assicurati che la sottolineatura rimanga rimossa */
+}
+
+.narrow-card {
+    max-width: 600px; /* Puoi regolare questa dimensione */
+    margin: auto; /* Centra la card orizzontalmente */
+}
+
+.center-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
 
 
 
