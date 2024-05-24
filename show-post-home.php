@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="./css/astro_style.css" />
+<link rel="stylesheet" href="./css/style.css" />
 <script src="js/sendNotification.js"> </script>
 <script src="js/addComment.js"> </script>
 <script src="js/commentModal.js"> </script>
