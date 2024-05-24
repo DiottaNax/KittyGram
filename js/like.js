@@ -1,13 +1,15 @@
-let likeIcons = document.querySelectorAll(".like-icon");
+document.addEventListener("DOMContentLoaded", () => {
+  const likeIcons = document.querySelectorAll(".like-icon");
 
-likeIcons.forEach((icon) => 
-  icon.addEventListener("click", function () {
-    const post_id = icon.getAttribute("data-post-id");
-    const toRemove = icon.classList.contains("liked");
+  likeIcons.forEach((icon) =>
+    icon.addEventListener("click", function () {
+      const post_id = icon.getAttribute("data-post-id");
+      const toRemove = icon.classList.contains("liked");
 
-    processLike(icon, toRemove, post_id);
-  })
-);
+      processLike(icon, toRemove, post_id);
+    })
+  );
+});
 
 function processLike(icon, toRemove, post_id) {
   const likeRequest = new FormData();
@@ -27,17 +29,11 @@ function processLike(icon, toRemove, post_id) {
         // add liked class to like icon
         icon.classList.add("liked");
 
-        // fill fields for a notification post request
-        let notificationForm = new FormData();
-        notificationForm.append("sender_id", response.data["sender_id"]);
-        notificationForm.append("receiver_id", response.data["receiver_id"]);
-        notificationForm.append("post_id", post_id);
-        notificationForm.append("message", "really liked your post!");
+        const sender_id = response.data["sender_id"];
+        const receiver_id = response.data["receiver_id"];
+        const message = "really liked your post!";
 
-        axios.post("./api/send-notification.php", notificationForm).then((response) => {
-          console.log("notification response:");
-          console.log(response.data);
-        });
+        sendNotificationUsingId(sender_id, receiver_id, message, post_id);
       } else {
         // user deleted like
 

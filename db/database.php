@@ -33,11 +33,11 @@ class DatabaseHelper
 
     public function getIdFromUsername($username)
     {
-        $stmt = $this->db->prepare("SELECT user_id FROM account WHERE account.username = ?");
+        $stmt = $this->db->prepare("SELECT user_id FROM account WHERE account.username = ? LIMIT 1");
         $stmt->bind_param("s", $username);
         $stmt->execute();
-
-        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]['user_id'];
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0];
+        return count($result) > 0 ? $result['user_id'] : 0;
     }
 
     public function getLoginInfo($username)
@@ -203,16 +203,17 @@ class DatabaseHelper
         return $result;
     }
 
-    public function insertComment($text, $idPost, $username, $date)
+    public function addComment($text, $idPost, $username)
     {
         $query = "
             INSERT INTO comment (message, post_id, user_id, date)
             VALUES (?, ?, ?, ?)
         ";
+        $date = date('Y-m-d H:i', time());
         //insert a new comment
-
+        $writer_id = $this->getIdFromUsername($username); 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("siss", $text, $idPost, $username, $date);
+        $stmt->bind_param("siis", $text, $idPost, $writer_id, $date);
         $stmt->execute();
 
         return $stmt->insert_id;
@@ -400,11 +401,11 @@ class DatabaseHelper
         return $numPost;
     }
 
-    public function addPost($user_id, $description, $city)
+    public function addPost($user_id, $description, $city = null)
     {
         $query = "INSERT INTO POST (user_id, description, date) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $date = date("Y-m-d");
+        $date = date("Y-m-d H:i");
         $stmt->bind_param("iss", $user_id, $description, $date);
         $stmt->execute();
         return $this->db->insert_id;

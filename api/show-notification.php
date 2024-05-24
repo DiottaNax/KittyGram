@@ -26,7 +26,8 @@ require_once ("db-config.php");
                     <?php endif; ?>
                 </div>
                 <div class="col-7">
-                    <img src="./img/default-pic.png" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
+                    <?php $accountFrom = $dbh->getAccountFromUsername($notification["username_from"]) ?>
+                    <img src="./img/<?php echo $accountFrom['pic'] ?>" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
                     <a class="link-offset-2 link-underline mb-0"
                         href=" <?php echo "open-profile.php?username=" . $notification["username_from"] ?>">
                         @<?php
@@ -41,16 +42,17 @@ require_once ("db-config.php");
                 </div>
 
                 <?php if (isset($notification['post_id'])): ?>
-                    <?php $post=$dbh->getPost($notification['post_id']) ?>
+                    <?php $post = $dbh->getPost($notification['post_id']) ?>
                     <div class="col d-flex justify-content-end align-items-center">
-                        <a href="<?php echo ("open-post.php?post_id=" . $notification["post_id"]); ?>">
+                        <a href="<?php echo "open-post.php?post_id=" . $notification["post_id"]; ?>">
                             <img src="./img/<?php echo $post['media'][0] ?>" alt="Post image" style="width: 50px; height: 50px;">
                             </img>
                         </a>
                     </div>
+                    </a>
 
                 <?php endif; ?>
-                <hr/>
+                <hr />
             </div>
         </div>
     <?php endforeach; ?>
