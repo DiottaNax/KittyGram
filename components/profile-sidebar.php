@@ -13,7 +13,7 @@
             <!-- Put follow buttton if username is different from session username, modify profile otherwise -->
             <?php if ($accountResult['username'] == $_SESSION['username']): ?>
                 <button type="button" class="btn btn-light mt-4 opacity-100"
-                    onclick="document.location.href='userSettings.php?username=<?php echo urlencode($_SESSION['username']); ?>'">
+                    onclick="document.location.href='userSettings.php?'">
                     Edit Profile
                 </button>
             <?php else: ?>
