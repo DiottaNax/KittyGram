@@ -47,66 +47,66 @@
     <title>User's Settings</title>
   </head>
 
-  <body>
-
-    <div class="card mw-75 m-3 p-5 border-1 mt-5">
-    <h1 class="text-center">Edit Profile</h1>
-    
-    <form class="text-left align-items-center py-5" id="updateForm" name="updateForm" action="#" method="post">
-        <div class="mb-4">
-            <label for="updateForm" class="form-label">Profile Picture</label>
-            <div class="row align-items-center">
-                <div class="col-auto">
-                    <img src="img/<?php echo $profile_picture; ?>" id="previewImage" class="rounded-circle" alt="profile-pic" width="50" height="50">
-                </div>
-                <div class="col">
-                    <input class="form-control" type="file" id="formFile" onchange="previewFile()">
-                </div>
-            </div>
-        </div>
+  <body  class="container-fluid d-flex justify-content-center align-items-center">
         
-
-        <div class="mb-3 row">  
-            <div class="col-6">
-                <label for="name" class="form-label text-start">Name</label>
-                <input type="name" class="form-control" placeholder="Type your new Name" id="name" maxlength="25" name="name">
+    <div class="narrow-card  mw-75 m-3 p-5 border-1 mt-5">
+        <h1 class="text-center">Edit Profile</h1>
+        
+        <form class="text-left align-items-center py-4" id="updateForm" name="updateForm" action="#" method="post">
+            <div class="mb-4">
+                <label for="updateForm" class="form-label">Profile Picture</label>
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <img src="img/<?php echo $profile_picture; ?>" id="previewImage" class="rounded-circle" alt="profile-pic" width="50" height="50">
+                    </div>
+                    <div class="col">
+                        <input class="form-control" type="file" id="formFile" onchange="previewFile()">
+                    </div>
+                </div>
             </div>
-            <div class="col-6">
-                <label for="surname" class="form-label text-start">Surname</label>
-                <input type="surname" class="form-control" placeholder="Type your new Surname" id="surname" maxlength="25" name="surname">
+            
+
+            <div class="mb-3 row">  
+                <div class="col-6">
+                    <label for="name" class="form-label text-start">Name</label>
+                    <input type="name" class="form-control" placeholder="Type your new Name" id="name" maxlength="25" name="name">
+                </div>
+                <div class="col-6">
+                    <label for="surname" class="form-label text-start">Surname</label>
+                    <input type="surname" class="form-control" placeholder="Type your new Surname" id="surname" maxlength="25" name="surname">
+                </div>
             </div>
-        </div>
 
-        <div class="mb-3">  
-            <label for="username" class="form-label text-start">Username</label>
-            <input type="username" class="form-control" placeholder="@<?php echo htmlspecialchars($_SESSION['username']); ?>" id="username" maxlength="25" name="username">
-        </div>
-
-        <div class="mb-3">  
-            <label for="bio" class="form-label">Bio</label>
-            <textarea class="form-control" placeholder="Type your new Bio" id="bio" maxlength="255" name="bio" rows="5"></textarea>
-        </div>
-
-        <div class="mb-3">  
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" placeholder="Type your new Email" id="email" maxlength="319" name="email">
-        </div>
-
-        <div class="mb-3 row">
-            <div class="col-6">
-                <label for="old_password" class="form-label">Old Password</label>
-                <input type="password" class="form-control" id="old_password" name="old_password" placeholder="Type your old Password">
+            <div class="mb-3">  
+                <label for="username" class="form-label text-start">Username</label>
+                <input type="username" class="form-control" placeholder="@<?php echo htmlspecialchars($_SESSION['username']); ?>" id="username" maxlength="25" name="username">
             </div>
-            <div class="col-6">
-                <label for="new_password" class="form-label">New Password</label>
-                <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Type your new Password">
-            </div>  
-        </div>
 
-        <div class="mb-3 justify-content-center">
-            <button type="submit" class="btn btn-bd-primary w-100" id="save-button" name="save-button" style="background-color: #493400; color: white;">Save Changes</button>
-        </div>
-    </form>
+            <div class="mb-3">  
+                <label for="bio" class="form-label">Bio</label>
+                <textarea class="form-control" placeholder="Type your new Bio" id="bio" maxlength="255" name="bio" rows="5"></textarea>
+            </div>
+
+            <div class="mb-3">  
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" placeholder="Type your new Email" id="email" maxlength="319" name="email">
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-6">
+                    <label for="old_password" class="form-label">Old Password</label>
+                    <input type="password" class="form-control" id="old_password" name="old_password" placeholder="Type your old Password">
+                </div>
+                <div class="col-6">
+                    <label for="new_password" class="form-label">New Password</label>
+                    <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Type your new Password">
+                </div>  
+            </div>
+
+            <div class="mb-3 justify-content-center">
+                <button type="submit" class="btn btn-bd-primary w-100" id="save-button" name="save-button" style="background-color: #493400; color: white;">Save Changes</button>
+            </div>
+        </form>
     </div>
 
 <script src="js/UserSettings.js"></script
