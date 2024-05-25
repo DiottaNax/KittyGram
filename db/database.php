@@ -12,6 +12,18 @@ class DatabaseHelper
         }
     }
 
+    public function passwordsMatch($username, $password)
+    {
+        $login_info = $this->getLoginInfo($username);
+
+        if ($login_info) {
+            $encrypted = hash('sha512', $password . $login_info['salt']);
+            return $encrypted == $login_info['password'];
+        }
+
+        return false;
+    }
+
     private function checkBrute($user_id)
     {
         $now = time();
@@ -211,7 +223,7 @@ class DatabaseHelper
         ";
         $date = date('Y-m-d H:i', time());
         //insert a new comment
-        $writer_id = $this->getIdFromUsername($username); 
+        $writer_id = $this->getIdFromUsername($username);
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("siis", $text, $idPost, $writer_id, $date);
         $stmt->execute();
@@ -292,7 +304,7 @@ class DatabaseHelper
         $posts_id = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         $feed = array();
         $i = 0;
-        foreach($posts_id as $post_id) {
+        foreach ($posts_id as $post_id) {
             $feed[$i] = $this->getPost($post_id['post_id']);
             $i++;
         }
@@ -529,7 +541,8 @@ class DatabaseHelper
         return false;
     }
 
-    public function isFollowing($follower, $followed) {
+    public function isFollowing($follower, $followed)
+    {
         $follower_id = $this->getIdFromUsername($follower);
         $followed_id = $this->getIdFromUsername($followed);
 
@@ -543,6 +556,27 @@ class DatabaseHelper
         }
 
         return 0;
+    }
+
+    private function updateUsername($oldUsername, $newUsername) {
+        if($this->isUsernameTaken($newUsername))
+            return false;
+
+        $query = "UPDATE account SET username = ? WHERE account.username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $newUsername, $oldUsername);
+    }
+
+    public function updateProfileInfo($username, $newUsername = null, $surname = null, $bio = null, $email = null, $pic = null, $password = null)
+    {
+        $query = "UPDATE account SET ";
+        $account = $this->getAccountFromUsername($username);
+
+        /*if(isset($account)) {
+            if()
+        }*/
+
+        return false;
     }
 }
 
