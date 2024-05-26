@@ -24,7 +24,7 @@ function login($username, $password, DatabaseHelper $dbh)
       $dbPassword = $accountResult['password'];
       $dbUsername = $accountResult['username'];
       $salt = $accountResult['salt'];
-      $password = hash('sha512', $password.$salt);
+      $password = hash('sha512', $password . $salt);
 
       if ($accountResult['isDisabled']) {
          // Account tried to login too many times

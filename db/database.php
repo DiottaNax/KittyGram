@@ -341,7 +341,7 @@ class DatabaseHelper
         return $files;
     }
 
-    public function addMedia($fileName, $post_id)
+    public function addMedia($fileName, $post_id = null)
     {
         $query = "INSERT INTO MEDIA (file_name,post_id) VALUES (?,?)";
 
@@ -558,23 +558,83 @@ class DatabaseHelper
         return 0;
     }
 
-    private function updateUsername($oldUsername, $newUsername) {
-        if($this->isUsernameTaken($newUsername))
+    private function updateUsername($oldUsername, $newUsername)
+    {
+        if ($this->isUsernameTaken($newUsername))
             return false;
 
-        $query = "UPDATE account SET username = ? WHERE account.username = ?";
+        $query = "UPDATE account SET account.username = ? WHERE account.username = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ss", $newUsername, $oldUsername);
+        $stmt->execute();
+        $stmt->close();
+
+        return true;
     }
 
-    public function updateProfileInfo($username, $newUsername = null, $surname = null, $bio = null, $email = null, $pic = null, $password = null)
+    private function updateEmail($user_id, $newEmail)
     {
-        $query = "UPDATE account SET ";
-        $account = $this->getAccountFromUsername($username);
+        if ($this->isEmailTaken($newEmail))
+            return false;
 
-        /*if(isset($account)) {
-            if()
-        }*/
+        $query = "UPDATE account SET account.email = ? WHERE account.user_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si", $newEmail, $user_id);
+        $stmt->execute();
+        $stmt->close();
+
+        return true;
+    }
+
+    public function updateProfileInfo($username, $newUsername = null, $name = null, $surname = null, $bio = null, $email = null, $picName = null, $password = null, $salt = null)
+    {
+        $query = "UPDATE account SET account.password = ?, account.salt = ?, account.first_name = ?, account.last_name = ?, account.user_bio = ? WHERE account.user_id = ?; ";
+        $account = $this->getAccountFromUsername($username);
+        $loginInfo = $this->getLoginInfo($username);
+        $user_id = $loginInfo['id'];
+        $queryUsername = $username;
+        $queryEmail = $account['email'];
+        $queryPassword = $loginInfo['password'];
+        $querySalt = $loginInfo['salt'];
+
+        if (!empty($account)) {
+            if (!empty($newUsername)) {
+                $queryUsername = $this->updateUsername($username, $newUsername) ? $username : $newUsername;
+            }
+
+            if (!empty($email)) {
+                $queryEmail = $this->updateEmail($user_id, $email) ? $email : $account['email'];
+            }
+
+            // per ognuno queryval = !empty(val) ? val : account['val']
+            $queryName = !empty($name) ? $name : $account['first_name'];
+            $querySurname = !empty($surname) ? $surname : $account['last_name'];
+            $queryBio = !empty($bio) ? $bio : $account['user_bio'];
+
+            if (!empty($password) && !empty($salt)) {
+                $queryPassword = $password;
+                $querySalt = $salt;
+            }
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("sssssi", $queryPassword, $querySalt, $queryName, $querySurname, $queryBio, $user_id);
+            $stmt->execute();
+
+            $pic_id = 0;
+            if (!empty($picName)) {
+                $pic_id = $this->addMedia($picName);
+                $picStmt = $this->db->prepare("UPDATE account SET account.profile_pic_id = ? WHERE account.user_id = ?");
+                $picStmt->bind_param("ii", $pic_id, $user_id);
+                return $stmt->execute() && $picStmt->execute();
+            }
+
+            $stmt->execute();
+
+            $query_params = [$queryUsername, $queryName, $querySurname, $queryBio, $queryEmail, $queryPassword, $querySalt, $picName];
+            return $query_params;
+        }
+
+
 
         return false;
     }
