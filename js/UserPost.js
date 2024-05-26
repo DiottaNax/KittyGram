@@ -56,8 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (commentInput) {
         // Aggiungi evento di ascolto per l'input nella casella di commento
-        commentInput.addEventListener('submit', function () {
-            event.preventDefault()
+        commentInput.addEventListener('input', function () {
             // Verifica se la casella di input ha un valore
             if (this.value.trim() !== '') {
                 // Se ha un valore, mostra il bottone "Send"

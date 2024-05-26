@@ -2,7 +2,8 @@
 require_once ("db-config.php");
 
 if (isset($_GET['post_id'])) {
-    $post = $dbh->getPost($_GET['post_id']);
+    $post_id = $_GET['post_id'];
+    $post = $dbh->getPost($post_id);
 }
 
 if(isset($post)):
@@ -41,7 +42,7 @@ if(isset($post)):
 
     <!-- Spazio aggiunto tra navbar e container del post e dei commenti -->
     <div class="mt-5"></div>
-
+    <?php echo $post['post_id']; echo $_GET['post_id']; var_dump($post) ?>
     <!-- post container -->
     <div class="container mt-5 d-flex justify-content-center align-items-center">
         <div class="row">
@@ -100,9 +101,9 @@ if(isset($post)):
                     <div class="card mt-2">
                         <div class="d-flex align-items-center">
                             <img src="img/<?php echo $post['owner']['pic'] ?>" class="rounded-circle me-2 ms-2" alt="Avatar utente" style="width: 20px; height: 20px;">
-                            <textarea class="form-control transparent-input" placeholder="Add a comment..." id="comment" maxlength=200></textarea>  
+                            <textarea class="form-control transparent-input" placeholder="Add a comment..." id="commentArea" maxlength=200></textarea>  
                         </div>                            
-                        <button type="button" class="btn btn-light mt-2" id="sendButton" style="display: none;">Send</button>                       
+                        <button type="button" class="btn transparent-button mt-2" id="sendButton" style="display: none;">Send</button>                       
                     </div>
 
                 </div>
