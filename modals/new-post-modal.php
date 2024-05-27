@@ -27,7 +27,7 @@
                     </div>
                     <p id="uploadResult"></p>
                     <label for="post" hidden>Post it!</label>
-                    <input class="btn w-100 my-2" type="submit" id="post" name="post" value="Post it!" />
+                    <input class="btn btn-secondary w-100 my-2" type="submit" id="post" name="post" value="Post it!" />
                 </form>
             </div>
         </div>
