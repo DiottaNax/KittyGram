@@ -1,31 +1,33 @@
-
-:root{
-    --primary-color: #573C0C;
-    --secondary-color: #FFE51F;
-    --bg-color: #FEEFC6 !important;
-    --btn-primary-color: #FFE51F;
-    --btn-secondary-color: #FEEFC6;
+:root {
+  --primary-color: #573c0c;
+  --secondary-color: #ffe51f;
+  --bg-color: #feefc6 !important;
+  --btn-primary-color: #ffe51f;
+  --btn-secondary-color: #feefc6;
 }
 
-body, header, .card, nav {
-    background-color: var(--bg-color) !important;
+body,
+header,
+.card,
+nav {
+  background-color: var(--bg-color) !important;
 }
 
-.btn-primary{
-    background-color: var(--secondary-color) !important;
-    border-color: var(--primary-color) !important;
-    color: var(--primary-color) !important;
+.btn-primary {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
 }
 
-.btn-secondary{
-    background-color: var(--btn-secondary-color) !important;
-    border-color: var(--primary-color) !important;
-    color: var(--primary-color) !important;
+.btn-secondary {
+  background-color: var(--btn-secondary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
 }
 
-.btn:hover{
-    box-shadow: 0 0 7px 0 var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
+.btn:hover {
+  box-shadow: 0 0 7px 0 var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
 }
 
 .form-control:focus {
@@ -34,124 +36,122 @@ body, header, .card, nav {
 }
 
 .active-indicator {
-    display: flex !important;
-    height: 2px !important;
-    width: 50% !important; /* Modifica questa percentuale per restringere o allargare la barra */
-    max-width: 300px !important; /* Limite massimo di larghezza */
+  display: flex !important;
+  height: 2px !important;
+  width: 50% !important; /* Modifica questa percentuale per restringere o allargare la barra */
+  max-width: 300px !important; /* Limite massimo di larghezza */
 }
 
 .active-indicator-container {
-    display: flex !important;
-    justify-content: center !important;
+  display: flex !important;
+  justify-content: center !important;
 }
 
 .active-indicator .half-bar {
-    flex: 1 !important;
+  flex: 1 !important;
 }
 
 .half-bar-left.active,
 .half-bar-right.active {
-    background-color: #000 !important;
+  background-color: #000 !important;
 }
 
 .half-bar-left.inactive,
 .half-bar-right.inactive {
-    background-color: #9a9589 !important;
+  background-color: #9a9589 !important;
 }
 
 .heart-fill-red {
-    fill: red !important;
+  fill: red !important;
 }
 
 .smaller-text {
-    font-size: 0.8em; /* Puoi regolare questa dimensione secondo le tue esigenze */
+  font-size: 0.8em; /* Puoi regolare questa dimensione secondo le tue esigenze */
 }
 
 .transparent-input {
-    background-color: transparent !important;
-    border: none !important; /* Rimuove il bordo della casella di input */
-    box-shadow: none !important; /* Rimuove l'ombra */
-    outline: none !important; /* Rimuove l'outline al focus */
+  background-color: transparent !important;
+  border: none !important; /* Rimuove il bordo della casella di input */
+  box-shadow: none !important; /* Rimuove l'ombra */
+  outline: none !important; /* Rimuove l'outline al focus */
 }
 
 .comment-container {
-    max-height: 200px; /* Altezza massima del contenitore dei commenti */
-    overflow-y: auto; /* Abilita lo scorrimento verticale */
+  max-height: 200px; /* Altezza massima del contenitore dei commenti */
+  overflow-y: auto; /* Abilita lo scorrimento verticale */
 }
 
 .custom-link {
-    color: black; /* Colore del testo nero */
-    text-decoration: none; /* Rimuove la sottolineatura */
-    font-weight: bold; /* Imposta il testo in grassetto */
+  color: black; /* Colore del testo nero */
+  text-decoration: none; /* Rimuove la sottolineatura */
+  font-weight: bold; /* Imposta il testo in grassetto */
 }
 
 /* Optional: Puoi aggiungere ulteriori stili per il comportamento al passaggio del mouse */
 .custom-link:hover {
-    color: black; /* Mantieni il colore nero al passaggio del mouse */
-    text-decoration: none; /* Assicurati che la sottolineatura rimanga rimossa */
+  color: black; /* Mantieni il colore nero al passaggio del mouse */
+  text-decoration: none; /* Assicurati che la sottolineatura rimanga rimossa */
 }
 
 .narrow-card {
-    max-width: 600px; /* Puoi regolare questa dimensione */
-    margin: auto; /* Centra la card orizzontalmente */
+  max-width: 600px; /* Puoi regolare questa dimensione */
+  margin: auto; /* Centra la card orizzontalmente */
 }
 
 .center-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
-
-
 
 /* imported from old style.css */
 
-
-#submitId, #submitSignup {
-    background-color: var(--secondary-color) !important;
-    border-color: var(--primary-color) !important;
-    color: var(--primary-color) !important;
-    border-radius: 20px !important;
+#submitId,
+#submitSignup {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  border-radius: 20px !important;
 }
-  
+
 /*
 .btn-bd-primary:hover {
     filter: brightness(105%) !important;
 } */
-  
+
 #signupId {
-    background-color: var(--btn-secondary-color) !important;
-    border-color: var(--primary-color) !important;
-    color: var(--primary-color) !important;
-    border-radius: 20px !important;
+  background-color: var(--btn-secondary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  border-radius: 20px !important;
 }
 
-#loginCard, #signupCard,
+#loginCard,
+#signupCard,
 .article {
   padding: 5% !important;
   width: 450px;
   max-width: 450px;
   border-radius: 50px !important;
 }
-  
-  .liked {
-    fill: red !important;
-  }
-  
-  .like {
-    border: 0px !important;
-    box-shadow: 0px !important;
-  }
+
+.liked {
+  fill: red !important;
+}
+
+.like {
+  border: 0px !important;
+  box-shadow: 0px !important;
+}
 
 /* Media query for mobile devices */
 @media (max-width: 768px) {
-    .card {
-      width: fit-content; /* Set width to 100% for mobile */
-      max-width: 450px !important;
-      padding: 0px !important;
-      margin: 0px !important;
-      border: 0px !important;
-    }
+  .card {
+    width: fit-content; /* Set width to 100% for mobile */
+    max-width: 450px !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    border: 0px !important;
   }
-  
+}
