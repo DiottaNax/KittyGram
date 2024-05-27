@@ -29,6 +29,13 @@ nav {
   box-shadow: 0 0 7px 0 var(--primary-color) !important;
   border-color: var(--primary-color) !important;
 }
+.form-control {
+  border-width: 2.3px;
+}
+.form-group label {
+  width: 100%;
+  height: 100%;
+}
 
 .form-control:focus {
   box-shadow: 0 0 7px 0 var(--primary-color) !important;
@@ -98,11 +105,15 @@ nav {
   margin: auto; /* Centra la card orizzontalmente */
 }
 
-.center-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+.post-image-container {
+  width: 400px !important; /* Imposta una larghezza fissa per il contenitore */
+  height: 400px !important; /* Imposta un'altezza fissa per il contenitore */
+  overflow: hidden !important;
+  border: 2px solid #573c0c !important; /* Aggiunge un bordo nero di 2px */
+  border-radius: 5px !important; /* Nasconde eventuali parti delle immagini che eccedono le dimensioni del contenitore */
+  display: flex !important; /* Abilita il modello di layout flexbox */
+  justify-content: center !important; /* Allinea l'elemento figlio (l'immagine) al centro lungo l'asse principale (orizzontale) */
+  align-items: center !important;
 }
 
 .modal-header {
@@ -158,8 +169,11 @@ input[type=number] {
 #loginCard,
 #signupCard,
 .article {
-  padding: 5% !important;
-  width: 450px;
+  padding-left: 25px !important;
+  padding-right: 25px !important;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: auto;
   max-width: 450px;
   border-radius: 50px !important;
 }

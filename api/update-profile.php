@@ -86,11 +86,16 @@ if($continue) {
     $query_params = $dbh->updateProfileInfo($old_username, $new_username, $new_name, $new_surname, $new_bio, $new_email, $new_pic, $new_password, $new_salt);
     $result['success'] = true;
     $result['message'] = $emptyForm ? "Nothing to update" : "Profile has been successfully updated";
-    
+
+    header("Location: ../open-profile.php?username=" . $_SESSION['username']);
+} else {
+    header("Content-type: application/json");
+    echo json_encode($result);
 }
 
-header("Content-type: application/json");
-echo json_encode($result);
+
+
+
 
 
 
