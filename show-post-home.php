@@ -14,11 +14,16 @@ if (!empty($feed)): ?>
         ?>
         <article class="article clickable post mb-4 p-4 shadow-sm rounded-5 mt-5 bg-white border border-dark">
             <div class="row">
-                <div class="col inline text-start mt-2 mb-1">
-                    <img src="img/<?php echo $post['owner']['pic'] ?>" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
-                    <a href="open-profile.php?username=<?php echo $post['owner']['username']; ?>" class="username custom-link">
-                        <?php echo $post['owner']['username'] ?>
-                    </a>
+                <div class="col-12 d-flex justify-content-between align-items-center mt-2 mb-1">
+                    <div class="d-flex align-items-center">
+                        <img src="img/<?php echo $post['owner']['pic'] ?>" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
+                        <a href="open-profile.php?username=<?php echo $post['owner']['username']; ?>" class="username custom-link">
+                            <?php echo $post['owner']['username'] ?>
+                        </a>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots" data-bs-toggle="modal" data-bs-target="#post-settings-modal" viewBox="0 0 16 16">
+                        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                    </svg>
                 </div>
             </div>
 
@@ -90,3 +95,4 @@ if (!empty($feed)): ?>
 <?php endif; ?>
 <?php require_once ("./modals/comment-modal.php") ?>
 <?php require_once ("./modals/adoption-modal.php") ?>
+<?php require_once ("./modals/post-settings-modal.php") ?>
