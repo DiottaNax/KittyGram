@@ -140,6 +140,10 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+.custom-icon {
+  fill: var(--bg-color); /* Colore rosso, puoi cambiare con qualsiasi colore tu voglia */
+}
+
 
 
 
