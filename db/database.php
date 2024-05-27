@@ -497,7 +497,8 @@ class DatabaseHelper
         $query = "SELECT post_id FROM post
                     LEFT JOIN account ON post.user_id = account.user_id
                     WHERE account.username = ?
-                        OR account.user_id = ?";
+                        OR account.user_id = ?
+                        ORDER BY post_id DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("si", $idOrUsername, $idOrUsername);
         $stmt->execute();
