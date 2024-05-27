@@ -105,11 +105,15 @@ nav {
   margin: auto; /* Centra la card orizzontalmente */
 }
 
-.center-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+.post-image-container {
+  width: 400px !important; /* Imposta una larghezza fissa per il contenitore */
+  height: 400px !important; /* Imposta un'altezza fissa per il contenitore */
+  overflow: hidden !important;
+  border: 2px solid #573c0c !important; /* Aggiunge un bordo nero di 2px */
+  border-radius: 5px !important; /* Nasconde eventuali parti delle immagini che eccedono le dimensioni del contenitore */
+  display: flex !important; /* Abilita il modello di layout flexbox */
+  justify-content: center !important; /* Allinea l'elemento figlio (l'immagine) al centro lungo l'asse principale (orizzontale) */
+  align-items: center !important;
 }
 
 /* imported from old style.css */

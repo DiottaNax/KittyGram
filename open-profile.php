@@ -78,27 +78,27 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
           <h5>@<?php echo $accountResult['username'] ?></h5>
         </li>
 
-        <li class="list-inline-item mt-3">
-          <h5 class="font-weight-bold mb-0 d-block "><?php echo $dbh->getNumPostFromId($accountResult['id']) ?>
+        <li class="list-inline-item mt-3 me-4">
+          <h5 class="font-weight-bold mb-0 d-block ms-2 "><?php echo $dbh->getNumPostFromId($accountResult['id']) ?>
           </h5>
           <small class="text-muted"> <i class="fas fa-image mr-1"></i>Post</small>
         </li>
-        <li class="list-inline-item">
+        <li class="list-inline-item me-4">
           <a data-bs-toggle="modal" data-bs-target="#followersModal">
-            <h5 class="font-weight-bold mb-0 d-block"><?php echo count($followers) ?></h5><small class="text-muted"> <i
-                class="fas fa-user mr-1"></i>Followers</small>
+            <h5 class="font-weight-bold mb-0 d-block ms-4"><?php echo count($followers) ?></h5><small class="text-muted">
+              <i class="fas fa-user mr-1"></i>Followers</small>
           </a>
         </li>
         <li class="list-inline-item">
           <a data-bs-toggle="modal" data-bs-target="#followingModal">
-            <h5 class="font-weight-bold mb-0 d-block"><?php echo count($following) ?></h5><small class="text-muted"> <i
-                class="fas fa-user mr-1"></i>Following</small>
+            <h5 class="font-weight-bold mb-0 d-block ms-4"><?php echo count($following) ?></h5><small class="text-muted">
+              <i class="fas fa-user mr-1"></i>Following</small>
           </a>
         </li>
 
         <li class="list-group-item mt-3">
           <h6>
-            <em><?php echo $accountResult['user_bio']; ?></em>
+            <em><?php echo nl2br(wordwrap($accountResult['user_bio'], 50, "\n", true)); ?></em>
           </h6>
         </li>
 
@@ -162,14 +162,14 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
 
     <?php if (!isset($_GET['route']) || $_GET['route'] != 'adoptions'): ?>
       <!-- posts container -->
-      <div class="container mt-5" id="userPostsContainer">
+      <div class=" mt-5 container" id="userPostsContainer">
         <div class="row">
           <?php foreach ($posts as $post): ?>
             <div class="col-md-4">
-              <div class="card mb-3">
-                <a href="open-post.php?post_id=<?php echo $post['post_id'] ?>"> <img
-                    src="./img/<?php echo $post['medias'][0] ?>" class="card-img-top w-100" alt="example1" /> </a>
-              </div>
+              <a href="open-post.php?post_id=<?php echo $post['post_id'] ?>">
+                <div class="post-image-container"> <img src="./img/<?php echo $post['medias'][0] ?>"
+                    class="img-fluid rounded shadow-sm" /></div>
+              </a>
             </div>
           <?php endforeach; ?>
         </div>
@@ -179,14 +179,14 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
       <div class="container mt-5" id="adoptionsContainer">
         <div class="row">
           <div class="col-md-4">
-            <div class="card mb-3">
-              <img src="./img/cat-example1.jfif" class="card-img-top w-100"
+            <div class="post-image-container">
+              <img src="./img/cat-example1.jfif" class="img-fluid rounded shadow-sm"
                 onclick="document.location.href='open-post.php?username=<?php echo urlencode($_SESSION['username']); ?>'"
-                id="post1" alt="example1">
+                id="post1">
             </div>
           </div>
           <div class="col-md-4">
-            <div class="card mb-3">
+            <div class="post-image-container">
               <img src="./img/cat-example2.jfif" class="card-img-top w-100"
                 onclick="document.location.href='open-post.php?username=<?php echo urlencode($_SESSION['username']); ?>'"
                 id="post2" alt="example2">
