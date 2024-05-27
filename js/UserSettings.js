@@ -11,12 +11,18 @@ document.addEventListener("DOMContentLoaded", () => {
       body: formToSend,
     })
       .then((response) => {
-        console.log(response);
-        return response.json(); // Convertire la risposta in JSON
+        if (response.redirected) {
+          updateForm.reset();
+          document.getElementById("update-result").innerText =
+            "Profile has been correctly updated!";
+          setTimeout(() => (window.location.href = response.url), 500);
+        } else {
+          return response.json();
+        }
       })
       .then((data) => {
-          console.log(data);
-          updateForm.reset();
+        console.log(data);
+        updateForm.reset();
         document.getElementById("update-result").innerText = data["message"]; // Accedere direttamente a `data.message`
       })
       .catch((error) => console.error("Error:", error));
@@ -38,7 +44,3 @@ document.getElementById("new_pic").addEventListener("change", () => {
     preview.src = profilePictureUrl; // Default image if no file is selected
   }
 });
-
-function redirectToProfile(username) {
-  window.location.href = "./open-profile.php?username=" + username;
-}
