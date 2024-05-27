@@ -105,7 +105,35 @@ nav {
   min-height: 100vh;
 }
 
-/* imported from old style.css */
+.modal-header {
+  color: var(--bg-color); /* Cambia questo valore con il colore che preferisci */
+  background-color: var(--primary-color); /* Cambia il colore del testo se necessario */
+}
+
+/* Cambia il colore della X di chiusura della modal */
+.btn-close {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+  /* Questo stile cambia il colore predefinito della X. Puoi personalizzare i valori come preferisci */
+}
+
+
+/* Rimuove le freccette di incremento/decremento per input[type="number"] in Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Rimuove le freccette di incremento/decremento per input[type="number"] in Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+
+
+
+/*  ---------------------  imported from old style.css  ---------------------  */
 
 #submitId,
 #submitSignup {
