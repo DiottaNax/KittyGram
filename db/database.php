@@ -418,14 +418,25 @@ class DatabaseHelper
         return $numPost;
     }
 
-    public function addPost($user_id, $description, $city = null)
+    public function addPost($user_id, $description, $city_id = null)
     {
         $query = "INSERT INTO POST (user_id, description, date) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $date = date("Y-m-d H:i");
         $stmt->bind_param("iss", $user_id, $description, $date);
         $stmt->execute();
-        return $this->db->insert_id;
+        $post_id = $stmt->insert_id;
+        $stmt->close();
+
+        if (isset($city_id)) {
+            $query = "INSERT INTO adoption (post_id, city_id) VALUES (?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("ii", $post_id, $city_id);
+            $stmt->execute();
+            $stmt->close();
+        }
+
+        return $post_id;
     }
 
     public function deletePost($post_id)
@@ -435,6 +446,30 @@ class DatabaseHelper
         $stmt->bind_param("i", $post_id);
         $stmt->execute();
         return $stmt->affected_rows;
+    }
+
+    public function isCityRegistered($nameOrCap)
+    {
+        $query = "SELECT city_id FROM city WHERE city.city_name = ? OR city.city_cap = ? LIMIT 1;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $nameOrCap, $nameOrCap);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return isset($result[0]) ? $result[0] : 0;
+    }
+
+    public function searchCityStartingWith($preamble)
+    {
+        $query = "SELECT city_name, city_cap FROM city
+                    WHERE city.city_name LIKE ? OR city.city_cap LIKE ?
+                    ORDER BY city.city_name LIMIT 5;";
+        $pattern = trim($preamble . "%"); // Make a SQL-Pattern-like
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $pattern, $pattern);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function searchAccountStartingWith($preamble)

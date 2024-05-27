@@ -221,3 +221,16 @@ CREATE UNIQUE INDEX ID_CITY_IND
     ON CITY (city_id);
 
 INSERT INTO MEDIA (media_id, file_name) VALUES (1, "default-pic.png");
+
+INSERT INTO CITY (city_name, city_cap)
+VALUES ('Rimini', '47921'),
+       ('Cesena', '47023'),
+       ('Riccione', '47832'),
+       ('Pesaro', '61121'),
+       ('Fano', '61032'),
+       ('Cattolica', '47841'),
+       ('Santarcangelo di Romagna', '47024'),
+       ('Cesenatico', '47019'),
+       ('Sarsina', '47027'),
+       ('Faenza', '48018');
+

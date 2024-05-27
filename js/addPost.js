@@ -16,4 +16,32 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => console.error("Error:", error));
   });
+
+
+  const adoptionCheckbox = document.getElementById("isAdoption");
+  const cityInput = document.getElementById("city_name");
+  const cityList = document.getElementById("city_list");
+
+  adoptionCheckbox.addEventListener("change", function () {
+    if (this.checked) {
+      cityInput.removeAttribute("disabled");
+    } else {
+      cityInput.setAttribute("disabled", true);
+      cityInput.value = ""; // Reset city input value
+    }
+  });
+
+  cityInput
+    .addEventListener("input", function (event) {
+      const searchTerm = cityInput.value;
+      axios
+        .get("./api/search-city.php?searchTerm=" + searchTerm)
+        .then((response) => {
+          // Aggiornare il corpo del modal con i risultati della ricerca
+          cityList.innerHTML = response.data;
+        })
+        .catch((error) => {
+          console.error("Errore durante la richiesta:", error);
+        });
+    });
 });

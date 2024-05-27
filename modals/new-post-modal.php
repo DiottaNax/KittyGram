@@ -11,23 +11,25 @@
                 <form id="addPostForm" name="addPostForm" enctype="multipart/form-data" action="./api/new-post.php" method="POST">
                     <div class="mb-2">
                         <label for="imgpost">Images</label>
-                        <input type="file" class="form-control" id="imgpost" name="imgpost[]" multiple />
+                        <input type="file" class="form-control" id="imgpost" name="imgpost[]" multiple required/>
                     </div>
                     <div class="mb-2">
                         <label for="description">Description</label>
                         <textarea class="form-control" id="description" name="description" maxlength="100" required></textarea>
                     </div>
                     <div class="mb-2 form-check">
-                        <input type="checkbox" class="form-check-input" id="adoption" name="adoption">
+                        <input type="checkbox" class="form-check-input" id="isAdoption" name="isAdoption">
                         <label class="form-check-label" for="adoption">Adoption</label>
                     </div>
                     <div class="mb-2">
-                        <label for="cityName">City</label>
-                        <input type="text" class="form-control" id="cityName" name="cityName" disabled>
+                        <label for="city_name" class="form-label">City Name</label>
+                        <input class="form-control" list="city_list" id="city_name" name="city_name" placeholder="Type to search a city..." required disabled autocomplete="off">
+                        <datalist id="city_list">
+                        </datalist>
                     </div>
                     <p id="uploadResult"></p>
                     <label for="post" hidden>Post it!</label>
-                    <input class="btn btn-secondary w-100 my-2" type="submit" id="post" name="post" value="Post it!" />
+                    <button class="btn btn-secondary w-100 my-2" type="submit" id="post" name="post">Post it!</button>
                 </form>
             </div>
         </div>
