@@ -1,23 +1,21 @@
 <script src="./js/searchUser.js"></script>
 
 <header class="nav p-2 fixed-top shadow-sm bg-white justify-content-between">
-
     <!-- Notification window -->
-
     <!-- Navbar components -->
     <div class="container">
-
         <div class="row">
             <!-- Search -->
-            <div class="col text-start mt-2 mb-2">
-                <svg xmlns="http://www.w3.org/2000/svg"  data-bs-toggle="modal" data-bs-target="#searchModal" width="30" height="30" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                </svg>
+            <div class="col-2 text-start mt-2 mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" data-bs-toggle="modal" data-bs-target="#searchModal" width="30"
+                    height="30" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                 </svg>
             </div>
 
             <!-- Add Post -->
-            <div class="col text-start mt-2 mb-2">
+            <div class="col-2 text-center mt-2 mb-2">
                 <svg data-bs-toggle="modal" data-bs-target="#new-post-modal" xmlns="http://www.w3.org/2000/svg"
                     width="30" height="30" class="bi bi-plus-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
@@ -26,24 +24,15 @@
                 </svg>
             </div>
 
-            <!-- Open Profile -->
-            <div class="col text-start mt-2 mb-2">
-                <a href="open-profile.php?username=<?php echo $_SESSION['username'] ?>">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-person-circle"
-                        viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                        <path fill-rule="evenodd"
-                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                    </svg>
-                </a>
-            </div>
-
             <!-- Logo -->
-            <div class="col text-center mt-2  mb-2w-300">
+            <div class="col-4 d-flex justify-content-center mt-2 mb-2">
                 <a href="index.php"><img src="./img/KittyGram_Logo.png" alt="Kittygram" width="200" /></a>
             </div>
 
-            <div class="col text-end mt-2 mb-2">
+
+
+            <!-- Notifications -->
+            <div class="col-1 text-center mt-2 mb-2">
                 <svg data-bs-toggle="modal" data-bs-target="#notification-modal" xmlns="http://www.w3.org/2000/svg"
                     width="30" class="clickable bi bi-bell" viewBox="0 0 16 16">
                     <path
@@ -56,7 +45,21 @@
                     <span class="badge bg-danger"><?php echo (count($templateParams["notifications"])); ?></span>
                 <?php endif; ?>
             </div>
-            <div class="col text-end mt-2 mb-2">
+
+            <!-- Open Profile -->
+            <div class="col-2 text-center mt-2 mb-2">
+                <a href="open-profile.php?username=<?php echo $_SESSION['username'] ?>">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-person-circle"
+                        viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Logout -->
+            <div class="col-1 text-end mt-2 mb-2">
                 <a title="logout" href="./api/logout.php">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-box-arrow-in-right"
                         viewBox="0 0 16 16">
