@@ -28,7 +28,7 @@ require_once ("db-config.php");
                 <div class="col-7">
                     <?php $accountFrom = $dbh->getAccountFromUsername($notification["username_from"]) ?>
                     <img src="./img/<?php echo $accountFrom['pic'] ?>" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
-                    <a class="link-offset-2 link-underline mb-0"
+                    <a class="custom-link"
                         href=" <?php echo "open-profile.php?username=" . $notification["username_from"] ?>">
                         @<?php
                         echo $notification["username_from"];
