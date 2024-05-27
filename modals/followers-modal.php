@@ -12,7 +12,7 @@
           <li class="list-group-item d-flex align-items-center">
             <div>
               <img src="img/<?php echo $follow['file_name'] ?>" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
-              <a href="open-profile.php?username=<?php echo $follow['username'] ?>">@<?php echo $follow['username'] ?></a>            
+              <a class="custom-link" href="open-profile.php?username=<?php echo $follow['username'] ?>">@<?php echo $follow['username'] ?></a>            
             </div>
           </li>
         <?php endforeach; ?>
