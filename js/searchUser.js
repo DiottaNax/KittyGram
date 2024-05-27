@@ -1,13 +1,11 @@
 function searchUser() {
-  // Ottenere il valore della ricerca
-  var searchTerm = document.getElementById("searchInputId").value;
-
   // Effettuare una richiesta GET utilizzando Axios
+  const searchTerm = document.getElementById("searchInput").value;
   axios
     .get("./api/search-user.php?searchTerm=" + searchTerm)
     .then((response) => {
       // Aggiornare il corpo del modal con i risultati della ricerca
-      document.getElementById("searchModalBodyId").innerHTML = response.data;
+      document.getElementById("searchModalBody").innerHTML = response.data;
     })
     .catch((error) => {
       console.error("Errore durante la richiesta:", error);
@@ -15,16 +13,10 @@ function searchUser() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("searchButtonId")
-        .addEventListener("click", searchUser);
+  
     document
-      .getElementById("searchInputId")
-      .addEventListener("keypress", function (event) {
-        // Verificare se il tasto premuto è "Invio" (codice 13)
-        if (event.key == "Enter") {
-          // Eseguire la ricerca
-          searchUser();
-        }
+      .getElementById("searchInput")
+      .addEventListener("input", function (event) {
+        searchUser();
       });
 });

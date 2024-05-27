@@ -453,7 +453,8 @@ class DatabaseHelper
                             WHEN account.first_name LIKE ? THEN 2
                             WHEN account.last_name LIKE ? THEN 3
                             ELSE 4
-                        END;";
+                        END
+                    LIMIT 5;";
         $pattern = $preamble . "%"; // Make a SQL-Pattern-like
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("issssss", $_SESSION['user_id'], $pattern, $pattern, $pattern, $pattern, $pattern, $pattern);
