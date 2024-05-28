@@ -162,10 +162,10 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
 
     <?php if (!isset($_GET['route']) || $_GET['route'] != 'adoptions'): ?>
       <!-- posts container -->
-      <div class=" mt-5 container" id="userPostsContainer">
-        <div class="row">
+      <div class=" mt-5 container justify-content-center" id="userPostsContainer">
+        <div class="row row-cols-auto justify-content-center">
           <?php foreach ($posts as $post): ?>
-            <div class="col-md-3">
+            <div class="col">
               <a href="open-post.php?post_id=<?php echo $post['post_id'] ?>">
                 <div class="post-image-container-profile mb-4"> <img src="./img/<?php echo $post['medias'][0] ?>"
                     class="img-fluid rounded shadow-sm" /></div>
