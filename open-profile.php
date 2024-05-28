@@ -54,7 +54,7 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
         <li class="list-group-item d-flex justify-content-between align-items-center" id="name-last-name">
           <h2><?php echo $accountResult['first_name'] . " " . $accountResult['last_name']; ?></h2>
           <?php if ($accountResult['username'] == $_SESSION['username']): ?>
-            <button type="button" class="btn btn-light ms-4" onclick="document.location.href='userSettings.php?'">
+            <button type="button" class="btn btn-light ms-4" id="user-settings-button" name="user-settings-button">
               Edit Profile
             </button>
           <?php else: ?>
@@ -160,7 +160,7 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
 
 
 
-    <?php 
+    <?php
     if ($current_route === 'adoptions') {
       $postToShow = $posts['adoptions'];
     } else if($current_route === 'posts') {
@@ -168,7 +168,8 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
     }
     ?>
       <!-- posts container -->
-      <div class=" mt-5 container justify-content-center" id="userPostsContainer">
+      <div class=" mt-5 container text-center justify-content-center" id="userPostsContainer">
+        <?php if (count($postToShow) > 0): ?>
         <div class="row row-cols-auto justify-content-center">
           <?php foreach ($postToShow as $post): ?>
             <div class="col">
@@ -179,6 +180,9 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
             </div>
           <?php endforeach; ?>
         </div>
+        <?php else: ?>
+          <p>No kittens here yet 😿</p>
+        <?php endif; ?>
       </div>
 
 

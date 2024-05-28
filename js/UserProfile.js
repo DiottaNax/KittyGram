@@ -23,4 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.error('One or more elements were not found');
     }
+
+
+    document.getElementById("user-settings-button").addEventListener("click", event => {
+        window.location.href = "userSettings.php";
+    })
 });

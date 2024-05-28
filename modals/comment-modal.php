@@ -21,7 +21,7 @@
                             <input type="hidden" id="writer" name="writer" value="<?php echo htmlspecialchars($_SESSION['username']); ?>">
                             <input type="hidden" id="input-post-owner" name="input-post-owner" value="">
                             <input type="hidden" id="input-post-id" name="input-post-id" value="">
-                            <img src="img/<?php echo $account['pic'] ?>" class="rounded-circle me-2 ms-2" alt="Avatar utente" style="width: 20px; height: 20px;">
+                            <img src="img/<?php echo $account['pic'] ?>" class="small-avatar rounded-circle me-2 ms-2" alt="Avatar utente">
                             <textarea class="form-control transparent-input" placeholder="Purr back to this post" id="commentArea" maxlength=200 writer="<?php echo $_SESSION['username'] ?>"></textarea>
                         </div>
                             <div class="col-1 mt-2">

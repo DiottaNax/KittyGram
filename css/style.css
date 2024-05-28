@@ -158,6 +158,16 @@ nav {
   /* Questo stile cambia il colore predefinito della X. Puoi personalizzare i valori come preferisci */
 }
 
+.avatar {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.small-avatar {
+  width: 20px !important;
+  height: 20px !important;
+}
+
 /* Rimuove le freccette di incremento/decremento per input[type="number"] in Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
