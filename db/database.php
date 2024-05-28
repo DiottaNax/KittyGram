@@ -288,31 +288,54 @@ class DatabaseHelper
 
 
 
-    public function getHome($user_id)
+    public function getFeed($user_id)
     {
-        $query = "SELECT POST.post_id
-                    FROM POST
-                    JOIN ACCOUNT ON POST.user_id = ACCOUNT.user_id
-                    JOIN FOLLOW ON ACCOUNT.user_id = FOLLOW.followed
-                    WHERE FOLLOW.follower = ?
-                        AND POST.post_id NOT IN (SELECT post_id FROM adoption)
-                    ORDER BY POST.date DESC
-                    ";
+        // Query per ottenere i post che non sono nella tabella adoptions
+        $queryPosts = "SELECT POST.post_id
+                   FROM POST
+                   JOIN ACCOUNT ON POST.user_id = ACCOUNT.user_id
+                   JOIN FOLLOW ON ACCOUNT.user_id = FOLLOW.followed
+                   WHERE FOLLOW.follower = ?
+                     AND POST.post_id NOT IN (SELECT post_id FROM adoption)
+                   ORDER BY POST.date DESC";
 
+        // Prepara ed esegui la query per i post
+        $stmtPosts = $this->db->prepare($queryPosts);
+        $stmtPosts->bind_param('i', $user_id);
+        $stmtPosts->execute();
+        $posts_id = $stmtPosts->get_result()->fetch_all(MYSQLI_ASSOC);
 
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $user_id);
-        $stmt->execute();
-        $posts_id = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-        $feed = array();
-        $i = 0;
+        // Query per ottenere i post che sono nella tabella adoptions
+        $queryAdoptions = "SELECT POST.post_id
+                       FROM POST
+                       JOIN ACCOUNT ON POST.user_id = ACCOUNT.user_id
+                       JOIN FOLLOW ON ACCOUNT.user_id = FOLLOW.followed
+                       WHERE FOLLOW.follower = ?
+                         AND POST.post_id IN (SELECT post_id FROM adoption)
+                       ORDER BY POST.date DESC";
+
+        // Prepara ed esegui la query per le adozioni
+        $stmtAdoptions = $this->db->prepare($queryAdoptions);
+        $stmtAdoptions->bind_param('i', $user_id);
+        $stmtAdoptions->execute();
+        $adoptions_id = $stmtAdoptions->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        // Crea l'array associativo feed
+        $feed = array('posts' => array(), 'adoptions' => array());
+
+        // Popola l'array posts con i risultati della prima query
         foreach ($posts_id as $post_id) {
-            $feed[$i] = $this->getPost($post_id['post_id']);
-            $i++;
+            $feed['posts'][] = $this->getPost($post_id['post_id']);
+        }
+
+        // Popola l'array adoptions con i risultati della seconda query
+        foreach ($adoptions_id as $post_id) {
+            $feed['adoptions'][] = $this->getAdoption($post_id['post_id']);
         }
 
         return $feed;
     }
+
 
     public function getMediaFromId($media_id)
     {
@@ -513,6 +536,44 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function isAdoption($post_id)
+    {
+        // Query per verificare se il post_id è presente nella tabella adoptions
+        $query = "SELECT COUNT(*) as count
+              FROM adoption
+              WHERE post_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+
+        // Restituisce true se il post_id è presente nella tabella adoptions, altrimenti false
+        return $result['count'] > 0;
+    }
+
+
+    public function getAdoption($post_id)
+    {
+        $query = "SELECT post.post_id, description, date, user_id, adopted, city_name
+                    FROM adoption 
+                    LEFT JOIN post ON adoption.post_id = post.post_id
+                    LEFT JOIN city ON adoption.city_id = city.city_id
+                    WHERE adoption.post_id = ?
+                    LIMIT 1;";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]; // first row of results
+        if (isset($result['user_id'])) {
+            $result['owner'] = $this->getAccountFromId($result['user_id']);
+            $result['media'] = $this->getMediasByPostId($post_id);
+            $result['comment'] = $this->getComments($post_id);
+        }
+
+        return $result;
+    }
+
     public function getPost($post_id)
     {
         $query = "SELECT * FROM `post` WHERE post.post_id = ? LIMIT 1";
@@ -531,22 +592,39 @@ class DatabaseHelper
 
     public function getUserPosts($idOrUsername)
     {
-        $query = "SELECT post_id FROM post
-                    LEFT JOIN account ON post.user_id = account.user_id
-                    WHERE account.username = ?
-                        OR account.user_id = ?
-                        ORDER BY post_id DESC";
+        // Query per ottenere tutti i post dell'utente
+        $query = "SELECT post.post_id, 
+                     CASE 
+                        WHEN adoption.post_id IS NOT NULL THEN 1 
+                        ELSE 0 
+                     END AS is_adoption 
+              FROM post
+              LEFT JOIN account ON post.user_id = account.user_id
+              LEFT JOIN adoption ON post.post_id = adoption.post_id
+              WHERE account.username = ?
+                 OR account.user_id = ?
+              ORDER BY post.post_id DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("si", $idOrUsername, $idOrUsername);
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-        foreach ($result as &$post) { // & prevents to create a copy of post
+        // Crea l'array associativo feed
+        $userPosts = array('posts' => array(), 'adoptions' => array());
+
+        // Popola gli array posts e adoptions
+        foreach ($result as &$post) {
             $post['medias'] = $this->getMediasByPostId($post['post_id']);
+            if ($post['is_adoption']) {
+                $userPosts['adoptions'][] = $post;
+            } else {
+                $userPosts['posts'][] = $post;
+            }
         }
 
-        return $result;
+        return $userPosts;
     }
+
 
     public function addFollow($follower, $followed)
     {

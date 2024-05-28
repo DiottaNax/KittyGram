@@ -8,12 +8,22 @@
 
 <?php
 
-$feed = $dbh->getHome($_SESSION["user_id"]);
+$feed = $dbh->getFeed($_SESSION["user_id"]);
+$showingAdoptions = false;
+if (isset($_GET['route']) && $_GET['route'] == 'adoptions') {
+    $feedToShow = $feed['adoptions'];
+    $showingAdoptions = true;
+} else if (!isset($_GET['route'])) {
+    $feedToShow = $feed['posts'];
+} else {
+    header("Location: index.php");
+}
+
 ?>
 
 <div class="posts-container d-flex flex-column align-items-center justify-content-center">
-    <?php if (!empty($feed)): ?>
-        <?php foreach ($feed as $post): ?>
+    <?php if (!empty($feedToShow)): ?>
+        <?php foreach ($feedToShow as $post): ?>
             <article class="article clickable post mb-4 p-4 shadow-sm rounded-5 mt-5 bg-white border border-dark">
                 <div class="row">
                     <div class="col-12 d-flex justify-content-between align-items-center mt-2 mb-1">
@@ -81,6 +91,7 @@ $feed = $dbh->getHome($_SESSION["user_id"]);
                                 <p class="likenumber mb-0 ms-2" data-postid="<?php echo $post["post_id"]; ?>"
                                     id="like-<?php echo $post["post_id"]; ?>"></p>
                             </div>
+                            <?php if($showingAdoptions): ?>
                             <div class="adoption-icon" data-bs-toggle="modal" data-bs-target="#adoption-modal">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-house-heart"
                                     viewBox="0 0 16 16">
@@ -89,6 +100,7 @@ $feed = $dbh->getHome($_SESSION["user_id"]);
                                         d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
                                 </svg>
                             </div>
+                            <?php endif; ?>
                             <div class="comment-icon" data-bs-toggle="modal" data-bs-target="#comment-modal"
                                 data-post-id="<?php echo $post["post_id"]; ?>"
                                 data-post-owner="<?php echo $post["owner"]["username"]; ?>">
