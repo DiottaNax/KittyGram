@@ -19,7 +19,7 @@
                     </div>
                     <div class="mb-2 form-check">
                         <input type="checkbox" class="form-check-input" id="isAdoption" name="isAdoption">
-                        <label class="form-check-label" for="adoption">Adoption</label>
+                        <label class="form-check-label" for="isAdoption">Adoption</label>
                     </div>
                     <div class="mb-2">
                         <label for="city_name" class="form-label">City Name</label>

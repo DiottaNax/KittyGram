@@ -91,7 +91,8 @@ if (isset($_GET['route']) && $_GET['route'] == 'adoptions') {
                                     id="like-<?php echo $post["post_id"]; ?>"></p>
                             </div>
                             <?php if($showingAdoptions): ?>
-                            <div class="adoption-icon" data-bs-toggle="modal" data-bs-target="#adoption-modal">
+                            <div class="adoption-icon" data-bs-toggle="modal" data-bs-target="#adoption-modal" data-post-id="<?php echo $post["post_id"]; ?>"
+                                    data-owner-id="<?php echo $post["owner"]["username"]; ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-house-heart"
                                     viewBox="0 0 16 16">
                                     <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982" />

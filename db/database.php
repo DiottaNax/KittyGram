@@ -536,6 +536,32 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function addAdoptionRequest($post_id, $submitter_id, $phone_number, $presentation)
+    {
+        $query = "INSERT INTO user_adopting(post_id, user_id, cell, presentation) VALUES (?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ssss", $post_id, $submitter_id, $phone_number, $presentation);
+        return $stmt->execute();
+    }
+
+    public function requestAlreadyPresent($post_id, $submitter)
+    {
+        // Query per verificare se esiste già una richiesta di adozione
+        $query = "SELECT COUNT(*) as count 
+              FROM `user_adopting`
+              LEFT JOIN account ON user_adopting.user_id = account.user_id
+              WHERE user_adopting.post_id = ?
+                AND (account.username = ? OR account.user_id = ?)";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("isi", $post_id, $submitter, $submitter);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        
+        return $result['count'] > 0;
+    }
+
+
     public function isAdoption($post_id)
     {
         // Query per verificare se il post_id è presente nella tabella adoptions

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const phoneNumberInput = document.getElementById("phoneNumber");
-    const presentationTextarea = document.getElementById("presentation");
-    const submitButton = document.getElementById("submitButton");
+    const phoneNumberInput = document.getElementById("phone_number");
+    const presentationTextarea = document.getElementById("adoption_presentation");
+    const submitButton = document.getElementById("adoptionSubmit");
 
 
     phoneNumberInput.addEventListener("input", function () {
@@ -28,4 +28,17 @@ document.addEventListener("DOMContentLoaded", () => {
             submitButton.disabled = true;
         }
     }
+
+    document
+    .getElementById("adoption-modal")
+    .addEventListener("show.bs.modal", function (event) {
+        const button = event.relatedTarget; // Button that triggered the modal
+        const post_id = button.getAttribute("data-post-id"); // Extract post id from the button
+        const post_owner = button.getAttribute("data-owner-id"); // Extract post owner's id from the button
+
+        document.getElementById("adoption_id").value = post_id;
+        document.getElementById("adoption_owner").value = post_owner;
+        console.log("Post id: " + post_id);
+        console.log("Post owner: " + post_owner);
+    });
 });
