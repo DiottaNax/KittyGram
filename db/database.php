@@ -291,11 +291,13 @@ class DatabaseHelper
     public function getHome($user_id)
     {
         $query = "SELECT POST.post_id
-        FROM POST
-        JOIN ACCOUNT ON POST.user_id = ACCOUNT.user_id
-        JOIN FOLLOW ON ACCOUNT.user_id = FOLLOW.followed
-        WHERE FOLLOW.follower = ?
-        ORDER BY POST.date DESC";
+                    FROM POST
+                    JOIN ACCOUNT ON POST.user_id = ACCOUNT.user_id
+                    JOIN FOLLOW ON ACCOUNT.user_id = FOLLOW.followed
+                    WHERE FOLLOW.follower = ?
+                        AND POST.post_id NOT IN (SELECT post_id FROM adoption)
+                    ORDER BY POST.date DESC
+                    ";
 
 
         $stmt = $this->db->prepare($query);

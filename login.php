@@ -35,10 +35,11 @@
       <div class="form-group mb-4">
         <label for="passwordId">Password</label>
         <input type="password" class="form-control" id="passwordId" name="password" />
-
       </div>
-      <label class="text-center" id="resultId" name="result"></label>
-      <div class="mb-3 justify-content-center">
+
+      
+      <div class="mb-3 text-center justify-content-center">
+        <label class="text-center" id="resultId" name="result"></label>
         <button type="submit" id="submitId" class="btn btn-bd-primary w-100">Login</button>
       </div>
       <hr />
