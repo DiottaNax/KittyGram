@@ -167,7 +167,7 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
           <?php foreach ($posts as $post): ?>
             <div class="col-md-4">
               <a href="open-post.php?post_id=<?php echo $post['post_id'] ?>">
-                <div class="post-image-container"> <img src="./img/<?php echo $post['medias'][0] ?>"
+                <div class="post-image-container-profile"> <img src="./img/<?php echo $post['medias'][0] ?>"
                     class="img-fluid rounded shadow-sm" /></div>
               </a>
             </div>
