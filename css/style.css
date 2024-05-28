@@ -120,7 +120,7 @@ nav {
   min-width: 250px; /* Imposta la larghezza minima */
   min-height: 250px; /* Imposta l'altezza minima */
   object-fit: cover; /* Mantiene le proporzioni dell'immagine coprendo l'intero contenitore */
-  /* Imposta l'altezza al 100% del contenitore */
+  width: 100%; /* Imposta la larghezza al 100% del contenitore */
 }
 
 .modal-header {
