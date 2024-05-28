@@ -1,21 +1,22 @@
 <?php
 require_once ("db-config.php");
 
+
+
 if (isset($_GET['post_id'])) {
     $post_id = $_GET['post_id'];
     $isAdoption = $dbh->isAdoption($post_id);
 
     if($isAdoption) {
-        $post = $dbh->getAdoption($post_id);
+        $currentPost = $dbh->getAdoption($post_id);
     } else {
-        $post = $dbh->getPost($post_id);
+        $currentPost = $dbh->getPost($post_id);
     }
-    
+
 }
 
-if (isset($post)):
+if (isset($currentPost)):
     ?>
-
     <!doctype html>
     <html lang="en">
 
@@ -62,21 +63,21 @@ if (isset($post)):
             <div class="row">
                 <!-- Colonna per l'immagine del post -->
                 <div class="col-md-7 mt-4">
-                    <img src="./img/<?php echo $post['media'][0] ?>" id="postImage" class="post-image-container mb-4"
+                    <img src="./img/<?php echo $currentPost['media'][0] ?>" id="postImage" class="post-image-container mb-4"
                         style="max-height: 600px; max-width: 600px;" alt="Immagine del post">
                 </div>
                 <!-- Colonna per la descrizione del post e i commenti -->
                 <div class="col-md-5 mt-4">
                     <div class="card">
                         <div class="d-flex mb-3 mt-3">
-                            <img src="img/<?php echo $post['owner']['pic'] ?>" class="avatar rounded-circle me-2 ms-2"
+                            <img src="img/<?php echo $currentPost['owner']['pic'] ?>" class="avatar rounded-circle me-2 ms-2"
                                 alt="Avatar utente">
                             <div>
-                                <h6 class="mb-0"><?php echo $post['owner']['username'] ?></h6>
-                                <p class="mb-0 mt-1"><?php echo $post['description'] ?></p>
+                                <h6 class="mb-0"><?php echo $currentPost['owner']['username'] ?></h6>
+                                <p class="mb-0 mt-1"><?php echo $currentPost['description'] ?></p>
                             </div>
                         </div>
-                        <p class="smaller-text mb-0 me-2 text-end"><?php echo $post['date'] ?></p>
+                        <p class="smaller-text mb-0 me-2 text-end"><?php echo $currentPost['date'] ?></p>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-three-dots position-absolute top-0 end-0 m-3" data-bs-toggle="modal"
                             data-bs-target="#post-settings-modal" viewBox="0 0 16 16">
@@ -94,7 +95,7 @@ if (isset($post)):
                             <!-- Contenitore scorrevole per i commenti -->
                             <div class="comment-container">
                                 <!-- includo tutti i commenti -->
-                                <?php foreach ($post['comment'] as $comment): ?>
+                                <?php foreach ($currentPost['comment'] as $comment): ?>
                                     <div class="d-flex mb-3">
                                         <img src="img/<?php echo $comment['profile_pic'] ?>" class="avatar rounded-circle me-2"
                                             alt="Avatar utente">
@@ -117,30 +118,38 @@ if (isset($post)):
                                 <path
                                     d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
                             </svg>
-                            <!-- tasto adoption -->
+                            
                             <?php if($isAdoption): ?>
-                            <div class="adoption-icon" data-bs-toggle="modal" data-bs-target="#adoption-modal">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-house-heart"
-                                    viewBox="0 0 16 16">
-                                    <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982" />
-                                    <path
-                                        d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
-                                </svg>
-                            </div>
+                                <!-- tasto adoption -->
+                                <?php if($_SESSION['user_id'] != $currentPost['user_id']): ?>
+                                <div class="adoption-icon" data-bs-toggle="modal" data-bs-target="#adoption-modal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-house-heart"
+                                        viewBox="0 0 16 16">
+                                        <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982" />
+                                        <path
+                                            d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+                                    </svg>
+                                </div>
+                                <!-- tasto adoption requests -->
+                                <?php else: ?>
+                                    <?php if(!$currentPost['adopted']): ?>
+                                        <a href="adoption-requests.php" class="adoption-requests-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-houses" viewBox="0 0 16 16">
+                                                <path d="M5.793 1a1 1 0 0 1 1.414 0l.647.646a.5.5 0 1 1-.708.708L6.5 1.707 2 6.207V12.5a.5.5 0 0 0 .5.5.5.5 0 0 1 0 1A1.5 1.5 0 0 1 1 12.5V7.207l-.146.147a.5.5 0 0 1-.708-.708zm3 1a1 1 0 0 1 1.414 0L12 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l1.854 1.853a.5.5 0 0 1-.708.708L15 8.207V13.5a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 4 13.5V8.207l-.146.147a.5.5 0 1 1-.708-.708zm.707.707L5 7.207V13.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V7.207z"/>
+                                            </svg>
+                                        </a>
+                                    <!-- tag adopted -->
+                                    <?php else: ?>
+                                        <button type="button" class="btn btn-primary" disabled>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg me-2" viewBox="0 0 16 16">
+                                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
+                                            </svg>
+                                            Adopted
+                                        </button>
+                                    <?php endif; ?>
+                                <?php endif; ?>
                             <?php endif; ?>
-                            <!-- tasto adoption requests -->
-                            <div class="adoption-requests-icon" data-bs-toggle="modal" data-bs-target="#adoption-requests-modal">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-houses" viewBox="0 0 16 16">
-                                    <path d="M5.793 1a1 1 0 0 1 1.414 0l.647.646a.5.5 0 1 1-.708.708L6.5 1.707 2 6.207V12.5a.5.5 0 0 0 .5.5.5.5 0 0 1 0 1A1.5 1.5 0 0 1 1 12.5V7.207l-.146.147a.5.5 0 0 1-.708-.708zm3 1a1 1 0 0 1 1.414 0L12 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l1.854 1.853a.5.5 0 0 1-.708.708L15 8.207V13.5a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 4 13.5V8.207l-.146.147a.5.5 0 1 1-.708-.708zm.707.707L5 7.207V13.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V7.207z"/>
-                                </svg>
-                            </div>
-                            <!-- tag adopted -->
-                            <button type="button" class="btn btn-primary" disabled>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg me-2" viewBox="0 0 16 16">
-                                    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
-                                </svg>
-                                Adopted
-                            </button>
+
                             <!-- tasto commento -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-chat" viewBox="0 0 16 16" id="commentIcon">
@@ -155,8 +164,8 @@ if (isset($post)):
                                 <img src="img/<?php echo $viewer['pic'] ?>" class="small-avatar rounded-circle me-2 ms-2"
                                     alt="Avatar utente">
                                 <input type="hidden" id="writer" name="writer" value="<?php echo htmlspecialchars($viewer['username']); ?>">
-                                <input type="hidden" id="input-post-owner" name="input-post-owner" value="<?php echo htmlspecialchars($post['owner']['username']); ?>">
-                                <input type="hidden" id="input-post-id" name="input-post-id" value="<?php echo htmlspecialchars($post['post_id']); ?>">
+                                <input type="hidden" id="input-post-owner" name="input-post-owner" value="<?php echo htmlspecialchars($currentPost['owner']['username']); ?>">
+                                <input type="hidden" id="input-post-id" name="input-post-id" value="<?php echo htmlspecialchars($currentPost['post_id']); ?>">
                                 <textarea class="form-control transparent-input" placeholder="Add a comment..."
                                     id="commentArea" maxlength=200></textarea>
                             </div>
