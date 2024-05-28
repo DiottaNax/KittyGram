@@ -159,6 +159,15 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function deleteNotification($id)
+    {
+        $query = "DELETE FROM NOTIFICATION WHERE notification_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
+    }
+
     public function viewedNotification($idNotification)
     {
         $query = "UPDATE notification SET seen = 1 WHERE notification_id = ?";

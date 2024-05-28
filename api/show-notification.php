@@ -27,9 +27,9 @@ require_once ("db-config.php");
                 </div>
                 <div class="col-7">
                     <?php $accountFrom = $dbh->getAccountFromUsername($notification["username_from"]) ?>
-                    <img src="./img/<?php echo $accountFrom['pic'] ?>" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
-                    <a class="custom-link"
-                        href=" <?php echo "open-profile.php?username=" . $notification["username_from"] ?>">
+                    <img src="./img/<?php echo $accountFrom['pic'] ?>" class="rounded-circle me-2" alt="Avatar utente"
+                        style="width: 40px; height: 40px;">
+                    <a class="custom-link" href=" <?php echo "open-profile.php?username=" . $notification["username_from"] ?>">
                         @<?php
                         echo $notification["username_from"];
                         ?>
@@ -50,8 +50,10 @@ require_once ("db-config.php");
                         </a>
                         <!-- Icona "X" per chiudere la notifica -->
                         <div class="close-icon ms-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                <path d="M5.854 8l-4.15-4.15a.5.5 0 1 1 .708-.708L6 7.293l4.15-4.15a.5.5 0 0 1 .708.708L6.707 8l4.15 4.15a.5.5 0 1 1-.708.708L6 8.707l-4.15 4.15a.5.5 0 1 1-.708-.708L5.293 8 1.143 3.85a.5.5 0 0 1 .708-.708L6 7.293l4.15-4.15a.5.5 0 1 1 .708.708L6.707 8l4.15 4.15a.5.5 0 1 1-.708.708L6 8.707l-4.15 4.15a.5.5 0 1 1-.708-.708L5.293 8z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-x"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M5.854 8l-4.15-4.15a.5.5 0 1 1 .708-.708L6 7.293l4.15-4.15a.5.5 0 0 1 .708.708L6.707 8l4.15 4.15a.5.5 0 1 1-.708.708L6 8.707l-4.15 4.15a.5.5 0 1 1-.708-.708L5.293 8 1.143 3.85a.5.5 0 0 1 .708-.708L6 7.293l4.15-4.15a.5.5 0 1 1 .708.708L6.707 8l4.15 4.15a.5.5 0 1 1-.708.708L6 8.707l-4.15 4.15a.5.5 0 1 1-.708-.708L5.293 8z" />
                             </svg>
                         </div>
                     </div>
