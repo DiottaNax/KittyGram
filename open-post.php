@@ -21,30 +21,21 @@ if (isset($currentPost)):
     <html lang="en">
 
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="stylesheet" href="css/style.css">
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
-
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>User Post</title>
         <!-- Include jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <!-- Include il tuo file JavaScript separato -->
-        <script src="./js/UserPost.js" defer></script> <!-- Aggiunto defer -->
-        <!-- Script Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="js/sendNotification.js"></script>
+        <script src="js/adoptionModal.js"></script>
         <script src="js/addComment.js"></script>
         <!-- Inclusione della navbar -->
         <?php echo require_once ("./components/navbar.php") ?>
@@ -122,7 +113,7 @@ if (isset($currentPost)):
                             <?php if($isAdoption): ?>
                                 <!-- tasto adoption -->
                                 <?php if($_SESSION['user_id'] != $currentPost['user_id']): ?>
-                                <div class="adoption-icon" data-bs-toggle="modal" data-bs-target="#adoption-modal">
+                                <div class="adoption-icon" data-bs-toggle="modal" data-bs-target="#adoption-modal" data-post-id="<?php echo $currentPost['post_id'] ?>" data-owner="<?php echo $currentPost['owner']['username'] ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-house-heart"
                                         viewBox="0 0 16 16">
                                         <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982" />
@@ -133,7 +124,7 @@ if (isset($currentPost)):
                                 <!-- tasto adoption requests -->
                                 <?php else: ?>
                                     <?php if(!$currentPost['adopted']): ?>
-                                        <a href="adoption-requests.php" class="adoption-requests-icon">
+                                        <a href="adoption-requests.php?post_id=<?php echo $currentPost['post_id'] ?>" class="adoption-requests-icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-houses" viewBox="0 0 16 16">
                                                 <path d="M5.793 1a1 1 0 0 1 1.414 0l.647.646a.5.5 0 1 1-.708.708L6.5 1.707 2 6.207V12.5a.5.5 0 0 0 .5.5.5.5 0 0 1 0 1A1.5 1.5 0 0 1 1 12.5V7.207l-.146.147a.5.5 0 0 1-.708-.708zm3 1a1 1 0 0 1 1.414 0L12 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l1.854 1.853a.5.5 0 0 1-.708.708L15 8.207V13.5a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 4 13.5V8.207l-.146.147a.5.5 0 1 1-.708-.708zm.707.707L5 7.207V13.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V7.207z"/>
                                             </svg>

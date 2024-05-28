@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("show.bs.modal", function (event) {
         const button = event.relatedTarget; // Button that triggered the modal
         const post_id = button.getAttribute("data-post-id"); // Extract post id from the button
-        const post_owner = button.getAttribute("data-owner-id"); // Extract post owner's id from the button
+        const post_owner = button.getAttribute("data-owner"); // Extract post owner's id from the button
 
         document.getElementById("adoption_id").value = post_id;
         document.getElementById("adoption_owner").value = post_owner;

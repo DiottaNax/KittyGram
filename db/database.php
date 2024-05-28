@@ -536,11 +536,27 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getAdoptionRequests($post_id) {
+        $stmt = $this->db->prepare("SELECT * FROM user_adopting WHERE post_id = ?;");
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
+    }
+
+    public function removeAdoptionRequest($post_id, $submitter_id) {
+        $query = "DELETE FROM user_adopting WHERE post_id = ? AND user_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $post_id, $submitter_id);
+        return $stmt->execute();
+    }
+
     public function addAdoptionRequest($post_id, $submitter_id, $phone_number, $presentation)
     {
         $query = "INSERT INTO user_adopting(post_id, user_id, cell, presentation) VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ssss", $post_id, $submitter_id, $phone_number, $presentation);
+        $stmt->bind_param("iiss", $post_id, $submitter_id, $phone_number, $presentation);
         return $stmt->execute();
     }
 
@@ -557,7 +573,7 @@ class DatabaseHelper
         $stmt->bind_param("isi", $post_id, $submitter, $submitter);
         $stmt->execute();
         $result = $stmt->get_result()->fetch_assoc();
-        
+
         return $result['count'] > 0;
     }
 
