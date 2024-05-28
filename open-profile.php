@@ -136,7 +136,7 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
           <div class="navbar-nav mx-auto">
             <!-- tasto POSTS (con icona relativa) -->
             <a class="nav-link mx-3 <?php echo $current_route == 'posts' ? 'active' : ''; ?>" aria-current="page"
-              href="open-profile.php?username=<?php echo $_SESSION['username'] ?>">
+              href="open-profile.php?username=<?php echo $accountResult['username'] ?>">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-images"
                 viewBox="0 0 16 16">
                 <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
@@ -145,7 +145,7 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
               </svg> POSTS</a>
             <!-- tasto ADOPTIONS (con icona relativa) -->
             <a class="nav-link mx-3 <?php echo $current_route == 'adoptions' ? 'active' : ''; ?>"
-              href="open-profile.php?username=<?php echo $_SESSION['username'] ?>&route=adoptions">
+              href="open-profile.php?username=<?php echo $accountResult['username'] ?>&route=adoptions">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-house-heart-fill" viewBox="0 0 16 16">
                 <path
@@ -160,11 +160,17 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
 
 
 
-    <?php if (!isset($_GET['route']) || $_GET['route'] != 'adoptions'): ?>
+    <?php 
+    if ($current_route === 'adoptions') {
+      $postToShow = $posts['adoptions'];
+    } else if($current_route === 'posts') {
+      $postToShow = $posts['posts'];
+    }
+    ?>
       <!-- posts container -->
       <div class=" mt-5 container justify-content-center" id="userPostsContainer">
         <div class="row row-cols-auto justify-content-center">
-          <?php foreach ($posts as $post): ?>
+          <?php foreach ($postToShow as $post): ?>
             <div class="col">
               <a href="open-post.php?post_id=<?php echo $post['post_id'] ?>">
                 <div class="post-image-container-profile mb-4"> <img src="./img/<?php echo $post['medias'][0] ?>"
@@ -174,34 +180,7 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
           <?php endforeach; ?>
         </div>
       </div>
-    <?php elseif ($_GET['route'] == 'adoptions'): ?>
-      <!-- adoptions container -->
-      <div class="container mt-5" id="adoptionsContainer">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="post-image-container">
-              <img src="./img/cat-example1.jfif" class="img-fluid rounded shadow-sm"
-                onclick="document.location.href='open-post.php?username=<?php echo urlencode($_SESSION['username']); ?>'"
-                id="post1">
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="post-image-container">
-              <img src="./img/cat-example2.jfif" class="card-img-top w-100"
-                onclick="document.location.href='open-post.php?username=<?php echo urlencode($_SESSION['username']); ?>'"
-                id="post2" alt="example2">
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card mb-3">
-              <img src="./img/cat-example3.jfif" class="card-img-top w-100"
-                onclick="document.location.href='open-post.php?username=<?php echo urlencode($_SESSION['username']); ?>'"
-                id="post3" alt="example3">
-            </div>
-          </div>
-        </div>
-      </div>
-    <?php endif; ?>
+
 
   </body>
 

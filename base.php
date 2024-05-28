@@ -19,7 +19,7 @@
 
 <body class="d-flex justify-content-center py-4">
 
-
+  <?php require_once ("./components/navbar.php") ?>
   <div class="row justify-content-center">
     <div class="col-lg mt-2">
       <header class="d-flex px-4 mt-5">
@@ -30,8 +30,6 @@
     </div>
   </div>
 
-
-  <?php require_once ("./components/navbar.php") ?>
 
 </body>
 
