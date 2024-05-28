@@ -137,7 +137,7 @@ if (isset($post)):
                         </div>
                     </nav>
                     <form id="commentForm">
-                        <div class="card mt-2">
+                        <div class="card mt-2 mb-3">
                             <div class="d-flex align-items-center">
                                 <img src="img/<?php echo $viewer['pic'] ?>" class="rounded-circle me-2 ms-2"
                                     alt="Avatar utente" style="width: 20px; height: 20px;">
@@ -147,7 +147,7 @@ if (isset($post)):
                                 <textarea class="form-control transparent-input" placeholder="Add a comment..."
                                     id="commentArea" maxlength=200></textarea>
                             </div>
-                            <button type="submit" class="btn transparent-button mt-2" id="sendButton"
+                            <button type="submit" class="btn btn-primary mt-2" id="sendButton"
                                 style="display: none;">Send</button>
                         </div>
                     </form>
