@@ -186,6 +186,12 @@ input[type="number"] {
   ); /* Colore rosso, puoi cambiare con qualsiasi colore tu voglia */
 }
 
+.custom-margin-top {
+  margin-top: 8rem; /* Aumenta questo valore per avere più spazio */
+}
+
+
+
 /*  ---------------------  imported from old style.css  ---------------------  */
 
 #submitId,

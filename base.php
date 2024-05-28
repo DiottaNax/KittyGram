@@ -13,7 +13,7 @@
     crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="./js/notification-viewed.js"></script>
-
+  <?php require_once ("db-config.php") ?>
   <title>Home Page</title>
 </head>
 
@@ -24,7 +24,7 @@
     <div class="col-lg mt-2">
       <header class="d-flex px-4 mt-5">
         <main class="container">
-          <?php require ($templateParams["name"]); ?>
+          <?php require ("show-post-home.php"); ?>
         </main>
       </header>
     </div>
