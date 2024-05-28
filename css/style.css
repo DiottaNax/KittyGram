@@ -124,8 +124,8 @@ nav {
 }
 
 .post-image-container-profile {
-  width: 400px !important; /* Imposta una larghezza fissa per il contenitore */
-  height: 400px !important; /* Imposta un'altezza fissa per il contenitore */
+  width: 300px !important; /* Imposta una larghezza fissa per il contenitore */
+  height: 300px !important; /* Imposta un'altezza fissa per il contenitore */
   overflow: hidden !important;
   border: 2px solid #573c0c !important; /* Aggiunge un bordo nero di 2px */
   border-radius: 5px !important; /* Nasconde eventuali parti delle immagini che eccedono le dimensioni del contenitore */
