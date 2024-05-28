@@ -232,8 +232,8 @@ input[type="number"] {
 /* Media query for mobile devices */
 @media (max-width: 768px) {
   .card {
-    width: fit-content; /* Set width to 100% for mobile */
-    max-width: 200px !important;
+    width: fit-content !important; /* Set width to 100% for mobile */
+    max-width: 400px !important;
     min-height: 200px !important;
     padding: 0px !important;
     margin: 0px !important;
