@@ -62,15 +62,15 @@ if (isset($post)):
             <div class="row">
                 <!-- Colonna per l'immagine del post -->
                 <div class="col-md-7 mt-4">
-                    <img src="./img/<?php echo $post['media'][0] ?>" id="postImage" class="card-img-top mb-4"
+                    <img src="./img/<?php echo $post['media'][0] ?>" id="postImage" class="post-image-container mb-4"
                         style="max-height: 600px; max-width: 600px;" alt="Immagine del post">
                 </div>
                 <!-- Colonna per la descrizione del post e i commenti -->
                 <div class="col-md-5 mt-4">
                     <div class="card">
                         <div class="d-flex mb-3 mt-3">
-                            <img src="img/<?php echo $post['owner']['pic'] ?>" class="rounded-circle me-2 ms-2"
-                                alt="Avatar utente" style="width: 40px; height: 40px;">
+                            <img src="img/<?php echo $post['owner']['pic'] ?>" class="avatar rounded-circle me-2 ms-2"
+                                alt="Avatar utente">
                             <div>
                                 <h6 class="mb-0"><?php echo $post['owner']['username'] ?></h6>
                                 <p class="mb-0 mt-1"><?php echo $post['description'] ?></p>
@@ -96,8 +96,8 @@ if (isset($post)):
                                 <!-- includo tutti i commenti -->
                                 <?php foreach ($post['comment'] as $comment): ?>
                                     <div class="d-flex mb-3">
-                                        <img src="img/<?php echo $comment['profile_pic'] ?>" class="rounded-circle me-2"
-                                            alt="Avatar utente" style="width: 40px; height: 40px;">
+                                        <img src="img/<?php echo $comment['profile_pic'] ?>" class="avatar rounded-circle me-2"
+                                            alt="Avatar utente">
                                         <div>
                                             <h6 class="mb-0">@<?php echo $comment['username'] ?></h6>
                                             <p class="mb-0"><?php echo $comment['message'] ?></p>
@@ -139,8 +139,8 @@ if (isset($post)):
                     <form id="commentForm">
                         <div class="card mt-2">
                             <div class="d-flex align-items-center">
-                                <img src="img/<?php echo $viewer['pic'] ?>" class="rounded-circle me-2 ms-2"
-                                    alt="Avatar utente" style="width: 20px; height: 20px;">
+                                <img src="img/<?php echo $viewer['pic'] ?>" class="small-avatar rounded-circle me-2 ms-2"
+                                    alt="Avatar utente">
                                 <input type="hidden" id="writer" name="writer" value="<?php echo htmlspecialchars($viewer['username']); ?>">
                                 <input type="hidden" id="input-post-owner" name="input-post-owner" value="<?php echo htmlspecialchars($post['owner']['username']); ?>">
                                 <input type="hidden" id="input-post-id" name="input-post-id" value="<?php echo htmlspecialchars($post['post_id']); ?>">

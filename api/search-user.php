@@ -16,7 +16,7 @@ if(isset($_GET['searchTerm']) && $_GET['searchTerm'] != "") {
     <?php foreach ($searchResult as $account): ?>
         <li class="list-group-item d-flex align-items-center">
             <div>
-                <img src="img/<?php echo $account['file_name'] ?>" class="rounded-circle me-2" alt="Avatar utente" style="width: 40px; height: 40px;">
+                <img src="img/<?php echo $account['file_name'] ?>" class="avatar rounded-circle me-2" alt="Avatar utente">
                 <a class="custom-link" href="open-profile.php?username=<?php echo $account['username'] ?>">@<?php echo $account['username'] ?></a>
             </div>
         </li>

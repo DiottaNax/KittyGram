@@ -28,8 +28,7 @@ if (isset($_GET['route']) && $_GET['route'] == 'adoptions') {
                 <div class="row">
                     <div class="col-12 d-flex justify-content-between align-items-center mt-2 mb-1">
                         <div class="d-flex align-items-center">
-                            <img src="img/<?php echo $post['owner']['pic'] ?>" class="rounded-circle me-2" alt="Avatar utente"
-                                style="width: 40px; height: 40px;">
+                            <img src="img/<?php echo $post['owner']['pic'] ?>" class="avatar rounded-circle me-2" alt="Avatar utente">
                             <a href="open-profile.php?username=<?php echo $post['owner']['username']; ?>"
                                 class="username custom-link">
                                 <?php echo $post['owner']['username'] ?>
