@@ -123,6 +123,25 @@ nav {
   width: 100%; /* Imposta la larghezza al 100% del contenitore */
 }
 
+.post-image-container-profile {
+  width: 400px !important; /* Imposta una larghezza fissa per il contenitore */
+  height: 400px !important; /* Imposta un'altezza fissa per il contenitore */
+  overflow: hidden !important;
+  border: 2px solid #573c0c !important; /* Aggiunge un bordo nero di 2px */
+  border-radius: 5px !important; /* Nasconde eventuali parti delle immagini che eccedono le dimensioni del contenitore */
+  display: flex !important; /* Abilita il modello di layout flexbox */
+  justify-content: center !important; /* Allinea l'elemento figlio (l'immagine) al centro lungo l'asse principale (orizzontale) */
+  align-items: center !important;
+}
+
+.post-image-container-profile img {
+  min-width: 250px; /* Imposta la larghezza minima */
+  min-height: 250px; /* Imposta l'altezza minima */
+  object-fit: cover; /* Mantiene le proporzioni dell'immagine coprendo l'intero contenitore */
+  width: 100%; /* Imposta la larghezza al 100% del contenitore */
+  height: 100%; /* Imposta l'altezza al 100% del contenitore */
+}
+
 .modal-header {
   color: var(
     --bg-color
