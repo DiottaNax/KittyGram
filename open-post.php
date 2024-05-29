@@ -106,7 +106,7 @@ if (isset($currentPost)):
             <nav class="navbar navbar-expand mt-1">
                     <div class="container-fluid">
                         <?php
-                            $liked = $dbh->userLikesPost($post["post_id"], $_SESSION["user_id"]);
+                            $liked = $dbh->userLikesPost($currentPost["post_id"], $_SESSION["user_id"]);
                             $likedClass = $liked ? 'liked' : '';
                         ?>
                         <!-- tasto like -->
