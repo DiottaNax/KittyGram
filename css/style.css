@@ -116,6 +116,23 @@ nav {
   align-items: center !important;
 }
 
+.post-image-container-open {
+  width: 600px !important; /* Imposta una larghezza fissa per il contenitore */
+  height: 600px !important; /* Imposta un'altezza fissa per il contenitore */
+  overflow: hidden !important;
+  border: 2px solid #573c0c !important; /* Aggiunge un bordo nero di 2px */
+  border-radius: 5px !important; /* Nasconde eventuali parti delle immagini che eccedono le dimensioni del contenitore */
+  margin-left: auto; /* Lascia lo spazio disponibile a sinistra */
+  margin-right: auto; /* Lascia lo spazio disponibile a destra */
+}
+
+.post-image-container-open img {
+  min-width: 600px; /* Imposta la larghezza minima */
+  min-height: 250px; /* Imposta l'altezza minima */
+  object-fit: cover; /* Mantiene le proporzioni dell'immagine coprendo l'intero contenitore */
+  width: 100%; /* Imposta la larghezza al 100% del contenitore */
+}
+
 .post-image-container img {
   min-width: 400px; /* Imposta la larghezza minima */
   min-height: 250px; /* Imposta l'altezza minima */
@@ -140,6 +157,31 @@ nav {
   object-fit: cover; /* Mantiene le proporzioni dell'immagine coprendo l'intero contenitore */
   width: 100%; /* Imposta la larghezza al 100% del contenitore */
   height: 100%; /* Imposta l'altezza al 100% del contenitore */
+}
+
+.post-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Distribuisci lo spazio tra gli elementi */
+  height: 100vh; /* Altezza del viewport */
+}
+
+.carousel-indicators .active {
+  background-color: var(
+    --primary-color
+  ); /* Cambia questo colore al colore desiderato per l'indicatore attivo */
+}
+
+.carousel-indicators button {
+  background-color: #007bff; /* Cambia questo colore al colore desiderato */
+  border-color: #007bff; /* Cambia questo colore al colore desiderato */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(
+    --primary-color
+  ); /* Cambia questo colore al colore desiderato per le frecce */
 }
 
 .modal-header {
