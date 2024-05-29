@@ -33,9 +33,12 @@ if (isset($currentPost)):
 
         <link rel="stylesheet" href="css/style.css">
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="js/UserPost.js"></script>
+        <script src="js/like.js"></script>
         <script src="js/sendNotification.js"></script>
         <script src="js/adoptionModal.js"></script>
         <script src="js/addComment.js"></script>
+        
         <!-- Inclusione della navbar -->
         <?php echo require_once ("./components/navbar.php") ?>
         <?php $viewer = $dbh->getAccountFromUsername($_SESSION['username']); ?>
@@ -83,74 +86,37 @@ if (isset($currentPost)):
                 <?php endif; ?>
             </div>
             <!-- Colonna per la descrizione del post e i commenti -->
-            <div class="comment-section">
-                <div class="card description">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="img/<?php echo $currentPost['owner']['pic'] ?>" class="avatar rounded-circle me-2"
-                            alt="Avatar utente">
-                        <div>
-                            <h5 class="mb-0"><?php echo $currentPost['owner']['username'] ?></h5>
-                            <p class="mb-0 smaller-text"><?php echo $currentPost['date'] ?></p>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-three-dots position-absolute top-0 end-0 m-3" data-bs-toggle="modal"
-                            data-bs-target="#post-settings-modal" viewBox="0 0 16 16">
-                            <path
-                                d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
-                        </svg>
+            <div class="comment-section mt-5">
+            <div class="card description">
+                <div class="d-flex align-items-center mb-1">
+                    <img src="img/<?php echo $currentPost['owner']['pic'] ?>" class="avatar rounded-circle me-2" alt="Avatar utente">
+                    <div>
+                        <h5 class="mb-0"><?php echo $currentPost['owner']['username'] ?></h5>
+                        <p class="mb-0 smaller-text"><?php echo $currentPost['date'] ?></p>
                     </div>
-                    <p class="mb-0 "><strong>Description:</strong> <?php echo $currentPost['description'] ?></p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-three-dots position-absolute top-0 end-0 m-3" data-bs-toggle="modal"
+                        data-bs-target="#post-settings-modal" viewBox="0 0 16 16">
+                        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
+                    </svg>
                 </div>
-                <!-- Sezione per i commenti -->
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Commenti</h5>
-                        <hr class="my-4 border-transparent">
-
-                        <!-- Contenitore scorrevole per i commenti -->
-                        <div class="comment-container">
-                            <!-- includo tutti i commenti -->
-                            <?php foreach ($currentPost['comment'] as $comment): ?>
-                                <div class="d-flex mb-3">
-                                    <img src="img/<?php echo $comment['profile_pic'] ?>" class="avatar rounded-circle me-2"
-                                        alt="Avatar utente">
-                                    <div>
-                                        <h6 class="mb-0">@<?php echo $comment['username'] ?></h6>
-                                        <p class="mb-0"><?php echo $comment['message'] ?></p>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-
-                    </div>
-                </div>
-                <form id="commentForm">
-                    <div class="card mt-4 mb-3">
-                        <div class="d-flex align-items-center">
-                            <img src="img/<?php echo $viewer['pic'] ?>" class="small-avatar rounded-circle me-2 ms-2"
-                                alt="Avatar utente">
-                            <input type="hidden" id="writer" name="writer"
-                                value="<?php echo htmlspecialchars($viewer['username']); ?>">
-                            <input type="hidden" id="input-post-owner" name="input-post-owner"
-                                value="<?php echo htmlspecialchars($currentPost['owner']['username']); ?>">
-                            <input type="hidden" id="input-post-id" name="input-post-id"
-                                value="<?php echo htmlspecialchars($currentPost['post_id']); ?>">
-                            <textarea class="form-control transparent-input" placeholder="Add a comment..." id="commentArea"
-                                maxlength=200></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary mt-2" id="sendButton"
-                            style="display: none;">Send</button>
-                    </div>
-                </form>
-                <!-- Navbar con tasto like -->
-                <nav class="navbar navbar-expand mt-3">
+                <p class="mb-0"><strong></strong> <?php echo $currentPost['description'] ?></p>
+            </div>
+            <!-- Navbar con tasto like -->
+            <nav class="navbar navbar-expand mt-1">
                     <div class="container-fluid">
+                        <?php
+                            $liked = $dbh->userLikesPost($post["post_id"], $_SESSION["user_id"]);
+                            $likedClass = $liked ? 'liked' : '';
+                        ?>
                         <!-- tasto like -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                            class="bi bi-heart" viewBox="0 0 16 16" id="likeIcon">
-                            <path
-                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                        </svg>
+                        <div class="like-icon <?php echo $likedClass ?>" data-post-id="<?php echo $post["post_id"]; ?>"
+                                    data-owner-id="<?php echo $post["user_id"]; ?>">
+                                    <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path
+                                            d="<?php echo $likedClass == 'liked' ? 'M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314' : 'm8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15'; ?>" />
+                                    </svg>
+                        </div>
 
                         <?php if ($isAdoption): ?>
                             <!-- tasto adoption -->
@@ -197,7 +163,48 @@ if (isset($currentPost)):
                                 d="M2.678 11.894a1 1 0 0 1 .287.801 11 11 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8 8 0 0 0 8 14c3.996 0 7-2.807 7-6s-3.004-6-7-6-7 2.808-7 6c0 1.468.617 2.83 1.678 3.894m-.493 3.905a22 22 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a10 10 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105" />
                         </svg>
                     </div>
-                </nav>
+             </nav>
+                <!-- Sezione per i commenti -->
+                <div class="card mt-1">
+                    <div class="card-body">
+                        <h5 class="card-title">Commenti</h5>
+                        <hr class="my-4 border-transparent">
+
+                        <!-- Contenitore scorrevole per i commenti -->
+                        <div class="comment-container">
+                            <!-- includo tutti i commenti -->
+                            <?php foreach ($currentPost['comment'] as $comment): ?>
+                                <div class="d-flex mb-3">
+                                    <img src="img/<?php echo $comment['profile_pic'] ?>" class="avatar rounded-circle me-2"
+                                        alt="Avatar utente">
+                                    <div>
+                                        <h6 class="mb-0">@<?php echo $comment['username'] ?></h6>
+                                        <p class="mb-0"><?php echo $comment['message'] ?></p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+
+                    </div>
+                </div>
+                <form id="commentForm">
+                    <div class="card mt-4 mb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="img/<?php echo $viewer['pic'] ?>" class="small-avatar rounded-circle me-2 ms-2"
+                                alt="Avatar utente">
+                            <input type="hidden" id="writer" name="writer"
+                                value="<?php echo htmlspecialchars($viewer['username']); ?>">
+                            <input type="hidden" id="input-post-owner" name="input-post-owner"
+                                value="<?php echo htmlspecialchars($currentPost['owner']['username']); ?>">
+                            <input type="hidden" id="input-post-id" name="input-post-id"
+                                value="<?php echo htmlspecialchars($currentPost['post_id']); ?>">
+                            <textarea class="form-control transparent-input" placeholder="Add a comment..." id="commentArea"
+                                maxlength=200></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2" id="sendButton"
+                            style="display: none;">Send</button>
+                    </div>
+                </form>
 
             </div>
         </div>

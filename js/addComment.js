@@ -24,6 +24,9 @@ function sendComment(post_id, writer_username, comment, post_owner) {
         notificationMessage,
         post_id
       );
+
+      location.reload();
+      commentForm.reset();
     }
   });
 }
