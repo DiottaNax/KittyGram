@@ -74,6 +74,7 @@ if (isset($_GET['route']) && $_GET['route'] == 'adoptions') {
     </nav>
 
 
+    <!-- feed -->
     <?php if (!empty($feedToShow)): ?>
         <?php foreach ($feedToShow as $post): ?>
             <article class="article clickable post mb-4 p-4 shadow-sm rounded-5 mt-5 bg-white border border-dark">
