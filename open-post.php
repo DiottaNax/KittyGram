@@ -91,7 +91,9 @@ if (isset($currentPost)):
                 <div class="d-flex align-items-center mb-1">
                     <img src="img/<?php echo $currentPost['owner']['pic'] ?>" class="avatar rounded-circle me-2" alt="Avatar utente">
                     <div>
-                        <h5 class="mb-0"><?php echo $currentPost['owner']['username'] ?></h5>
+                        <a href="open-profile.php?username=<?php echo $currentPost['owner']['username']; ?>" class="custom-link">
+                            <h5 class="mb-0"><?php echo $currentPost['owner']['username'] ?></h5>
+                        </a>
                         <p class="mb-0 smaller-text"><?php echo $currentPost['date'] ?></p>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -100,7 +102,7 @@ if (isset($currentPost)):
                         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                     </svg>
                 </div>
-                <p class="mb-0"><strong></strong> <?php echo $currentPost['description'] ?></p>
+                <p class="mb-0 mt-1"><strong></strong> <?php echo $currentPost['description'] ?></p>
             </div>
             <!-- Navbar con tasto like -->
             <nav class="navbar navbar-expand mt-1">
@@ -178,7 +180,9 @@ if (isset($currentPost)):
                                     <img src="img/<?php echo $comment['profile_pic'] ?>" class="avatar rounded-circle me-2"
                                         alt="Avatar utente">
                                     <div>
-                                        <h6 class="mb-0">@<?php echo $comment['username'] ?></h6>
+                                        <a href="open-profile.php?username=<?php echo $comment['username']; ?>" class="custom-link">
+                                            <h6 class="mb-0">@<?php echo $comment['username'] ?></h6>
+                                        </a>
                                         <p class="mb-0"><?php echo $comment['message'] ?></p>
                                     </div>
                                 </div>
