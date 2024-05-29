@@ -30,47 +30,49 @@ if (isset($_GET['route']) && $_GET['route'] == 'adoptions') {
 
     <!-- Contenitore esterno per centrare la barra indicatore attivo -->
     <div class=" container-fluid justify-content-center ">
-      <!-- Contenitore della barra indicatore attivo -->
-      <div class="active-indicator-container mt-3">
-        <div class="active-indicator">
-          <div class="half-bar half-bar-left <?php echo $current_route == 'posts' ? 'active' : 'inactive'; ?>"></div>
-          <div class="half-bar half-bar-right <?php echo $current_route == 'adoptions' ? 'active' : 'inactive'; ?>"></div>
+        <!-- Contenitore della barra indicatore attivo -->
+        <div class="active-indicator-container mt-3">
+            <div class="active-indicator">
+                <div class="half-bar half-bar-left <?php echo $current_route == 'posts' ? 'active' : 'inactive'; ?>">
+                </div>
+                <div
+                    class="half-bar half-bar-right <?php echo $current_route == 'adoptions' ? 'active' : 'inactive'; ?>">
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
 
     <nav class="navbar navbar-expand">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
-          <div class="navbar-nav mx-auto">
-            <!-- tasto POSTS (con icona relativa) -->
-            <a class="nav-link mx-3 <?php echo $isAdoption ? 'active' : ''; ?>" aria-current="page"
-              href="base.php?>">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-images"
-                viewBox="0 0 16 16">
-                <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
-                <path
-                  d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2M14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1M2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1z" />
-              </svg> POSTS</a>
-            <!-- tasto ADOPTIONS (con icona relativa) -->
-            <a class="nav-link mx-3 <?php echo $isAdoption ? 'active' : ''; ?>"
-              href="base.php?route=adoptions">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-house-heart-fill" viewBox="0 0 16 16">
-                <path
-                  d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.707L8 2.207 1.354 8.853a.5.5 0 1 1-.708-.707z" />
-                <path
-                  d="m14 9.293-6-6-6 6V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5zm-6-.811c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.691 0-5.018" />
-              </svg> ADOPTIONS</a>
-          </div>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+                <div class="navbar-nav mx-auto">
+                    <!-- tasto POSTS (con icona relativa) -->
+                    <a class="nav-link mx-3 <?php echo $isAdoption ? 'active' : ''; ?>" aria-current="page"
+                        href="base.php?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-images" viewBox="0 0 16 16">
+                            <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+                            <path
+                                d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2M14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1M2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1z" />
+                        </svg> POSTS</a>
+                    <!-- tasto ADOPTIONS (con icona relativa) -->
+                    <a class="nav-link mx-3 <?php echo $isAdoption ? 'active' : ''; ?>" href="base.php?route=adoptions">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-house-heart-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.707L8 2.207 1.354 8.853a.5.5 0 1 1-.708-.707z" />
+                            <path
+                                d="m14 9.293-6-6-6 6V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5zm-6-.811c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.691 0-5.018" />
+                        </svg> ADOPTIONS</a>
+                </div>
+            </div>
         </div>
-      </div>
     </nav>
 
 
@@ -81,7 +83,8 @@ if (isset($_GET['route']) && $_GET['route'] == 'adoptions') {
                 <div class="row">
                     <div class="col-12 d-flex justify-content-between align-items-center mt-2 mb-1">
                         <div class="d-flex align-items-center">
-                            <img src="img/<?php echo $post['owner']['pic'] ?>" class="avatar rounded-circle me-2" alt="Avatar utente">
+                            <img src="img/<?php echo $post['owner']['pic'] ?>" class="avatar rounded-circle me-2"
+                                alt="Avatar utente">
                             <a href="open-profile.php?username=<?php echo $post['owner']['username']; ?>"
                                 class="username custom-link">
                                 <?php echo $post['owner']['username'] ?>
@@ -101,11 +104,18 @@ if (isset($_GET['route']) && $_GET['route'] == 'adoptions') {
                     $images = $post["media"];
                     if (count($post["media"]) > 1): ?>
                         <div id="carousel-<?php echo $post['post_id']; ?>" class="carousel slide">
+                            <div class="carousel-indicators">
+                                <?php foreach ($images as $index => $image): ?>
+                                    <button type="button" data-bs-target="#carousel-<?php echo $post['post_id']; ?>"
+                                        data-bs-slide-to="<?php echo $index; ?>" class="<?php echo $index === 0 ? 'active' : ''; ?>"
+                                        aria-current="<?php echo $index === 0 ? 'true' : 'false'; ?>"
+                                        aria-label="Slide <?php echo $index + 1; ?>"></button>
+                                <?php endforeach; ?>
+                            </div>
                             <div class="carousel-inner">
                                 <?php foreach ($images as $index => $image): ?>
                                     <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                        <img src="./img/<?php echo $image; ?>" class="d-block w-100 border border-dark"
-                                            alt="Post Image">
+                                        <img src="./img/<?php echo $image; ?>" class=" border border-dark" alt="Post Image">
                                     </div>
                                 <?php endforeach; ?>
                             </div>
@@ -121,7 +131,7 @@ if (isset($_GET['route']) && $_GET['route'] == 'adoptions') {
                             </button>
                         </div>
                     <?php else: ?>
-                        <img src="./img/<?php echo $images[0]; ?>" alt="Post Image" class="img-fluid border border-dark">
+                        <img src="./img/<?php echo $images[0]; ?>" alt="Post Image" class=" border border-dark">
                     <?php endif; ?>
                 </div>
                 <div class="row mt-2">
@@ -143,16 +153,17 @@ if (isset($_GET['route']) && $_GET['route'] == 'adoptions') {
                                 <p class="likenumber mb-0 ms-2" data-postid="<?php echo $post["post_id"]; ?>"
                                     id="like-<?php echo $post["post_id"]; ?>"></p>
                             </div>
-                            <?php if($showingAdoptions): ?>
-                            <div class="adoption-icon" data-bs-toggle="modal" data-bs-target="#adoption-modal" data-post-id="<?php echo $post["post_id"]; ?>"
+                            <?php if ($showingAdoptions): ?>
+                                <div class="adoption-icon" data-bs-toggle="modal" data-bs-target="#adoption-modal"
+                                    data-post-id="<?php echo $post["post_id"]; ?>"
                                     data-owner="<?php echo $post["owner"]["username"]; ?>">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-house-heart"
-                                    viewBox="0 0 16 16">
-                                    <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982" />
-                                    <path
-                                        d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
-                                </svg>
-                            </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-house-heart"
+                                        viewBox="0 0 16 16">
+                                        <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982" />
+                                        <path
+                                            d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+                                    </svg>
+                                </div>
                             <?php endif; ?>
                             <div class="comment-icon" data-bs-toggle="modal" data-bs-target="#comment-modal"
                                 data-post-id="<?php echo $post["post_id"]; ?>"

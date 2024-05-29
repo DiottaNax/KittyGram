@@ -117,7 +117,7 @@ nav {
 }
 
 .post-image-container img {
-  min-width: 250px; /* Imposta la larghezza minima */
+  min-width: 400px; /* Imposta la larghezza minima */
   min-height: 250px; /* Imposta l'altezza minima */
   object-fit: cover; /* Mantiene le proporzioni dell'immagine coprendo l'intero contenitore */
   width: 100%; /* Imposta la larghezza al 100% del contenitore */
@@ -189,8 +189,6 @@ input[type="number"] {
 .custom-margin-top {
   margin-top: 8rem; /* Aumenta questo valore per avere più spazio */
 }
-
-
 
 /*  ---------------------  imported from old style.css  ---------------------  */
 
