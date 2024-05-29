@@ -195,7 +195,7 @@
                       </div>
                     </div>
                   </div>
-                  <p class="mb-0 fst-italic"><?php echo $post["description"]; ?></p>
+                  <p class="mb-0"><?php echo $post["description"]; ?></p>
                 </article>
               <?php endforeach; ?>
             <?php else: ?>
