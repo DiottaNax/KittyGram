@@ -16,6 +16,8 @@
   <!-- utility for signup -->
   <script src="./js/signup.js"></script>
 
+  <?php require_once ("db-config.php"); ?>
+
   <title>Sign Up Page</title>
 </head>
 
