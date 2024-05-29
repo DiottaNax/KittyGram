@@ -83,27 +83,26 @@ if (isset($currentPost)):
                 <?php endif; ?>
             </div>
             <!-- Colonna per la descrizione del post e i commenti -->
-            <div class="post-section">
-                <div class="card">
-                    <div class="d-flex mb-3 mt-3">
-                        <img src="img/<?php echo $currentPost['owner']['pic'] ?>" class="avatar rounded-circle me-2 ms-2"
+            <div class="comment-section">
+                <div class="card description">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="img/<?php echo $currentPost['owner']['pic'] ?>" class="avatar rounded-circle me-2"
                             alt="Avatar utente">
                         <div>
-                            <h6 class="mb-0"><?php echo $currentPost['owner']['username'] ?></h6>
-                            <p class="mb-0 mt-1"><?php echo $currentPost['description'] ?></p>
+                            <h5 class="mb-0"><?php echo $currentPost['owner']['username'] ?></h5>
+                            <p class="mb-0 smaller-text"><?php echo $currentPost['date'] ?></p>
                         </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-three-dots position-absolute top-0 end-0 m-3" data-bs-toggle="modal"
+                            data-bs-target="#post-settings-modal" viewBox="0 0 16 16">
+                            <path
+                                d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
+                        </svg>
                     </div>
-                    <p class="smaller-text mb-0 me-2 text-end"><?php echo $currentPost['date'] ?></p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-three-dots position-absolute top-0 end-0 m-3" data-bs-toggle="modal"
-                        data-bs-target="#post-settings-modal" viewBox="0 0 16 16">
-                        <path
-                            d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
-                    </svg>
+                    <p class="mb-0 "><strong>Description:</strong> <?php echo $currentPost['description'] ?></p>
                 </div>
-
                 <!-- Sezione per i commenti -->
-                <div class="card mt-3">
+                <div class="card mt-4">
                     <div class="card-body">
                         <h5 class="card-title">Commenti</h5>
                         <hr class="my-4 border-transparent">
@@ -125,6 +124,24 @@ if (isset($currentPost)):
 
                     </div>
                 </div>
+                <form id="commentForm">
+                    <div class="card mt-4 mb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="img/<?php echo $viewer['pic'] ?>" class="small-avatar rounded-circle me-2 ms-2"
+                                alt="Avatar utente">
+                            <input type="hidden" id="writer" name="writer"
+                                value="<?php echo htmlspecialchars($viewer['username']); ?>">
+                            <input type="hidden" id="input-post-owner" name="input-post-owner"
+                                value="<?php echo htmlspecialchars($currentPost['owner']['username']); ?>">
+                            <input type="hidden" id="input-post-id" name="input-post-id"
+                                value="<?php echo htmlspecialchars($currentPost['post_id']); ?>">
+                            <textarea class="form-control transparent-input" placeholder="Add a comment..." id="commentArea"
+                                maxlength=200></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2" id="sendButton"
+                            style="display: none;">Send</button>
+                    </div>
+                </form>
                 <!-- Navbar con tasto like -->
                 <nav class="navbar navbar-expand mt-3">
                     <div class="container-fluid">
@@ -181,24 +198,7 @@ if (isset($currentPost)):
                         </svg>
                     </div>
                 </nav>
-                <form id="commentForm">
-                    <div class="card mt-2 mb-3">
-                        <div class="d-flex align-items-center">
-                            <img src="img/<?php echo $viewer['pic'] ?>" class="small-avatar rounded-circle me-2 ms-2"
-                                alt="Avatar utente">
-                            <input type="hidden" id="writer" name="writer"
-                                value="<?php echo htmlspecialchars($viewer['username']); ?>">
-                            <input type="hidden" id="input-post-owner" name="input-post-owner"
-                                value="<?php echo htmlspecialchars($currentPost['owner']['username']); ?>">
-                            <input type="hidden" id="input-post-id" name="input-post-id"
-                                value="<?php echo htmlspecialchars($currentPost['post_id']); ?>">
-                            <textarea class="form-control transparent-input" placeholder="Add a comment..." id="commentArea"
-                                maxlength=200></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary mt-2" id="sendButton"
-                            style="display: none;">Send</button>
-                    </div>
-                </form>
+
             </div>
         </div>
     </body>

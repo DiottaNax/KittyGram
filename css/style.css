@@ -13,6 +13,11 @@ nav {
   background-color: var(--bg-color) !important;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
 .btn-primary {
   background-color: var(--secondary-color) !important;
   border-color: var(--primary-color) !important;
@@ -122,7 +127,7 @@ nav {
   overflow: hidden !important;
   border: 2px solid #573c0c !important; /* Aggiunge un bordo nero di 2px */
   border-radius: 5px !important; /* Nasconde eventuali parti delle immagini che eccedono le dimensioni del contenitore */
-  margin-left: auto; /* Lascia lo spazio disponibile a sinistra */
+  margin-left: 200px; /* Lascia lo spazio disponibile a sinistra */
   margin-right: auto; /* Lascia lo spazio disponibile a destra */
 }
 
@@ -131,6 +136,13 @@ nav {
   min-height: 250px; /* Imposta l'altezza minima */
   object-fit: cover; /* Mantiene le proporzioni dell'immagine coprendo l'intero contenitore */
   width: 100%; /* Imposta la larghezza al 100% del contenitore */
+}
+
+.comment-section {
+  width: 35%; /* Imposta la larghezza al 100% del contenitore genitore */
+  height: auto;
+  margin-left: 50; /* Lascia lo spazio disponibile a sinistra */
+  margin-right: auto;
 }
 
 .post-image-container img {
