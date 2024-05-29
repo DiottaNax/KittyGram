@@ -244,6 +244,25 @@ input[type="number"] {
   margin-top: 8rem; /* Aumenta questo valore per avere più spazio */
 }
 
+.description {
+  padding: 20px; /* Aumenta questo valore per più spazio */
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.smaller-text {
+  font-size: 0.875rem;
+}
+
+.bi-three-dots {
+  cursor: pointer;
+}
+
+
+
 /*  ---------------------  imported from old style.css  ---------------------  */
 
 #submitId,
