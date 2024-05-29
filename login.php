@@ -18,6 +18,8 @@
 
   <script src="./js/login.js"></script>
 
+  <?php require_once("db-config.php"); ?>
+
   <title>Login Page</title>
 </head>
 

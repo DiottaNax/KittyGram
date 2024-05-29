@@ -79,7 +79,7 @@ if (isset($_GET['route']) && $_GET['route'] == 'adoptions') {
     <!-- feed -->
     <?php if (!empty($feedToShow)): ?>
         <?php foreach ($feedToShow as $post): ?>
-            <article class="article clickable post mb-4 p-4 shadow-sm rounded-5 mt-5 bg-white border border-dark">
+            <article class="article clickable post mb-4 p-4 rounded-5 mt-5 border border-dark">
                 <div class="row">
                     <div class="col-12 d-flex justify-content-between align-items-center mt-2 mb-1">
                         <div class="d-flex align-items-center">
@@ -90,12 +90,6 @@ if (isset($_GET['route']) && $_GET['route'] == 'adoptions') {
                                 <?php echo $post['owner']['username'] ?>
                             </a>
                         </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                            class="bi bi-three-dots" data-bs-toggle="modal" data-bs-target="#post-settings-modal"
-                            viewBox="0 0 16 16">
-                            <path
-                                d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
-                        </svg>
                     </div>
                 </div>
 
@@ -190,4 +184,3 @@ if (isset($_GET['route']) && $_GET['route'] == 'adoptions') {
 
 <?php require_once ("./modals/comment-modal.php") ?>
 <?php require_once ("./modals/adoption-modal.php") ?>
-<?php require_once ("./modals/post-settings-modal.php") ?>
