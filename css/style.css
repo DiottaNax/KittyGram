@@ -287,6 +287,16 @@ input[type="number"] {
   box-shadow: 0px !important;
 }
 
+/* Hide the mobile image by default */
+.mobile-img {
+    display: none;
+}
+
+/* Show the desktop image by default */
+.desktop-img {
+    display: block;
+}
+
 /* Media query for mobile devices */
 @media (max-width: 768px) {
   .card {
@@ -297,4 +307,17 @@ input[type="number"] {
     margin: 0px !important;
     border: 0px !important;
   }
+
+  .article {
+    border: 0px !important;
+  }
+
+  /* Hide the desktop image */
+    .desktop-img {
+        display: none;
+    }
+    /* Show the mobile image */
+    .mobile-img {
+        display: block;
+    }
 }

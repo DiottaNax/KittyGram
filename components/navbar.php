@@ -26,7 +26,10 @@
 
             <!-- Logo -->
             <div class="col-4 d-flex justify-content-center mt-2 mb-2">
-                <a href="index.php"><img src="./img/KittyGram_Logo.png" alt="Kittygram" width="200" /></a>
+                <a href="index.php">
+                    <img src="./img/KittyGram_Logo.png" alt="Kittygram" width="200" class="desktop-img" />
+                    <img src="./img/KittyGram_Icon.png" alt="Kittygram" width="35" class="mobile-img" />
+                </a>
             </div>
 
 
