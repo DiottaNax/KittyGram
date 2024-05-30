@@ -201,8 +201,7 @@ if (isset($currentPost)):
                             <textarea class="form-control transparent-input" placeholder="Add a comment..." id="commentArea"
                                 maxlength=200></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-2" id="sendButton"
-                            style="display: none;">Send</button>
+                        <button type="submit" class="btn btn-primary mt-2" id="sendButton">Send</button>
                     </div>
                 </form>
 

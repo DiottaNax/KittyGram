@@ -36,5 +36,4 @@
     </div>
 </div>
 
-<script src="./utils/functions.js"></script>
 <script src="./js/addPost.js"></script>

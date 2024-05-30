@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             notificationMessage,
             post_id
           );
+
+          location.reload();
         }
       })
       .catch((error) => console.error("Error:", error));

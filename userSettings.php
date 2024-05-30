@@ -118,8 +118,7 @@
 
             <div class="mb-3 justify-content-center">
                 <p id="update-result" name="update-result"></p>
-                <button type="submit" class="btn btn-bd-primary w-100" id="save-button" name="save-button"
-                    style="background-color: #493400; color: white;">Save Changes</button>
+                <button type="submit" class="btn btn-primary w-100" id="save-button" name="save-button">Save Changes</button>
             </div>
         </form>
     </div>

@@ -46,7 +46,7 @@ if (isset($_GET['post_id'])):
                 $submitter = $dbh->getAccountFromId($adoptionRequest['user_id']); ?>
             <!-- card di una richiesta di adozione -->
             <div class="container d-flex justify-content-center align-items-center mb-5">
-                <div class="card text-center" style="width: 30rem;">
+                <div class="card text-center">
                     <!-- icona del cestino -->
                     <svg
                         data-post-id="<?php echo $adoptionRequest['post_id'] ?>"

@@ -167,16 +167,27 @@
                           id="like-<?php echo $post["post_id"]; ?>"></p>
                       </div>
                       <?php if ($showingAdoptions): ?>
-                        <div class="adoption-icon" data-bs-toggle="modal" data-bs-target="#adoption-modal"
-                          data-post-id="<?php echo $post["post_id"]; ?>"
-                          data-owner="<?php echo $post["owner"]["username"]; ?>">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-house-heart"
-                            viewBox="0 0 16 16">
-                            <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982" />
-                            <path
-                              d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
-                          </svg>
-                        </div>
+                        <?php if ($post['adopted']): ?>
+                          <button type="button" class="btn btn-primary" disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                              class="bi bi-check-lg me-2" viewBox="0 0 16 16">
+                              <path
+                                d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
+                            </svg>
+                            Adopted
+                          </button>
+                        <?php else: ?>
+                          <div class="adoption-icon" data-bs-toggle="modal" data-bs-target="#adoption-modal"
+                            data-post-id="<?php echo $post["post_id"]; ?>"
+                            data-owner="<?php echo $post["owner"]["username"]; ?>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-house-heart"
+                              viewBox="0 0 16 16">
+                              <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982" />
+                              <path
+                                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+                            </svg>
+                          </div>
+                        <?php endif; ?>
                       <?php endif; ?>
                       <div class="comment-icon" data-bs-toggle="modal" data-bs-target="#comment-modal"
                         data-post-id="<?php echo $post["post_id"]; ?>"
@@ -195,8 +206,8 @@
             <?php endforeach; ?>
           <?php else: ?>
             <div class="text-center">
-              <p>There are no posts :(</p>
-              <p>Find someone new on the explore page</a></p>
+              <p>There are no posts 😿</p>
+              <p>Try searching for some new kitty's owner!</a></p>
             </div>
           <?php endif; ?>
         </div>

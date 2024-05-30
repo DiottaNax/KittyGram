@@ -16,7 +16,7 @@
                 <!-- Modal body should be setted with js -->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                <button type="button" class="btn btn-secondary" id="searchClose" name="searchClose" data-bs-dismiss="modal">Chiudi</button>
             </div>
         </div>
     </div>

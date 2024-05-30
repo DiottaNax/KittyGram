@@ -7,8 +7,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title h5" id="comments">Commenti</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"
-                    onclick="location.reload()"></button>
+                <button type="button" class="btn-close" id="closeComment" name="closeComment" data-bs-dismiss="modal" aria-label="Chiudi"></button>
             </div>
             <div class="modal-body modal-body-comment">
                 <ul id="commentsList"></ul>
@@ -38,4 +37,3 @@
         </div>
     </div>
 </div>
-<script src="./utils/functions.js"></script>

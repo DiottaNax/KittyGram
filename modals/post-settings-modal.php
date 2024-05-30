@@ -5,8 +5,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title ms-2" id="post-settings-modal-label">Post Settings</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"
-                    onclick="location.reload()"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
             </div>
             <div class="modal-body">
                 <ul class="list-group list-group-flush">

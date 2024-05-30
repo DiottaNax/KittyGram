@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-
   const searchInput = document.getElementById("searchInput");
   const searchBody = document.getElementById("searchModalBody");
+  const closeButton = document.getElementById("searchClose");
+
   document
     .getElementById("searchInput")
     .addEventListener("input", function (event) {
@@ -17,9 +18,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-  searchInput.addEventListener("show.bs.modal", function (e) {
-    // Reimposta il valore dell'input a una stringa vuota
+  searchInput.addEventListener("hide.bs.modal", clearModal());
+
+  // Aggiungi un listener per il bottone di chiusura personalizzato
+  closeButton.addEventListener("click", function () {
+    clearModal();
+    location.reload();
+  });
+
+  function clearModal() {
     searchInput.innerHTML = "";
     searchBody.innerHTML = "<p></p>";
-  });
+  }
 });

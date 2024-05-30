@@ -61,5 +61,5 @@ require_once ("db-config.php");
 </div>
 <?php endforeach; ?>
 <?php else: ?>
-<p class="text-center">No notification yet, running out of kitties &#x1F640;??</p>
+<p class="text-center">No notification yet &#x1F640;??</p>
 <?php endif; ?>
