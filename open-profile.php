@@ -54,6 +54,7 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
         <li class="list-group-item d-flex justify-content-between align-items-center" id="name-last-name">
           <h2><?php echo $accountResult['first_name'] . " " . $accountResult['last_name']; ?></h2>
           <?php if ($accountResult['username'] == $_SESSION['username']): ?>
+            <!-- Se l'account visitato ha lo stesso username del visitatore mostra edit profile -->
             <button type="button" class="btn btn-light ms-4" id="user-settings-button" name="user-settings-button">
               Edit Profile
             </button>
@@ -84,16 +85,12 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
           <small class="text-muted"> <i class="fas fa-image mr-1"></i>Post</small>
         </li>
         <li class="list-inline-item me-4">
-          <a data-bs-toggle="modal" data-bs-target="#followersModal">
-            <h5 class="font-weight-bold mb-0 d-block ms-4"><?php echo count($followers) ?></h5><small class="text-muted">
+            <h5 data-bs-toggle="modal" data-bs-target="#followersModal" class="font-weight-bold mb-0 d-block ms-4" role="button"><?php echo count($followers) ?></h5><small class="text-muted">
               <i class="fas fa-user mr-1"></i>Followers</small>
-          </a>
         </li>
         <li class="list-inline-item">
-          <a data-bs-toggle="modal" data-bs-target="#followingModal">
-            <h5 class="font-weight-bold mb-0 d-block ms-4"><?php echo count($following) ?></h5><small class="text-muted">
+            <h5 class="font-weight-bold mb-0 d-block ms-4" data-bs-toggle="modal" data-bs-target="#followingModal" role="button"><?php echo count($following) ?></h5><small class="text-muted">
               <i class="fas fa-user mr-1"></i>Following</small>
-          </a>
         </li>
 
         <li class="list-group-item mt-3">
