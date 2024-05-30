@@ -129,9 +129,6 @@ ul {
   border-radius: 5px !important; /* Nasconde eventuali parti delle immagini che eccedono le dimensioni del contenitore */
   margin-left: 200px; /* Lascia lo spazio disponibile a sinistra */
   margin-right: auto; /* Lascia lo spazio disponibile a destra */
-  display: flex !important; /* Abilita il modello di layout flexbox */
-  justify-content: center !important; /* Allinea l'elemento figlio (l'immagine) al centro lungo l'asse principale (orizzontale) */
-  align-items: center !important;
 }
 
 .post-image-container-open img {
@@ -144,7 +141,6 @@ ul {
 .comment-section {
   width: 35%; /* Imposta la larghezza al 100% del contenitore genitore */
   height: auto;
-  margin-left: 50; /* Lascia lo spazio disponibile a sinistra */
   margin-right: auto;
 }
 
@@ -304,7 +300,6 @@ input[type="number"] {
 
 .like {
   border: 0px !important;
-  box-shadow: 0px !important;
 }
 
 /* Hide the mobile image by default */
