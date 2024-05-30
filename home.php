@@ -112,41 +112,44 @@
                   </div>
                 </div>
 
-                <div class="col post-image-container">
-                  <?php
-                  $images = $post["media"];
-                  if (count($post["media"]) > 1): ?>
-                    <div id="carousel-<?php echo $post['post_id']; ?>" class="carousel slide">
-                      <div class="carousel-indicators">
-                        <?php foreach ($images as $index => $image): ?>
-                          <button type="button" data-bs-target="#carousel-<?php echo $post['post_id']; ?>"
-                            data-bs-slide-to="<?php echo $index; ?>" class="<?php echo $index === 0 ? 'active' : ''; ?>"
-                            aria-current="<?php echo $index === 0 ? 'true' : 'false'; ?>"
-                            aria-label="Slide <?php echo $index + 1; ?>"></button>
-                        <?php endforeach; ?>
+                <a href="open-post.php?post_id=<?php echo $post['post_id'] ?>">
+                  <div class="col post-image-container">
+                    <?php
+                    $images = $post["media"];
+                    if (count($post["media"]) > 1): ?>
+                      <div id="carousel-<?php echo $post['post_id']; ?>" class="carousel slide">
+                        <div class="carousel-indicators">
+                          <?php foreach ($images as $index => $image): ?>
+                            <button type="button" data-bs-target="#carousel-<?php echo $post['post_id']; ?>"
+                              data-bs-slide-to="<?php echo $index; ?>" class="<?php echo $index === 0 ? 'active' : ''; ?>"
+                              aria-current="<?php echo $index === 0 ? 'true' : 'false'; ?>"
+                              aria-label="Slide <?php echo $index + 1; ?>"></button>
+                          <?php endforeach; ?>
+                        </div>
+                        <div class="carousel-inner">
+                          <?php foreach ($images as $index => $image): ?>
+                            <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                              <img src="./img/<?php echo $image; ?>" class=" border border-dark" alt="Post Image">
+                            </div>
+                          <?php endforeach; ?>
+                        </div>
+                        <button class="carousel-control-prev" type="button"
+                          data-bs-target="#carousel-<?php echo $post['post_id']; ?>" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button"
+                          data-bs-target="#carousel-<?php echo $post['post_id']; ?>" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
                       </div>
-                      <div class="carousel-inner">
-                        <?php foreach ($images as $index => $image): ?>
-                          <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                            <img src="./img/<?php echo $image; ?>" class=" border border-dark" alt="Post Image">
-                          </div>
-                        <?php endforeach; ?>
-                      </div>
-                      <button class="carousel-control-prev" type="button"
-                        data-bs-target="#carousel-<?php echo $post['post_id']; ?>" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                      </button>
-                      <button class="carousel-control-next" type="button"
-                        data-bs-target="#carousel-<?php echo $post['post_id']; ?>" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                      </button>
-                    </div>
-                  <?php else: ?>
-                    <img src="./img/<?php echo $images[0]; ?>" alt="Post Image" class=" border border-dark">
-                  <?php endif; ?>
-                </div>
+                    <?php else: ?>
+                      <img src="./img/<?php echo $images[0]; ?>" alt="Post Image" class=" border border-dark">
+                    <?php endif; ?>
+                  </div>
+                </a>
+
                 <div class="row mt-2">
                   <!-- Row for comments and likes -->
                   <div class="col text-end mb-2">
