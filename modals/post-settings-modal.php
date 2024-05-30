@@ -10,9 +10,10 @@
             </div>
             <div class="modal-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Delete Post</li>
-                    <?php if ($isAdoption): ?>
-                        <li class="list-group-item">Mark as adopted</li>
+                    <li class="list-group-item" role="button" id="delete_post" name="delete_post"
+                        data-post-id="<?php echo $currentPost['post_id'] ?>">Delete Post</li>
+                    <?php if ($isAdoption && !$currentPost['adopted']): ?>
+                        <li class="list-group-item" role="button" id="mark_adopted" name="mark_adopted" data-post-id="<?php echo $currentPost['post_id'] ?>">Mark as adopted</li>
                     <?php endif; ?>
                 </ul>
             </div>
@@ -20,8 +21,9 @@
     </div>
 </div>
 
-<script src="./js/post-settings-modal.js"></script>
-<!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src=" ./js/post-settings-modal.js">
+                        </script>
+                        <!-- Bootstrap JS and dependencies -->
+                        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
