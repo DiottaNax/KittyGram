@@ -46,11 +46,14 @@ if (isset($currentPost)):
         <!-- post container -->
         <div class="post-wrapper">
             <!-- Colonna per l'immagine del post -->
-            <div class="post-image-container-open">
+            <div class="post-image-container-open d-flex justify-content-center align-items-center">
+                <!-- Contenuto dell'immagine -->
                 <?php
                 $images = $currentPost["media"];
                 if (count($currentPost["media"]) > 1): ?>
+                    <!-- Carosello se ci sono più immagini -->
                     <div id="carousel-<?php echo $currentPost['post_id']; ?>" class="carousel slide">
+                        <!-- Indicatori del carosello -->
                         <div class="carousel-indicators">
                             <?php foreach ($images as $index => $image): ?>
                                 <button type="button" data-bs-target="#carousel-<?php echo $currentPost['post_id']; ?>"
@@ -59,13 +62,15 @@ if (isset($currentPost)):
                                     aria-label="Slide <?php echo $index + 1; ?>"></button>
                             <?php endforeach; ?>
                         </div>
+                        <!-- Immagini del carosello -->
                         <div class="carousel-inner">
                             <?php foreach ($images as $index => $image): ?>
                                 <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                    <img src="./img/<?php echo $image; ?>" class=" border border-dark" alt="Post Image">
+                                    <img src="./img/<?php echo $image; ?>" class="border border-dark" alt="Post Image">
                                 </div>
                             <?php endforeach; ?>
                         </div>
+                        <!-- Controlli del carosello -->
                         <button class="carousel-control-prev" type="button"
                             data-bs-target="#carousel-<?php echo $currentPost['post_id']; ?>" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -78,9 +83,11 @@ if (isset($currentPost)):
                         </button>
                     </div>
                 <?php else: ?>
-                    <img src="./img/<?php echo $images[0]; ?>" alt="Post Image" class=" border border-dark">
+                    <!-- Immagine singola se c'è solo un'immagine -->
+                    <img src="./img/<?php echo $images[0]; ?>" alt="Post Image" class="border border-dark">
                 <?php endif; ?>
             </div>
+
             <!-- Colonna per la descrizione del post e i commenti -->
             <div class="comment-section mt-5">
             <div class="card description">
