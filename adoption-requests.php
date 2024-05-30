@@ -72,10 +72,6 @@ if (isset($_GET['post_id'])):
                 </div>
             </div>
             <?php endforeach; ?>
-
-            <?php require_once ("./modals/comment-modal.php") ?>
-            <?php require_once ("./modals/adoption-modal.php") ?>
-            <?php require_once ("./modals/post-settings-modal.php") ?>
         </body>
 
         </html>

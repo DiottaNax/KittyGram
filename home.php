@@ -12,10 +12,8 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="./js/notification-viewed.js"></script>
   <link rel="stylesheet" href="./css/style.css" />
   <script src="js/sendNotification.js"> </script>
-  <script src="js/addComment.js"> </script>
   <script src="js/commentModal.js"> </script>
   <script src="./js/like.js"></script>
   <?php require_once ("db-config.php") ?>
