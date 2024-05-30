@@ -469,8 +469,7 @@ class DatabaseHelper
         $query = "DELETE FROM POST WHERE post_id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $post_id);
-        $stmt->execute();
-        return $stmt->affected_rows;
+        return $stmt->execute();
     }
 
     public function isCityRegistered($nameOrCap)
@@ -536,7 +535,15 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function markAsAdopted($post_id) {
+        $query = "UPDATE adoption SET adopted = '1' WHERE adoption.post_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $post_id);
+        return $stmt->execute();
+    }
+
     public function getAdoptionRequests($post_id)
+   
     {
         $stmt = $this->db->prepare("SELECT * FROM user_adopting WHERE post_id = ?;");
         $stmt->bind_param("i", $post_id);
@@ -570,6 +577,7 @@ class DatabaseHelper
               LEFT JOIN account ON user_adopting.user_id = account.user_id
               WHERE user_adopting.post_id = ?
                 AND (account.username = ? OR account.user_id = ?)";
+
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("isi", $post_id, $submitter, $submitter);
