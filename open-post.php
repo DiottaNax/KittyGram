@@ -1,8 +1,6 @@
 <?php
 require_once ("db-config.php");
 
-
-
 if (isset($_GET['post_id'])) {
     $post_id = $_GET['post_id'];
     $isAdoption = $dbh->isAdoption($post_id);
@@ -17,7 +15,7 @@ if (isset($_GET['post_id'])) {
 
 if (isset($currentPost)):
     ?>
-    <!doctype html>
+    <!Doctype html>
     <html lang="en">
 
     <head>
@@ -30,7 +28,6 @@ if (isset($currentPost)):
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
-
         <link rel="stylesheet" href="css/style.css">
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="js/UserPost.js"></script>
@@ -42,7 +39,6 @@ if (isset($currentPost)):
         <!-- Inclusione della navbar -->
         <?php echo require_once ("./components/navbar.php") ?>
         <?php $viewer = $dbh->getAccountFromUsername($_SESSION['username']); ?>
-
         <title>User Post</title>
     </head>
 
@@ -215,10 +211,8 @@ if (isset($currentPost)):
     </body>
 
     </html>
-
     <?php require_once ("./modals/adoption-modal.php") ?>
     <?php require_once ("./modals/post-settings-modal.php") ?>
-
 <?php else:
     header('Location: ./index.php');
 endif;
