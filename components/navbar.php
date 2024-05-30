@@ -35,7 +35,7 @@
 
 
             <!-- Notifications -->
-            <div class="col-1 text-center mt-2 mb-2">
+            <div class="col-1 text-start mt-2 mb-2">
                 <svg data-bs-toggle="modal" data-bs-target="#notification-modal" xmlns="http://www.w3.org/2000/svg"
                     width="30" class="clickable bi bi-bell" viewBox="0 0 16 16">
                     <path
