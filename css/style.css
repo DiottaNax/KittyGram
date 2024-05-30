@@ -136,12 +136,6 @@ ul {
   width: 100%; /* Imposta la larghezza al 100% del contenitore */
 }
 
-.comment-section {
-  width: 35%; /* Imposta la larghezza al 100% del contenitore genitore */
-  height: auto;
-  margin-right: auto;
-}
-
 .post-image-container img {
   min-width: 400px; /* Imposta la larghezza minima */
   min-height: 250px; /* Imposta l'altezza minima */
@@ -164,13 +158,6 @@ ul {
   object-fit: cover; /* Mantiene le proporzioni dell'immagine coprendo l'intero contenitore */
   width: 100%; /* Imposta la larghezza al 100% del contenitore */
   height: 100%; /* Imposta l'altezza al 100% del contenitore */
-}
-
-.post-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Distribuisci lo spazio tra gli elementi */
-  height: 100vh; /* Altezza del viewport */
 }
 
 .carousel-indicators .active {
@@ -239,10 +226,6 @@ input[type="number"] {
   margin-top: 8rem; /* Aumenta questo valore per avere più spazio */
 }
 
-.description {
-  padding: 20px; /* Aumenta questo valore per più spazio */
-}
-
 .avatar {
   width: 40px;
   height: 40px;
@@ -306,6 +289,11 @@ input[type="number"] {
 /* Show the desktop image by default */
 .desktop-img {
   display: block;
+}
+
+.card {
+  min-width: 500px !important;
+  max-width: 500px !important;
 }
 
 /* Media query for mobile devices */
