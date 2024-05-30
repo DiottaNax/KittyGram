@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="css/style.css">
 <script src="js/sendAdoptionRequest.js"></script>
-<div class="modal fade" id="adoption-modal" name="adoption-modal" tabindex="-1" aria-labelledby="adoption-modal-label"
-    aria-hidden="true">
+<div class="modal fade" id="adoption-modal" tabindex="-1" aria-labelledby="adoption-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -38,7 +37,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <p class="text-center" id="adoption-result" name="adoption-result"></p>
+                        <p class="text-center" id="adoption-result"></p>
                         <button type="submit" class="btn btn-secondary" id="adoptionSubmit" name="adoptionSubmit"
                             disabled>Submit</button>
                     </div>

@@ -141,7 +141,6 @@ ul {
 .comment-section {
   width: 35%; /* Imposta la larghezza al 100% del contenitore genitore */
   height: auto;
-  margin-left: 50; /* Lascia lo spazio disponibile a sinistra */
   margin-right: auto;
 }
 
@@ -254,14 +253,12 @@ input[type="number"] {
 }
 
 .smaller-text {
-  font-size: 0.875rem;
+  font-size: 0.685rem;
 }
 
 .bi-three-dots {
   cursor: pointer;
 }
-
-
 
 /*  ---------------------  imported from old style.css  ---------------------  */
 
@@ -303,17 +300,16 @@ input[type="number"] {
 
 .like {
   border: 0px !important;
-  box-shadow: 0px !important;
 }
 
 /* Hide the mobile image by default */
 .mobile-img {
-    display: none;
+  display: none;
 }
 
 /* Show the desktop image by default */
 .desktop-img {
-    display: block;
+  display: block;
 }
 
 /* Media query for mobile devices */
@@ -332,11 +328,11 @@ input[type="number"] {
   }
 
   /* Hide the desktop image */
-    .desktop-img {
-        display: none;
-    }
-    /* Show the mobile image */
-    .mobile-img {
-        display: block;
-    }
+  .desktop-img {
+    display: none;
+  }
+  /* Show the mobile image */
+  .mobile-img {
+    display: block;
+  }
 }

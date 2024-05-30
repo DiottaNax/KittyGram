@@ -17,15 +17,19 @@
                 <div class="container">
                     <form action="#" id="commentForm" method="POST">
                         <div class="row d-flex justify-content">
-                        <div class="d-flex align-items-center">
-                            <input type="hidden" id="writer" name="writer" value="<?php echo htmlspecialchars($_SESSION['username']); ?>">
-                            <input type="hidden" id="input-post-owner" name="input-post-owner" value="">
-                            <input type="hidden" id="input-post-id" name="input-post-id" value="">
-                            <img src="img/<?php echo $account['pic'] ?>" class="small-avatar rounded-circle me-2 ms-2" alt="Avatar utente">
-                            <textarea class="form-control transparent-input" placeholder="Purr back to this post" id="commentArea" maxlength=200 writer="<?php echo $_SESSION['username'] ?>"></textarea>
-                        </div>
+                            <div class="d-flex align-items-center">
+                                <input type="hidden" id="writer" name="writer"
+                                    value="<?php echo htmlspecialchars($_SESSION['username']); ?>">
+                                <input type="hidden" id="input-post-owner" name="input-post-owner" value="">
+                                <input type="hidden" id="input-post-id" name="input-post-id" value="">
+                                <img src="img/<?php echo $account['pic'] ?>"
+                                    class="small-avatar rounded-circle me-2 ms-2" alt="Avatar utente">
+                                <textarea class="form-control transparent-input" placeholder="Purr back to this post"
+                                    id="commentArea" maxlength=200></textarea>
+                            </div>
                             <div class="col-1 mt-2">
-                                <button type="submit" class="btn btn-secondary" id="sendComment">Send</button>
+                                <button type="submit" class="btn btn-secondary" id="sendComment"
+                                    data-bs-dismiss="modal">Send</button>
                             </div>
                         </div>
                     </form>

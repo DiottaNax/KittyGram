@@ -1,8 +1,6 @@
 <?php
 require_once ("db-config.php");
 
-
-
 if (isset($_GET['post_id'])) {
     $post_id = $_GET['post_id'];
     $isAdoption = $dbh->isAdoption($post_id);
@@ -17,7 +15,7 @@ if (isset($_GET['post_id'])) {
 
 if (isset($currentPost)):
     ?>
-    <!doctype html>
+    <!Doctype html>
     <html lang="en">
 
     <head>
@@ -30,7 +28,6 @@ if (isset($currentPost)):
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
-
         <link rel="stylesheet" href="css/style.css">
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="js/UserPost.js"></script>
@@ -42,7 +39,6 @@ if (isset($currentPost)):
         <!-- Inclusione della navbar -->
         <?php echo require_once ("./components/navbar.php") ?>
         <?php $viewer = $dbh->getAccountFromUsername($_SESSION['username']); ?>
-
         <title>User Post</title>
     </head>
 
@@ -91,7 +87,9 @@ if (isset($currentPost)):
                 <div class="d-flex align-items-center mb-1">
                     <img src="img/<?php echo $currentPost['owner']['pic'] ?>" class="avatar rounded-circle me-2" alt="Avatar utente">
                     <div>
-                        <h5 class="mb-0"><?php echo $currentPost['owner']['username'] ?></h5>
+                        <a href="open-profile.php?username=<?php echo $currentPost['owner']['username']; ?>" class="custom-link">
+                            <h5 class="mb-0"><?php echo $currentPost['owner']['username'] ?></h5>
+                        </a>
                         <p class="mb-0 smaller-text"><?php echo $currentPost['date'] ?></p>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -100,7 +98,7 @@ if (isset($currentPost)):
                         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                     </svg>
                 </div>
-                <p class="mb-0"><strong></strong> <?php echo $currentPost['description'] ?></p>
+                <p class="mb-0 mt-1"><strong></strong> <?php echo $currentPost['description'] ?></p>
             </div>
             <!-- Navbar con tasto like -->
             <nav class="navbar navbar-expand mt-1">
@@ -178,7 +176,9 @@ if (isset($currentPost)):
                                     <img src="img/<?php echo $comment['profile_pic'] ?>" class="avatar rounded-circle me-2"
                                         alt="Avatar utente">
                                     <div>
-                                        <h6 class="mb-0">@<?php echo $comment['username'] ?></h6>
+                                        <a href="open-profile.php?username=<?php echo $comment['username']; ?>" class="custom-link">
+                                            <h6 class="mb-0">@<?php echo $comment['username'] ?></h6>
+                                        </a>
                                         <p class="mb-0"><?php echo $comment['message'] ?></p>
                                     </div>
                                 </div>
@@ -211,10 +211,8 @@ if (isset($currentPost)):
     </body>
 
     </html>
-
     <?php require_once ("./modals/adoption-modal.php") ?>
     <?php require_once ("./modals/post-settings-modal.php") ?>
-
 <?php else:
     header('Location: ./index.php');
 endif;

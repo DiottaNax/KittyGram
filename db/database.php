@@ -543,6 +543,7 @@ class DatabaseHelper
     }
 
     public function getAdoptionRequests($post_id)
+   
     {
         $stmt = $this->db->prepare("SELECT * FROM user_adopting WHERE post_id = ?;");
         $stmt->bind_param("i", $post_id);
@@ -552,6 +553,8 @@ class DatabaseHelper
         return $result;
     }
 
+    public function removeAdoptionRequest($post_id, $submitter_id)
+    {
     public function removeAdoptionRequest($post_id, $submitter_id)
     {
         $query = "DELETE FROM user_adopting WHERE post_id = ? AND user_id = ?";
@@ -576,6 +579,7 @@ class DatabaseHelper
               LEFT JOIN account ON user_adopting.user_id = account.user_id
               WHERE user_adopting.post_id = ?
                 AND (account.username = ? OR account.user_id = ?)";
+
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("isi", $post_id, $submitter, $submitter);
@@ -664,7 +668,7 @@ class DatabaseHelper
 
         // Popola gli array posts e adoptions
         foreach ($result as &$post) {
-            $post['medias'] = $this->getMediasByPostId($post['post_id']);
+            $post['media'] = $this->getMediasByPostId($post['post_id']);
             if ($post['is_adoption']) {
                 $userPosts['adoptions'][] = $post;
             } else {
@@ -806,4 +810,3 @@ class DatabaseHelper
         return false;
     }
 }
-
