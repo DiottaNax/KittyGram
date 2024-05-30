@@ -19,7 +19,6 @@ VALUES
 ('I love kittens!!', '2023-05-08', 6);
 ('Love that!', '2023-05-09', 6);
 ('AHAHAHAHAHA', '2023-05-10', 6);
-('Dying from laugh!', '2023-05-11', 6);
 
 INSERT INTO MEDIA (file_name, post_id)
 VALUES 
