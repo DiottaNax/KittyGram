@@ -150,7 +150,7 @@ class DatabaseHelper
             FROM NOTIFICATION INNER JOIN ACCOUNT ui ON NOTIFICATION.for_user_id = ui.user_id 
             INNER JOIN ACCOUNT ur ON NOTIFICATION.from_user_id = ur.user_id
             WHERE NOTIFICATION.for_user_id = ? AND NOTIFICATION.seen = 0
-            ORDER BY date, notification_id
+            ORDER BY date DESC, notification_id
         ";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $user_id);
