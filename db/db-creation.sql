@@ -166,7 +166,7 @@ ALTER TABLE LOGIN_ATTEMPTS
 
 ALTER TABLE MEDIA
     ADD FOREIGN KEY (post_id)
-    REFERENCES POST (post_id);
+    REFERENCES POST (post_id) ON DELETE CASCADE;
 
 -- Index Section
 -- _____________ 
