@@ -114,7 +114,6 @@ ul {
   width: 400px !important; /* Imposta una larghezza fissa per il contenitore */
   height: 400px !important; /* Imposta un'altezza fissa per il contenitore */
   overflow: hidden !important;
-  border: 2px solid #573c0c !important; /* Aggiunge un bordo nero di 2px */
   border-radius: 5px !important; /* Nasconde eventuali parti delle immagini che eccedono le dimensioni del contenitore */
   display: flex !important; /* Abilita il modello di layout flexbox */
   justify-content: center !important; /* Allinea l'elemento figlio (l'immagine) al centro lungo l'asse principale (orizzontale) */
@@ -125,7 +124,6 @@ ul {
   width: 600px !important; /* Imposta una larghezza fissa per il contenitore */
   height: 600px !important; /* Imposta un'altezza fissa per il contenitore */
   overflow: hidden !important;
-  border: 2px solid #573c0c !important; /* Aggiunge un bordo nero di 2px */
   border-radius: 5px !important; /* Nasconde eventuali parti delle immagini che eccedono le dimensioni del contenitore */
   margin-left: 200px; /* Lascia lo spazio disponibile a sinistra */
   margin-right: auto; /* Lascia lo spazio disponibile a destra */
@@ -155,8 +153,6 @@ ul {
   width: 300px !important; /* Imposta una larghezza fissa per il contenitore */
   height: 300px !important; /* Imposta un'altezza fissa per il contenitore */
   overflow: hidden !important;
-  border: 2px solid #573c0c !important; /* Aggiunge un bordo nero di 2px */
-  border-radius: 5px !important; /* Nasconde eventuali parti delle immagini che eccedono le dimensioni del contenitore */
   display: flex !important; /* Abilita il modello di layout flexbox */
   justify-content: center !important; /* Allinea l'elemento figlio (l'immagine) al centro lungo l'asse principale (orizzontale) */
   align-items: center !important;

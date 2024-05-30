@@ -1,4 +1,5 @@
 <script src="./js/searchUser.js"></script>
+<script src="./js/notification-viewed.js"></script>
 
 <header class="nav p-2 fixed-top shadow-sm bg-white justify-content-between">
     <!-- Notification window -->

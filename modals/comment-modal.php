@@ -1,6 +1,6 @@
 <?php $account = $dbh->getAccountFromUsername($_SESSION['username']); ?>
 
-<link rel="stylesheet" href="css/style.css"> <!-- Assicurati di aggiornare il percorso corretto -->
+<script src="js/addComment.js"> </script>
 <div class="modal fade" id="comment-modal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="comments"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
