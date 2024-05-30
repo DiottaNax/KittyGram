@@ -555,8 +555,6 @@ class DatabaseHelper
 
     public function removeAdoptionRequest($post_id, $submitter_id)
     {
-    public function removeAdoptionRequest($post_id, $submitter_id)
-    {
         $query = "DELETE FROM user_adopting WHERE post_id = ? AND user_id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ii", $post_id, $submitter_id);
