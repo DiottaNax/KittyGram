@@ -47,14 +47,13 @@ if (isset($currentPost)):
         <div class="container-fluid py-4 d-flex justify-content-center align-items-center min-vh-100">
             <div class="row auto-cols w-100">
                 <!-- Colonna per l'immagine del post -->
-                <div class="col mt-5 mb-5 py-4 d-flex justify-content-center" style="min-width: 600px">
+                <div class="col mt-5 mb-5 py-4 d-flex justify-content-center">
                     <!-- Contenuto dell'immagine -->
                     <?php
                     $images = $currentPost["media"];
                     if (count($currentPost["media"]) > 1): ?>
                         <!-- Carosello se ci sono più immagini -->
-                        <div id="carousel-<?php echo $currentPost['post_id']; ?>" class="carousel slide"
-                            style="max-height: 500px; max-width: 600px">
+                        <div id="carousel-<?php echo $currentPost['post_id']; ?>" class="carousel slide">
                             <!-- Indicatori del carosello -->
                             <div class="carousel-indicators">
                                 <?php foreach ($images as $index => $image): ?>
@@ -105,12 +104,14 @@ if (isset($currentPost)):
                                 </a>
                                 <p class="mb-0 smaller-text"><?php echo $currentPost['date'] ?></p>
                             </div>
+                            <?php if ($currentPost['user_id'] == $_SESSION['user_id']) : ?>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-three-dots position-absolute top-0 end-0 m-3" data-bs-toggle="modal"
                                 data-bs-target="#post-settings-modal" viewBox="0 0 16 16">
                                 <path
                                     d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                             </svg>
+                            <?php endif; ?>
                         </div>
                         <p class="mb-0 mt-1 text-start"> <?php echo $currentPost['description'] ?></p>
 

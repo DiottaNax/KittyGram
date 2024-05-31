@@ -11,12 +11,12 @@ if (isset($_POST['username'], $_POST['password'])) {
     $loginResult = login($username, $password, $dbh);
     if ($loginResult['success'] == true) {
         $result['success'] = true;
-        $result['message'] = "Correct ( or guessed :) ) password!\nYou're being redirected to home page...";
+        $result['message'] = "Welcome back " . $_POST['username'] . " 😸";
     } else {
         if ($loginResult["disabled"] == true) {
-            $result['message'] = "Account disabled!\nNot smart enough to bruteforce??";
+            $result['message'] = "Account disabled!\nNot smart enough to bruteforce 😼??";
         } else {
-            $result['message'] = "Invalid username or password!\nTrying to force login?? >:(";
+            $result['message'] = "Invalid username or password 😾!";
         }
     }
 } else {

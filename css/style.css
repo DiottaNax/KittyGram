@@ -83,7 +83,7 @@ ul {
 
 .transparent-input {
   background-color: transparent !important;
-  border: none !important; /* Rimuove il bordo della casella di input */
+  border: 1px #c6bc9e solid !important; /* Rimuove il bordo della casella di input */
   box-shadow: none !important; /* Rimuove l'ombra */
   outline: none !important; /* Rimuove l'outline al focus */
 }
@@ -224,7 +224,7 @@ input[type="number"] {
 }
 
 .post-image {
-  max-width: 500px;
+  max-width: 600px;
   max-height: 500px;
   min-width: 300px;
   min-height: 300px;
@@ -232,20 +232,6 @@ input[type="number"] {
   display: block;
   margin: auto;
 }
-
-
-/* Stili per le dimensioni massime dell'immagine del post a schermo ristretto*/
-@media only screen and (max-width: 600px) {
-  .post-image {
-    max-width: 400px;
-    max-height: 400px;
-    min-width: 200px;
-    min-height: 200px;
-  }
-}
-
-
-
 
 /*  ---------------------  imported from old style.css  ---------------------  */
 
@@ -306,6 +292,14 @@ input[type="number"] {
 
 /* Media query for mobile devices */
 @media (max-width: 768px) {
+
+  .post-image {
+    max-width: 400px;
+    max-height: 400px;
+    min-width: 200px;
+    min-height: 200px;
+  }
+
   .card {
     width: fit-content !important; /* Set width to 100% for mobile */
     max-width: 400px !important;

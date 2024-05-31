@@ -21,10 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log(response.data);
           document.getElementById("resultId").innerText= response.data["message"];
         if (response.data["success"]) {
-          document.getElementById("resultId").style.color = "green";
           setTimeout(() => (window.location.href = "index.php"), 500);
-        } else {
-          document.getElementById("resultId").style.color = "red";
         }
       });
     });
