@@ -68,8 +68,9 @@
                     </div>
                 </div>
             </div>
-            <label class="text-center mt-5" id="resultId"></label>
-            <div class="mt-1 justify-content-center">
+            
+            <div class="mt-1 justify-content-center text-center">
+                <label class="text-center justify-content-center mt-5" id="resultId"></label>
                 <button type="submit" class="btn btn-bd-primary w-100" id="submitSignup">Sign Up</button>
             </div>
         </form>
