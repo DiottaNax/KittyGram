@@ -44,7 +44,7 @@ if (isset($currentPost)):
 
     <body>
         <!-- post container -->
-        <div class="container-fluid py-4 d-flex justify-content-center">
+        <div class="container-fluid py-4 d-flex justify-content-center align-items-center min-vh-100">
             <div class="row auto-cols w-100">
                 <!-- Colonna per l'immagine del post -->
                 <div class="col mt-5 mb-5 py-4 d-flex justify-content-center" style="min-width: 600px">
@@ -68,7 +68,8 @@ if (isset($currentPost)):
                             <div class="carousel-inner">
                                 <?php foreach ($images as $index => $image): ?>
                                     <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                        <img src="./img/<?php echo $image; ?>" class="d-block w-100 h-100 post-image" alt="Post Image" >
+                                        <img src="./img/<?php echo $image; ?>" class="d-block w-100 h-100 post-image"
+                                            alt="Post Image">
                                     </div>
                                 <?php endforeach; ?>
                             </div>
@@ -205,21 +206,21 @@ if (isset($currentPost)):
                         </div>
 
                         <form id="commentForm" class="w-100">
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <img src="img/<?php echo $viewer['pic'] ?>"
-                                        class="small-avatar rounded-circle me-2 ms-2" alt="Avatar utente">
-                                    <input type="hidden" id="writer" name="writer"
-                                        value="<?php echo htmlspecialchars($viewer['username']); ?>">
-                                    <input type="hidden" id="input-post-owner" name="input-post-owner"
-                                        value="<?php echo htmlspecialchars($currentPost['owner']['username']); ?>">
-                                    <input type="hidden" id="input-post-id" name="input-post-id"
-                                        value="<?php echo htmlspecialchars($currentPost['post_id']); ?>">
-                                    <textarea class="form-control transparent-input" placeholder="Add a comment..."
-                                        id="commentArea" maxlength=200></textarea>
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-primary mt-2" id="sendButton">Send</button>
-                                </div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <img src="img/<?php echo $viewer['pic'] ?>" class="small-avatar rounded-circle me-2 ms-2"
+                                    alt="Avatar utente">
+                                <input type="hidden" id="writer" name="writer"
+                                    value="<?php echo htmlspecialchars($viewer['username']); ?>">
+                                <input type="hidden" id="input-post-owner" name="input-post-owner"
+                                    value="<?php echo htmlspecialchars($currentPost['owner']['username']); ?>">
+                                <input type="hidden" id="input-post-id" name="input-post-id"
+                                    value="<?php echo htmlspecialchars($currentPost['post_id']); ?>">
+                                <textarea class="form-control transparent-input" placeholder="Add a comment..."
+                                    id="commentArea" maxlength=200></textarea>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary mt-2" id="sendButton">Send</button>
+                            </div>
                         </form>
                     </div>
                 </div>

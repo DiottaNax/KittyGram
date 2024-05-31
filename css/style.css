@@ -120,22 +120,6 @@ ul {
   align-items: center !important;
 }
 
-.post-image-container-open {
-  width: 600px !important; /* Imposta una larghezza fissa per il contenitore */
-  height: 600px !important; /* Imposta un'altezza fissa per il contenitore */
-  overflow: hidden !important;
-  border-radius: 5px !important; /* Nasconde eventuali parti delle immagini che eccedono le dimensioni del contenitore */
-  margin-left: 200px; /* Lascia lo spazio disponibile a sinistra */
-  margin-right: auto; /* Lascia lo spazio disponibile a destra */
-}
-
-.post-image-container-open img {
-  min-width: 600px; /* Imposta la larghezza minima */
-  min-height: 250px; /* Imposta l'altezza minima */
-  object-fit: cover; /* Mantiene le proporzioni dell'immagine coprendo l'intero contenitore */
-  width: 100%; /* Imposta la larghezza al 100% del contenitore */
-}
-
 .post-image-container img {
   min-width: 400px; /* Imposta la larghezza minima */
   min-height: 250px; /* Imposta l'altezza minima */
