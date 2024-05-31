@@ -9,10 +9,10 @@
             </div>
             <div class="modal-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" role="button" id="delete_post" name="delete_post"
+                    <li class="list-group-item" role="button" id="delete_post"
                         data-post-id="<?php echo $currentPost['post_id'] ?>" data-owner-username="<?php echo $currentPost['owner']['username'] ?>">Delete Post</li>
                     <?php if ($isAdoption && !$currentPost['adopted']): ?>
-                        <li class="list-group-item" role="button" id="mark_adopted" name="mark_adopted" data-post-id="<?php echo $currentPost['post_id'] ?>">Mark as adopted</li>
+                        <li class="list-group-item" role="button" id="mark_adopted" data-post-id="<?php echo $currentPost['post_id'] ?>">Mark as adopted</li>
                     <?php endif; ?>
                 </ul>
             </div>

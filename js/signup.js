@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("passwords do not match.");
         document.getElementById("resultId").innerText =
           "Passwords do not match!";
-        document.getElementById("resultId").style.color = "red";
         return;
       }
 
@@ -32,13 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(response.data);
         if (response.data["success"]) {
           document.getElementById("resultId").innerText =
-            "Thank you for joining us! Redirecting to home page...";
-          document.getElementById("resultId").style.color = "black";
+            "Thank you for joining us 😻!";
           setTimeout(() => (window.location.href = "index.php"), 500);
         } else {
           document.getElementById("resultId").innerText =
             response.data["error"];
-          document.getElementById("resultId").style.color = "red";
         }
       });
     });
