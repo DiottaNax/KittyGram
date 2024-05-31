@@ -232,7 +232,7 @@ class DatabaseHelper
             INSERT INTO comment (message, post_id, user_id, date)
             VALUES (?, ?, ?, ?)
         ";
-        $date = date('Y-m-d H:i', time());
+        $date = date('Y-m-d H:i:s', time());
         //insert a new comment
         $writer_id = $this->getIdFromUsername($username);
         $stmt = $this->db->prepare($query);
@@ -397,7 +397,7 @@ class DatabaseHelper
     {
         $query = "INSERT INTO POST (user_id, description, date) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $date = date("Y-m-d H:i");
+        $date = date("Y-m-d H:i:s");
         $stmt->bind_param("iss", $user_id, $description, $date);
         $stmt->execute();
         $post_id = $stmt->insert_id;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 31, 2024 alle 20:15
+-- Creato il: Mag 31, 2024 alle 20:36
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -33,46 +33,6 @@ INSERT INTO `account` (`user_id`, `username`, `email`, `password`, `salt`, `firs
 (5, 'silvi.marco', 'marcos@gmail.com', 'c15155ee965814445b3a1fbc2016d79d32d93f25473e0b4dd20db309bc20411915473ab8e161b722ca4aa22ade0125a1aaecb8e0a889749208568e54b3e4a91c', '6f481de821dffaaa0519f488723e957bdb9ff871497e002e608eb0847b150f801a9f1e070d4c946547b263e287af0310af5177468dbd8ce5c9a883faf31dd89e', 'Marco', 'Silvi', '📍  Fossombrone\r\n📚  Fisica, UniBo', 13, NULL),
 (6, 'volume_campus_cesena', 'volume@gmail.com', 'ae94d57d34f826ea183da9c854f67d63e9178a527df83cb3ec45d43ef01b509aee7c25310d2ea73b8a2cf66d1ae504a3f9c2989a600859f6e2de335a7ddad3bf', '5230f560b21d66ea4f722e71feac195d05aad3fc000e994477ce5475bd0f3ceeea3f65fe42d6eebb3ceaa173646da57f874931229a8640b2ebef47055aa7f2c3', 'VOLUME', 'CESENA', 'Spazio ※ Ascolto ※ Alimento\r\n\r\n\r\n📞 Prenota ora quello che vuoi dal menu: \r\n      32*******5\r\n\r\n🕒 Dal Lunedì al Venerdì: 8:30-18:00\r\n📖 Studio\r\n☕ Caffetteria\r\n🍹 Aperitivi\r\n\r\nwww.aidoru.org/spaces-volume.html', 15, NULL),
 (7, 'eugeniasantii', 'gegia@gmail.com', '041b61ec9da10547d90817c4cb6db8e168417bd97144819ea26dc26b812caa4a39e7e01aa92e2d9519982c3ca04bc5d300888a3bf1e6b5f8e5026995a4ad02f0', '9737aef01bf9d309e974edf6e30fc220066b5e49ecb5fe7f87329236383676e8b3b10bb19f12acc28949aea4e99281f02a5278e8993899d7c618c2b1557563ed', 'Eugenia', 'Santi', '📸 Instagram:  @eugeniasantii', 14, NULL);
-
---
--- Dump dei dati per la tabella `adoption`
---
-
-INSERT INTO `adoption` (`post_id`, `adopted`, `city_id`) VALUES
-(7, 0, 2),
-(8, 0, 8),
-(9, 0, 10);
-
---
--- Dump dei dati per la tabella `city`
---
-
-INSERT INTO `city` (`city_id`, `city_name`, `city_cap`) VALUES
-(1, 'Rimini', '47921'),
-(2, 'Cesena', '47023'),
-(3, 'Riccione', '47832'),
-(4, 'Pesaro', '61121'),
-(5, 'Fano', '61032'),
-(6, 'Cattolica', '47841'),
-(7, 'Santarcangelo di Romagna', '47024'),
-(8, 'Cesenatico', '47019'),
-(9, 'Sarsina', '47027'),
-(10, 'Faenza', '48018');
-
---
--- Dump dei dati per la tabella `comment`
---
-
-INSERT INTO `comment` (`comment_id`, `post_id`, `user_id`, `message`, `date`) VALUES
-(1, 1, 2, 'vi piace??', '2024-05-31 18:45:00'),
-(2, 2, 1, 'ma quello che abbraccia è gengar??', '2024-05-31 18:51:00'),
-(3, 7, 3, 'confermo, mi sono informato da spotted Cesena', '2024-05-31 18:54:00'),
-(4, 1, 3, 'il mio è più bello', '2024-05-31 19:16:00'),
-(5, 7, 1, '...non era meglio sentire con un veterinario?', '2024-05-31 19:19:00'),
-(6, 8, 6, 'Aspettiamo vostre richieste!', '2024-05-31 19:52:00'),
-(7, 6, 2, 'gio...', '2024-05-31 20:11:00'),
-(8, 10, 2, 'ODDIO E\' VEROOOOOOOO', '2024-05-31 20:12:00'),
-(9, 7, 2, 'secondo me spotted è una buona fonte', '2024-05-31 20:14:00');
 
 --
 -- Dump dei dati per la tabella `follow`
@@ -117,6 +77,50 @@ INSERT INTO `login_attempts` (`user_id`, `date_and_time`) VALUES
 (7, '2024-05-31 18:41:39');
 
 --
+-- Dump dei dati per la tabella `post`
+--
+
+INSERT INTO `post` (`post_id`, `description`, `date`, `user_id`) VALUES
+(1, 'pepinooo', '2024-05-31 15:23:53', 2),
+(2, 'questo sn letteralmente io :)))', '2024-05-31 15:39:11', 2),
+(3, 'hiiiii :3', '2024-05-31 15:41:24', 2),
+(4, 'ma che cccarinooooooo', '2024-05-31 16:03:09', 1),
+(5, 'troppo bellino pure questo', '2024-05-31 16:09:56', 1),
+(6, 'è fuori tema questa??', '2024-05-31 16:37:12', 3),
+(7, 'trovato mentre andavo in uni, era abbandonato mi sa...', '2024-05-31 17:03:40', 3),
+(8, 'Un nostro cliente ci ha chiesto di pubblicare la foto della cucciolata! ', '2024-05-31 17:22:34', 6),
+(9, 'altra cucciolata da un cliente, scriveteci per info!', '2024-05-31 17:47:13', 6),
+(10, 'a sinistra sono io e a destra astro ahahahahahhahahah', '2024-05-31 18:00:00', 5),
+(11, 'Ciao a tutti, Volume Cesena ha una nuova mascotte!!', '2024-05-31 19:12:46', 6),
+(12, 'Proponete voi un nome per il nuovo arrivato!', '2024-05-31 21:11:08', 6);
+
+
+--
+-- Dump dei dati per la tabella `adoption`
+--
+
+INSERT INTO `adoption` (`post_id`, `adopted`, `city_id`) VALUES
+(7, 0, 2),
+(8, 0, 8),
+(9, 0, 10);
+
+--
+-- Dump dei dati per la tabella `comment`
+--
+
+INSERT INTO `comment` (`comment_id`, `post_id`, `user_id`, `message`, `date`) VALUES
+(1, 1, 2, 'vi piace??', '2024-05-31 18:45:00'),
+(2, 2, 1, 'ma quello che abbraccia è gengar??', '2024-05-31 18:51:00'),
+(3, 7, 3, 'confermo, mi sono informato da spotted Cesena', '2024-05-31 18:54:00'),
+(4, 1, 3, 'il mio è più bello', '2024-05-31 19:16:00'),
+(5, 7, 1, '...non era meglio sentire con un veterinario?', '2024-05-31 19:19:00'),
+(6, 8, 6, 'Aspettiamo vostre richieste!', '2024-05-31 19:52:00'),
+(7, 6, 2, 'gio...', '2024-05-31 20:11:00'),
+(8, 10, 2, 'ODDIO E\' VEROOOOOOOO', '2024-05-31 20:12:00'),
+(9, 7, 2, 'secondo me spotted è una buona fonte', '2024-05-31 20:14:00');
+
+
+--
 -- Dump dei dati per la tabella `media`
 --
 
@@ -138,7 +142,9 @@ INSERT INTO `media` (`media_id`, `file_name`, `post_id`) VALUES
 (15, 'volumePic.jpg', NULL),
 (16, 'cucciolata.jpg', 8),
 (17, 'cucciolata2.jpg', 9),
-(18, 'gatto5.jpg', 10);
+(18, 'gatto5.jpg', 10),
+(19, 'verticale5.jpg', 11),
+(20, 'verticale4.jpg', 12);
 
 --
 -- Dump dei dati per la tabella `notification`
@@ -179,26 +185,12 @@ INSERT INTO `notification` (`notification_id`, `for_user_id`, `from_user_id`, `p
 (32, 3, 2, 6, '2024-05-31 20:11:53', 'Commented your post: \"gio...\"', 0),
 (33, 1, 2, 5, '2024-05-31 20:12:01', 'really liked your post!', 0),
 (34, 5, 2, 10, '2024-05-31 20:12:07', 'really liked your post!', 0),
-(35, 5, 2, 10, '2024-05-31 20:12:17', 'Commented your post: \"ODDIO E\' VEROOOOOOOO\"', 0),
+(35, 5, 2, 10, '2024-05-31 20:12:17', "Commented your post: \"ODDIO E VEROOOOOOOO\"", 0),
 (36, 3, 2, 7, '2024-05-31 20:13:53', 'sent you an adoption request!', 0),
 (37, 3, 2, 7, '2024-05-31 20:13:56', 'really liked your post!', 0),
-(38, 3, 2, 7, '2024-05-31 20:14:11', 'Commented your post: \"secondo me spotted è una buona fonte\"', 0);
-
---
--- Dump dei dati per la tabella `post`
---
-
-INSERT INTO `post` (`post_id`, `description`, `date`, `user_id`) VALUES
-(1, 'pepinooo', '2024-05-31', 2),
-(2, 'questo sn letteralmente io :)))', '2024-05-31', 2),
-(3, 'hiiiii :3', '2024-05-31', 2),
-(4, 'ma che cccarinooooooo', '2024-05-31', 1),
-(5, 'troppo bellino pure questo', '2024-05-31', 1),
-(6, 'è fuori tema questa??', '2024-05-31', 3),
-(7, 'trovato mentre andavo in uni, era abbandonato mi sa...', '2024-05-31', 3),
-(8, 'Un nostro cliente ci ha chiesto di pubblicare la foto della cucciolata! ', '2024-05-31', 6),
-(9, 'altra cucciolata da un cliente, scriveteci per info!', '2024-05-31', 6),
-(10, 'a sinistra sono io e a destra astro ahahahahahhahahah', '2024-05-31', 5);
+(38, 3, 2, 7, '2024-05-31 20:14:11', 'Commented your post: \"secondo me spotted è una buona fonte\"', 0),
+(39, 6, 2, 11, '2024-05-31 20:34:57', 'really liked your post!', 0),
+(40, 6, 2, 12, '2024-05-31 20:35:00', 'really liked your post!', 0);
 
 --
 -- Dump dei dati per la tabella `post_like`
@@ -216,7 +208,9 @@ INSERT INTO `post_like` (`post_id`, `user_id`) VALUES
 (5, 2),
 (6, 2),
 (7, 2),
-(10, 2);
+(10, 2),
+(11, 2),
+(12, 2);
 
 --
 -- Dump dei dati per la tabella `user_adopting`
