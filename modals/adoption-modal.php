@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="css/style.css">
 <script src="js/sendAdoptionRequest.js"></script>
 <div class="modal fade" id="adoption-modal" tabindex="-1" aria-labelledby="adoption-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">

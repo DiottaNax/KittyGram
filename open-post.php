@@ -35,11 +35,11 @@ if (isset($currentPost)):
         <script src="js/sendNotification.js"></script>
         <script src="js/adoptionModal.js"></script>
         <script src="js/addComment.js"></script>
+        <title>User Post</title>
 
         <!-- Inclusione della navbar -->
         <?php echo require_once ("./components/navbar.php") ?>
         <?php $viewer = $dbh->getAccountFromUsername($_SESSION['username']); ?>
-        <title>User Post</title>
     </head>
 
     <body>
@@ -226,7 +226,7 @@ if (isset($currentPost)):
                 </div>
             </div>
         </div>
-        </div>
+
     </body>
 
     </html>
