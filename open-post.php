@@ -111,7 +111,7 @@ if (isset($currentPost)):
                                     d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                             </svg>
                         </div>
-                        <p class="mb-0 mt-1 text-center"> <?php echo $currentPost['description'] ?></p>
+                        <p class="mb-0 mt-1 text-start"> <?php echo $currentPost['description'] ?></p>
 
                         <hr class="my-3 border-dark">
 
@@ -182,14 +182,14 @@ if (isset($currentPost)):
 
 
                         <div class="card-body">
-                            <h5 class="card-title text-center">Commenti</h5>
+                            <h5 class="card-title text-start">Commenti</h5>
                             <hr class="my-1 border-transparent">
 
                             <!-- Contenitore scorrevole per i commenti -->
                             <div class="comment-container">
                                 <!-- includo tutti i commenti -->
                                 <?php foreach ($currentPost['comment'] as $comment): ?>
-                                    <div class="d-flex mb-3 justify-content-center">
+                                    <div class="d-flex mb-3">
                                         <img src="img/<?php echo $comment['profile_pic'] ?>" class="avatar rounded-circle me-2"
                                             alt="Avatar utente">
                                         <div>
@@ -218,7 +218,7 @@ if (isset($currentPost)):
                                         id="commentArea" maxlength=200></textarea>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-primary mt-2" id="sendButton">Send</button>
+                                    <button type="submit" class="btn btn-primary mt-2 w-100" id="sendButton">Send</button>
                                 </div>
                         </form>
                     </div>

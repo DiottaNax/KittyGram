@@ -245,7 +245,23 @@ input[type="number"] {
   min-width: 300px;
   min-height: 300px;
   object-fit: cover; /* Ensure images cover the space without distortion */
+  display: block;
+  margin: auto;
 }
+
+
+/* Stili per le dimensioni massime dell'immagine del post a schermo ristretto*/
+@media only screen and (max-width: 600px) {
+  .post-image {
+    max-width: 400px;
+    max-height: 400px;
+    min-width: 200px;
+    min-height: 200px;
+  }
+}
+
+
+
 
 /*  ---------------------  imported from old style.css  ---------------------  */
 
