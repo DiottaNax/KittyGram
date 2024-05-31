@@ -106,12 +106,12 @@
             <div class="mb-4 row">
                 <div class="col-6">
                     <label for="old_password" class="form-label">Old Password</label>
-                    <input type="text" class="form-control" id="old_password" name="old_password"
+                    <input type="password" class="form-control" id="old_password" name="old_password"
                         placeholder="Type your old Password">
                 </div>
                 <div class="col-6">
                     <label for="new_password" class="form-label">New Password</label>
-                    <input type="text" class="form-control" id="new_password" name="new_password"
+                    <input type="password" class="form-control" id="new_password" name="new_password"
                         placeholder="Type your new Password">
                 </div>
             </div>
