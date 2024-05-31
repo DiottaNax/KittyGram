@@ -137,40 +137,56 @@ if (isset($currentPost)):
 
                                 <?php if ($isAdoption): ?>
                                     <!-- If we're showing an adoption, put relative buttons -->
-
+                                    
                                     <?php if ($_SESSION['user_id'] != $currentPost['user_id']): ?>
                                         <!-- if the user is not the post owner -->
                                         <?php if (!$currentPost['adopted']): ?> <!-- If the cat is not adopted -->
                                             <!-- Adoption request button -->
-                                            <div class="adoption-icon" data-bs-toggle="modal" data-bs-target="#adoption-modal"
-                                                data-post-id="<?php echo $currentPost['post_id'] ?>"
-                                                data-owner="<?php echo $currentPost['owner']['username'] ?>">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-house-heart"
-                                                    viewBox="0 0 16 16">
-                                                    <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982" />
-                                                </svg>
+                                            <div class="d-flex flex-column align-items-center mb-3">
+                                                <!-- city of adoption -->
+                                                <span class="mb-1 fw-bold me-4">📍<?php echo $currentPost['city_name'] ?></span>
+                                                <div class="adoption-icon" data-bs-toggle="modal" data-bs-target="#adoption-modal"
+                                                    data-post-id="<?php echo $currentPost['post_id'] ?>"
+                                                    data-owner="<?php echo $currentPost['owner']['username'] ?>">
+                                                    <!-- icon of adoption (heart-house) -->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-house-heart"
+                                                        viewBox="0 0 16 16">
+                                                        <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982"/>
+                                                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                                                    </svg>
+                                                </div>
                                             </div>
                                         <?php else: ?>
                                             <!-- tag adopted -->
-                                            <button type="button" class="btn btn-primary" disabled>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                                    class="bi bi-check-lg me-2" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
-                                                </svg>
-                                                Adopted
-                                            </button>
+                                            <div class="d-flex flex-column align-items-center mb-3">
+                                                <!-- city of adoption -->
+                                                <span class="mb-1 fw-bold me-4">📍<?php echo $currentPost['city_name'] ?></span>
+                                                <!-- tag "adopted" -->
+                                                <button type="button" class="btn btn-primary" disabled>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                                        class="bi bi-check-lg me-2" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
+                                                    </svg>
+                                                    Adopted
+                                                </button>
+                                            </div>
                                         <?php endif; ?>
                                     <?php else: ?>
                                         <!-- button to view adoption requests -->
-                                        <a href="adoption-requests.php?post_id=<?php echo $currentPost['post_id'] ?>"
-                                            class="adoption-requests-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-houses"
-                                                viewBox="0 0 16 16">
-                                                <path
-                                                    d="M5.793 1a1 1 0 0 1 1.414 0l.647.646a.5.5 0 1 1-.708.708L6.5 1.707 2 6.207V12.5a.5.5 0 0 0 .5.5.5.5 0 0 1 0 1A1.5 1.5 0 0 1 1 12.5V7.207l-.146.147a.5.5 0 0 1-.708-.708zm3 1a1 1 0 0 1 1.414 0L12 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l1.854 1.853a.5.5 0 0 1-.708.708L15 8.207V13.5a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 4 13.5V8.207l-.146.147a.5.5 0 1 1-.708-.708zm.707.707L5 7.207V13.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V7.207z" />
-                                            </svg>
-                                        </a>
+                                        <div class="d-flex flex-column align-items-center mb-3">
+                                            <!-- city of adoption -->
+                                            <span class="mb-1 fw-bold me-4">📍<?php echo $currentPost['city_name'] ?></span>
+                                            <a href="adoption-requests.php?post_id=<?php echo $currentPost['post_id'] ?>"
+                                                class="adoption-requests-icon">
+                                                <!-- icon to see adoptions (two-houses) -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-houses"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M5.793 1a1 1 0 0 1 1.414 0l.647.646a.5.5 0 1 1-.708.708L6.5 1.707 2 6.207V12.5a.5.5 0 0 0 .5.5.5.5 0 0 1 0 1A1.5 1.5 0 0 1 1 12.5V7.207l-.146.147a.5.5 0 0 1-.708-.708zm3 1a1 1 0 0 1 1.414 0L12 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l1.854 1.853a.5.5 0 0 1-.708.708L15 8.207V13.5a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 4 13.5V8.207l-.146.147a.5.5 0 1 1-.708-.708zm.707.707L5 7.207V13.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V7.207z" />
+                                                </svg>
+                                            </a>
+                                        </div>
                                     <?php endif; ?>
                                 <?php endif; ?>
                                 <!-- tasto commento -->
