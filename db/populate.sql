@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 01, 2024 alle 00:49
+-- Creato il: Giu 01, 2024 alle 01:32
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -37,7 +37,8 @@ INSERT INTO `account` (`user_id`, `username`, `email`, `password`, `salt`, `firs
 (9, 'marti.diotta', 'martidiotta@gmail.com', '547587bfccd6ed21a4335fb5637a7e3b34dc06b833b38a4b3523595277c27227026c1e7d65bdea483afa1f0e86d07938c2b6daa09f9c993b5839ecc97bf7eef6', '174aa151becc8399cf59466b8482f61054275bcf4e96a2ce789a05b8c3e89398c4ac2e377a81bc7e9f3fc8f207b8bf16e6a2312f64895565fd4b9a9601b40830', 'Martina', 'Diotallevi', 'ciao mondo!👾🪼', 32, NULL),
 (10, 'gaiuz_mazza', 'gaiuzmazza@gmail.com', '7bb8de75faf168e8fd9665399974224a63e4dd68d1530776cb782d3f3105890c6300179f41cf25e61877aed188e8d8c40bee753f0544982fcfce6d4ba24b64a2', '99ccfd1b803ee4c4099552b2ed1b34cf62823591012b8eee7a53e9f3cb62f908c9c7597fbdaf8f0ddccc70451a31524d26d0750ec82bf89d695021547b06ee14', 'Gaiuz', 'Mazzoni', ':3', 34, NULL),
 (11, 'ash_pkmn_trainer', 'ashketchum@gmail.com', '472b619301b8a15dc1e1544a781dc7a8f9094bb710f7b0ecb8d720265ce6b35067c0cd008bca1d81685be04d675c3e3151b89a9fee542fc4678f98293d72533d', 'fbf856c4148b1d60191fb6cafbe231d09815667029a39100354cadca00f924cf2d479ec78d485c7d22b3b2e4a2572073e0b3d0b0ed14459795bfb4d37d62a356', 'Ash', 'Ketchum', 'Diventerò un Maestro di Pokémon!', 27, NULL),
-(12, 'nonsononessuno', 'mrdefault@gmail.com', '158b2ee667191b4150d9d24fe412a6de92a40c8d3dffe3de715225e741c6b8af4f66bfd0b71aa04a1f1d616bd79946436822eeb1ebbab3ff2aae844d5093ec42', '6db3a178b1d309f292dbacfcc41527343e6a1f80313a168adebec22d82e8b6a26deab86d6a7428e47eb565e657cf729e87e672f1d9ecea74a16297c13151588e', 'Mr', 'Default', 'fingete che io abbia scritto una bio qui', 1, NULL);
+(12, 'nonsononessuno', 'mrdefault@gmail.com', '158b2ee667191b4150d9d24fe412a6de92a40c8d3dffe3de715225e741c6b8af4f66bfd0b71aa04a1f1d616bd79946436822eeb1ebbab3ff2aae844d5093ec42', '6db3a178b1d309f292dbacfcc41527343e6a1f80313a168adebec22d82e8b6a26deab86d6a7428e47eb565e657cf729e87e672f1d9ecea74a16297c13151588e', 'Mr', 'Default', 'fingete che io abbia scritto una bio qui', 1, NULL),
+(13, 'pseudemm', 'pseudemm@gmail.com', 'c0f6c91614751acfd5d2be6204005870b9df9526096cae29501465ddbded7579c123686101af16d124902f75d3f041dfc3133eb87adbebfa58bcba6d13c34210', 'db02848c2ba6d12552c3e48e3f1eba2e6ab51661cd22b21455c029e35bbb3797f6481eef2c5e311ba78e6595871a0af69b42373e8bc7e4176248ec4e055f1f0d', 'Emma', 'Nucci', '\"Tall, blonde and Emma Nucci\"', 36, NULL);
 
 --
 -- Dump dei dati per la tabella `adoption`
@@ -48,7 +49,8 @@ INSERT INTO `adoption` (`post_id`, `adopted`, `city_id`) VALUES
 (8, 1, 8),
 (9, 0, 10),
 (21, 0, 4),
-(22, 0, 5);
+(22, 0, 5),
+(26, 0, 5);
 
 --
 -- Dump dei dati per la tabella `city`
@@ -147,7 +149,22 @@ INSERT INTO `comment` (`comment_id`, `post_id`, `user_id`, `message`, `date`) VA
 (74, 6, 12, 'decisamente, lo capisco persino io che sono un account di default!', '2024-06-01 00:44:18'),
 (75, 3, 12, 'simpatico uff peccato non sia adottabile :/', '2024-06-01 00:44:41'),
 (76, 3, 6, 'che stile il signorotto!', '2024-06-01 00:47:42'),
-(77, 8, 6, 'grazie astro, ci hai convinti, ti abbiamo accettato la richiesta! ci vediamo lunedì al campus!', '2024-06-01 00:48:50');
+(77, 8, 6, 'grazie astro, ci hai convinti, ti abbiamo accettato la richiesta! ci vediamo lunedì al campus!', '2024-06-01 00:48:50'),
+(78, 3, 13, 'heloooo :3', '2024-06-01 01:13:30'),
+(79, 2, 13, 'è bellissimooo', '2024-06-01 01:14:22'),
+(80, 1, 13, 'viduiz cosa scrivi sei pazza', '2024-06-01 01:14:47'),
+(81, 16, 13, 'AHBAJJABJAHAJB AJH', '2024-06-01 01:15:11'),
+(82, 16, 13, 'SEI TE', '2024-06-01 01:15:16'),
+(83, 24, 8, 'ah non sapevo fosse anche lui fan di Rich Amiri', '2024-06-01 01:25:23'),
+(84, 23, 8, 'EMMANUCCI GATTO❗❗❗🗣️🗣️🔥🔥🔥', '2024-06-01 01:26:44'),
+(85, 25, 8, 'hay :3', '2024-06-01 01:27:09'),
+(86, 26, 8, 'carini 😭😭😭', '2024-06-01 01:27:32'),
+(87, 23, 13, 'VIDA ANCHE TE HAI KITTYGRAM', '2024-06-01 01:29:17'),
+(88, 24, 13, 'lo ascolta sempre', '2024-06-01 01:29:27'),
+(89, 25, 13, 'heloo :3', '2024-06-01 01:29:35'),
+(90, 23, 8, 'eh sai com\'è, l\'ha fatto mio fratello....', '2024-06-01 01:30:09'),
+(91, 24, 2, 'AW CARINO 😭😭💖💖💖', '2024-06-01 01:31:51'),
+(92, 25, 2, 'damn he chillin!', '2024-06-01 01:32:14');
 
 --
 -- Dump dei dati per la tabella `follow`
@@ -172,6 +189,7 @@ INSERT INTO `follow` (`follower`, `followed`) VALUES
 (2, 8),
 (2, 9),
 (2, 10),
+(2, 13),
 (3, 1),
 (3, 2),
 (3, 6),
@@ -188,6 +206,7 @@ INSERT INTO `follow` (`follower`, `followed`) VALUES
 (8, 1),
 (8, 2),
 (8, 4),
+(8, 13),
 (9, 1),
 (9, 2),
 (10, 1),
@@ -199,7 +218,9 @@ INSERT INTO `follow` (`follower`, `followed`) VALUES
 (11, 10),
 (12, 1),
 (12, 2),
-(12, 3);
+(12, 3),
+(13, 2),
+(13, 8);
 
 --
 -- Dump dei dati per la tabella `login_attempts`
@@ -225,7 +246,8 @@ INSERT INTO `login_attempts` (`user_id`, `date_and_time`) VALUES
 (12, '2024-05-31 23:15:41'),
 (12, '2024-06-01 00:43:39'),
 (12, '2024-06-01 00:43:43'),
-(12, '2024-06-01 00:43:48');
+(12, '2024-06-01 00:43:48'),
+(13, '2024-06-01 01:10:16');
 
 --
 -- Dump dei dati per la tabella `media`
@@ -265,7 +287,14 @@ INSERT INTO `media` (`media_id`, `file_name`, `post_id`) VALUES
 (31, 'photo_5967775178991715069_x.jpg', 21),
 (32, 'Immagine WhatsApp 2024-05-31 ore 22.59.45_edad0bd9.jpg', NULL),
 (33, 'b813319c28f86933ab45dec76ac898a3.jpg', 22),
-(34, 'Immagine WhatsApp 2024-05-31 ore 23.32.00_a38cd1cd.jpg', NULL);
+(34, 'Immagine WhatsApp 2024-05-31 ore 23.32.00_a38cd1cd.jpg', NULL),
+(35, 'photo_5967775178991715130_y.jpg', NULL),
+(36, 'photo_5967775178991715130_y1.jpg', NULL),
+(37, 'photo_5967775178991715131_y.jpg', 23),
+(38, 'photo_5967775178991715132_y.jpg', 24),
+(39, 'photo_5967775178991715134_y.jpg', 25),
+(40, 'photo_5967775178991715135_y.jpg', 26),
+(41, 'photo_5967775178991715133_y.jpg', 26);
 
 --
 -- Dump dei dati per la tabella `notification`
@@ -484,7 +513,37 @@ INSERT INTO `notification` (`notification_id`, `for_user_id`, `from_user_id`, `p
 (210, 3, 12, 7, '2024-06-01 00:45:03', 'really liked your post!', 0),
 (211, 3, 12, 7, '2024-06-01 00:46:52', 'sent you an adoption request!', 0),
 (212, 2, 12, 22, '2024-06-01 00:47:16', 'sent you an adoption request!', 0),
-(213, 2, 6, 3, '2024-06-01 00:47:42', 'Commented your post: \"che stile il signorotto!\"', 0);
+(213, 2, 6, 3, '2024-06-01 00:47:42', 'Commented your post: \"che stile il signorotto!\"', 0),
+(214, 2, 13, NULL, '2024-06-01 01:13:16', 'started following you!', 0),
+(215, 2, 13, 2, '2024-06-01 01:13:19', 'really liked your post!', 0),
+(216, 2, 13, 3, '2024-06-01 01:13:22', 'really liked your post!', 0),
+(217, 2, 13, 3, '2024-06-01 01:13:30', 'Commented your post: \"heloooo :3\"', 0),
+(218, 2, 13, 2, '2024-06-01 01:14:22', 'Commented your post: \"è bellissimooo\"', 0),
+(219, 2, 13, 1, '2024-06-01 01:14:24', 'really liked your post!', 0),
+(220, 2, 13, 1, '2024-06-01 01:14:47', 'Commented your post: \"viduiz cosa scrivi sei pazza\"', 1),
+(221, 8, 13, NULL, '2024-06-01 01:14:59', 'started following you!', 0),
+(222, 8, 13, 16, '2024-06-01 01:15:07', 'really liked your post!', 0),
+(223, 8, 13, 16, '2024-06-01 01:15:11', 'Commented your post: \"AHBAJJABJAHAJB AJH\"', 0),
+(224, 8, 13, 16, '2024-06-01 01:15:16', 'Commented your post: \"SEI TE\"', 0),
+(225, 13, 8, NULL, '2024-06-01 01:24:15', 'started following you!', 0),
+(226, 13, 8, 24, '2024-06-01 01:24:19', 'really liked your post!', 0),
+(227, 13, 8, 24, '2024-06-01 01:25:23', 'Commented your post: \"ah non sapevo fosse anche lui fan di Rich Amiri\"', 0),
+(228, 13, 8, 23, '2024-06-01 01:25:27', 'really liked your post!', 0),
+(229, 13, 8, 23, '2024-06-01 01:26:44', 'Commented your post: \"EMMANUCCI GATTO❗❗❗🗣️🗣️🔥🔥🔥\"', 0),
+(230, 13, 8, 25, '2024-06-01 01:26:49', 'really liked your post!', 0),
+(231, 13, 8, 25, '2024-06-01 01:27:09', 'Commented your post: \"hay :3\"', 1),
+(232, 13, 8, 26, '2024-06-01 01:27:17', 'really liked your post!', 0),
+(233, 13, 8, 26, '2024-06-01 01:27:32', 'Commented your post: \"carini 😭😭😭\"', 0),
+(234, 13, 8, 26, '2024-06-01 01:27:55', 'sent you an adoption request!', 0),
+(235, 13, 8, 23, '2024-06-01 01:30:09', 'Commented your post: \"eh sai com\'è, l\'ha fatto mio fratello....\"', 0),
+(236, 13, 2, NULL, '2024-06-01 01:30:28', 'started following you!', 0),
+(237, 13, 2, 25, '2024-06-01 01:30:31', 'really liked your post!', 0),
+(238, 13, 2, 24, '2024-06-01 01:30:35', 'really liked your post!', 0),
+(239, 13, 2, 23, '2024-06-01 01:30:39', 'really liked your post!', 0),
+(240, 13, 2, 26, '2024-06-01 01:30:43', 'really liked your post!', 0),
+(241, 13, 2, 26, '2024-06-01 01:31:09', 'sent you an adoption request!', 0),
+(242, 13, 2, 24, '2024-06-01 01:31:51', 'Commented your post: \"AW CARINO 😭😭💖💖💖\"', 0),
+(243, 13, 2, 25, '2024-06-01 01:32:14', 'Commented your post: \"damn he chillin!\"', 0);
 
 --
 -- Dump dei dati per la tabella `post`
@@ -512,7 +571,11 @@ INSERT INTO `post` (`post_id`, `description`, `date`, `user_id`) VALUES
 (19, 'Appena atterrato a Paldea! 😍👌', '2024-05-31 22:56:23', 11),
 (20, 'Woooow uno Shinx!!! Prima volta che ne vedo uno dal vivo, incredibile! 🥰🥰', '2024-05-31 22:57:13', 11),
 (21, 'Ehm questo briccone io non lo voglio...', '2024-05-31 22:57:44', 11),
-(22, 'Eiciao, lui è Trinity, il mio speciale gatto western che vorrebbe rifarsi una nuova vita altrove', '2024-05-31 23:09:35', 2);
+(22, 'Eiciao, lui è Trinity, il mio speciale gatto western che vorrebbe rifarsi una nuova vita altrove', '2024-05-31 23:09:35', 2),
+(23, 'this is me if u even care btw', '2024-06-01 01:20:48', 13),
+(24, 'Pay attention, pay attention, finna show you how to get it', '2024-06-01 01:22:45', 13),
+(25, 'he smol', '2024-06-01 01:23:02', 13),
+(26, 'raga sono seria, qualcuno è interessato ad adottare questi cucciolini?', '2024-06-01 01:23:44', 13);
 
 --
 -- Dump dei dati per la tabella `post_like`
@@ -531,6 +594,7 @@ INSERT INTO `post_like` (`post_id`, `user_id`) VALUES
 (1, 10),
 (1, 11),
 (1, 12),
+(1, 13),
 (2, 1),
 (2, 2),
 (2, 4),
@@ -542,6 +606,7 @@ INSERT INTO `post_like` (`post_id`, `user_id`) VALUES
 (2, 10),
 (2, 11),
 (2, 12),
+(2, 13),
 (3, 1),
 (3, 2),
 (3, 3),
@@ -554,6 +619,7 @@ INSERT INTO `post_like` (`post_id`, `user_id`) VALUES
 (3, 10),
 (3, 11),
 (3, 12),
+(3, 13),
 (4, 2),
 (4, 4),
 (4, 8),
@@ -595,6 +661,7 @@ INSERT INTO `post_like` (`post_id`, `user_id`) VALUES
 (15, 3),
 (16, 1),
 (16, 2),
+(16, 13),
 (17, 1),
 (17, 2),
 (17, 3),
@@ -611,7 +678,15 @@ INSERT INTO `post_like` (`post_id`, `user_id`) VALUES
 (22, 2),
 (22, 3),
 (22, 10),
-(22, 12);
+(22, 12),
+(23, 2),
+(23, 8),
+(24, 2),
+(24, 8),
+(25, 2),
+(25, 8),
+(26, 2),
+(26, 8);
 
 --
 -- Dump dei dati per la tabella `user_adopting`
@@ -626,7 +701,9 @@ INSERT INTO `user_adopting` (`post_id`, `user_id`, `cell`, `presentation`) VALUE
 (22, 1, '3703440358', 'yo astro sono diotta, io sarei disposto ad occuparmi di Trinity se vuoi, dopotutto me la cavo bene coi gatti'),
 (22, 3, '3459208503', 'Ciao bel, Trinity mi ispira però non riesco a venire a Fano a prenderlo, puoi salire tu a Sarsina?'),
 (22, 10, '3441239870', 'ti pregoooo voglio troppo il gatto cowboy! andrebbe virale su tiktok!!!!'),
-(22, 12, '44476899', 'farò la richiesta più lunga possibile:\r\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, s');
+(22, 12, '44476899', 'farò la richiesta più lunga possibile:\r\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, s'),
+(26, 2, '3335380866', 'eiciao emma, io sarei interessato, scrivimi su whatsapp o su ig vedi tu ciaooo :3'),
+(26, 8, '3233567869', 'ti prego emmaaaa li voglio troppo io!!!');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
