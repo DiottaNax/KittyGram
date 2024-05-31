@@ -32,11 +32,11 @@
         <form class="align-items-center py-4 m-4" id="loginFormId" name="loginForm">
             <div class="form-group mb-3">
                 <label for="usernameId">Username</label>
-                <input type="text" class="form-control" id="usernameId" name="username" />
+                <input type="text" class="form-control" id="usernameId" name="username" maxlength="24" required />
             </div>
             <div class="form-group mb-4">
                 <label for="passwordId">Password</label>
-                <input type="password" class="form-control" id="passwordId" name="password" />
+                <input type="password" class="form-control" id="passwordId" name="password" maxlength="30" required />
             </div>
 
 

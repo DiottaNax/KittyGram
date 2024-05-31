@@ -33,37 +33,37 @@
                 <div class="col-md-6 mb-3">
                     <div class="form-group">
                         <label for="nameId">Name</label>
-                        <input type="text" class="form-control" name="name" id="nameId" aria-label="Name" required>
+                        <input type="text" class="form-control" name="name" id="nameId" aria-label="Name" maxlength="24" required>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <div class="form-group">
                         <label for="surnameId">Surname</label>
-                        <input type="text" class="form-control" name="surname" id="surnameId" aria-label="Last name"
+                        <input type="text" class="form-control" name="surname" id="surnameId" aria-label="Last name" maxlength="24"
                             required>
                     </div>
                 </div>
             </div>
             <div class="form-group mb-3">
                 <label for="emailId">Email address</label>
-                <input type="email" class="form-control" name="email" id="emailId" aria-label="Email address" required>
+                <input type="email" class="form-control" name="email" id="emailId" aria-label="Email address" maxlength="318" required>
             </div>
             <div class="form-group mb-3">
                 <label for="usernameId">Username</label>
-                <input type="text" class="form-control" name="username" id="usernameId" aria-label="Username" required>
+                <input type="text" class="form-control" name="username" id="usernameId" aria-label="Username" maxlength="24" required>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <div class="form-group mb-3">
                         <label for="passwordId">Password</label>
-                        <input type="password" class="form-control" name="password" id="passwordId"
+                        <input type="password" class="form-control" name="password" id="passwordId" maxlength="30"
                             aria-label="Password" required>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <div class="form-group">
                         <label for="confirmPasswordId">Confirm password</label>
-                        <input type="password" class="form-control" name="confirmPassword" id="confirmPasswordId"
+                        <input type="password" class="form-control" name="confirmPassword" id="confirmPasswordId" maxlength="30"
                             aria-label="Confirm password" required>
                     </div>
                 </div>
