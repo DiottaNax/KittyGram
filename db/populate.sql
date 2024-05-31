@@ -1,84 +1,173 @@
-INSERT INTO ACCOUNT (username, email, password, salt, first_name, last_name,user_bio,profile_pic_id,city_id)
-VALUES
-('saint','gioelesanti@gmail.com','password','salt','Gioele','Santi','CEO di Kittygram',1,NULL),
-('Nax','nax@gmail.com','password2','salt','federico','Diotallevi','Backend Master',1,NULL),
-('astro','javid@gmail.com','password3','salt','Javid','Ameri','Frontend Master',1,NULL),
-('pioli','alessandro@gmail.com','password4','salt','Alessandro','Coli','I love kittens!!',1,NULL),
-('mirco','mircoterenzi@gmail.com','password5','salt','Mirco','Terenzi','KITTENS!!',1,NULL),
-('example','example@gmail.com','d30275eac88d1c1d5ce0334374221cbf811efb7458ad91e58c1d9f13b816acc2567370301d58561089253b6c1adb645f1ece0c69d88b5679d3190190805c2999','e372f1c3b92ad9571cb2e6a5a97c956d88e94be5523ae4766796332c413685d34aff99e795b00d349cf455bfb0f543f95a552a23669b4d66af56084cd3eaf230','Example','Profile','Profile for testing the social network',1,NULL);
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Creato il: Mag 31, 2024 alle 18:55
+-- Versione del server: 10.4.32-MariaDB
+-- Versione PHP: 8.2.12
 
-INSERT INTO POST (description, date, user_id)
-VALUES 
-('Welcome to KittyGram! Excited to connect with fellow cat lovers.', '2023-05-01', 1),
-('Working on some backend magic for KittyGram.', '2023-05-02', 2),
-('Frontend development is my passion. Check out my latest project!', '2023-05-03', 3),
-('Enjoying a sunny day with my kittens!', '2023-05-04', 4),
-('Can''t get enough of these adorable kittens!', '2023-05-05', 5),
-('Testing the functionalities of KittyGram. Stay tuned!', '2023-05-06', 6);
-('Watch my new kittens!!', '2023-05-07', 6);
-('I love kittens!!', '2023-05-08', 6);
-('Love that!', '2023-05-09', 6);
-('AHAHAHAHAHA', '2023-05-10', 6);
-
-INSERT INTO MEDIA (file_name, post_id)
-VALUES 
-('post1_img1.jpeg', 1),
-('post1_img2.jpeg', 1),
-('post2_img1.jpeg', 2),
-('post3_img1.jpeg', 3),
-('post4_img1.jpeg', 4),
-('post5_img1.jpeg', 5),
-('post6_img1.jpeg', 6);
-('post6_img2.jpeg', 6);
-('post6_img3.jpeg', 6);
-('post7_img1.jpeg', 7);
-('post8_img1.gif', 8);
-('post9_img1.gif', 9);
-('post10_img1.gif', 10);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-INSERT INTO COMMENT (post_id, user_id, message, date)
-VALUES 
-(1, 2, 'Welcome to KittyGram, Gioele!', '2023-05-01'),
-(1,3,'Wow!','2023-05-01'),
-(1,4,'Belli!!!!','2023-05-01'),
-(1,5,'Adorable<3','2023-05-01'),
-(2, 3, 'Great work, Federico!', '2023-05-02'),
-(3, 4, 'Impressive project, Javid!', '2023-05-03'),
-(4, 5, 'Beautiful kittens, Alessandro!', '2023-05-04'),
-(5, 6, 'Adorable kittens, Mirco!', '2023-05-05'),
-(6, 1, 'Testing looks good!', '2023-05-06');
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Database: `kittygram`
+--
 
-INSERT INTO ADOPTION (post_id, adopted, city_id)
-VALUES
-(4, 0, 1),
-(5, 1, 1);
+--
+-- Dump dei dati per la tabella `account`
+--
 
-INSERT INTO USER_ADOPTING (post_id, user_id, cell, presentation)
-VALUES
-(4, 1, '123-456-7890', 'I would love to adopt this kitten.'),
-(5, 2, '234-567-8901', 'This kitten would be perfect for my family.');
+INSERT INTO `account` (`user_id`, `username`, `email`, `password`, `salt`, `first_name`, `last_name`, `user_bio`, `profile_pic_id`, `city_id`) VALUES
+(1, 'diottanax', 'fd.diotallevi@gmail.com', 'b6df5d8385489b76c02cd195b1d525575138bcf66a9e561c804a4973cad6aef5807f0f7fd7527a6ca64e67ec6f16e44aad4e8df7508838da1e4169f88502bc66', '6ca2f9876217379c1c1c78bd94d5f31633da45ee0f0843caf433ba8d3f389755ac3077d111cc7ca915aedd4d1440c9f72ab377ad0c85242f6be4b573bb5ab4ed', 'Federico', 'Diotallevi', 'troppi gattini nella mia capa  😞 😞 😞', 7, NULL),
+(2, 'astrobaleno', 'astrobaleno@gmail.com', '0b629f4463b8c77d84ac0d41f123ffe454b6ac8f7a92dd0e9488cb87454771db1dbc1e3b05cf429213a179904229391125f5478cf59d0b50b58f663ae202f2a9', '4e221de901fafe36f75dbec1366de962a53b6dc8c6100abac1c8983e9e448b5994c7adb90cba11be003f20126034994a1be1adddba51f89a66a26b75a8c80f70', 'Javid', 'Ameri', '\"do not disturb\"', 2, NULL),
+(3, 'saint_g', 'saint138@gmail.com', '70c6e65e095f3bdceb39dfed51c2e138bb6e2501484b327a792be8b944f452430d991f371cbf2b4fb8c6f0d5b9abeb44a0914a932fda020d0d541cdbe07b1901', '9e4adcbf57452d8ed089627a2c0a4afff8d65cfa747cdb78adb2c131c28b4534cc0750775f58afef4464eb2433dedb3e5be40091a08f007571d3e54d61b80a59', 'Gioele', 'Santi', 'mi sono autoproclamato CEO di KittyGram >:)', 9, NULL),
+(4, 'aagatac', 'agatac@gmail.com', '775d7ea22c54f807c30d5743162ffaa2058b410816e8cadad95b761d840ff76a8b4924f2700e6e22ca499b8e2a9df66c20b8229c26ab5896fd424f5c0bcd5425', '8a7e65230345a5257f5f32406b7c2f55635e4536a42919b6f0850e038d9ecac21ac6e93f54372f2856055bba5c6250a2a7c77fcfe878e43ca711585ee1bf7ab5', 'Agata', 'Campolongo', ' ', 1, NULL),
+(5, 'silvimarco', 'marcos@gmail.com', 'c15155ee965814445b3a1fbc2016d79d32d93f25473e0b4dd20db309bc20411915473ab8e161b722ca4aa22ade0125a1aaecb8e0a889749208568e54b3e4a91c', '6f481de821dffaaa0519f488723e957bdb9ff871497e002e608eb0847b150f801a9f1e070d4c946547b263e287af0310af5177468dbd8ce5c9a883faf31dd89e', 'Marco', 'Silvi', ' ', 1, NULL),
+(6, 'volume_campus_cesena', 'volume@gmail.com', 'ae94d57d34f826ea183da9c854f67d63e9178a527df83cb3ec45d43ef01b509aee7c25310d2ea73b8a2cf66d1ae504a3f9c2989a600859f6e2de335a7ddad3bf', '5230f560b21d66ea4f722e71feac195d05aad3fc000e994477ce5475bd0f3ceeea3f65fe42d6eebb3ceaa173646da57f874931229a8640b2ebef47055aa7f2c3', 'VOLUME', 'CESENA', ' ', 1, NULL),
+(7, 'eugeniasantii', 'gegia@gmail.com', '041b61ec9da10547d90817c4cb6db8e168417bd97144819ea26dc26b812caa4a39e7e01aa92e2d9519982c3ca04bc5d300888a3bf1e6b5f8e5026995a4ad02f0', '9737aef01bf9d309e974edf6e30fc220066b5e49ecb5fe7f87329236383676e8b3b10bb19f12acc28949aea4e99281f02a5278e8993899d7c618c2b1557563ed', 'Eugenia', 'Santi', ' ', 1, NULL);
 
-INSERT INTO FOLLOW (follower, followed)
-VALUES
+--
+-- Dump dei dati per la tabella `adoption`
+--
+
+INSERT INTO `adoption` (`post_id`, `adopted`, `city_id`) VALUES
+(7, 0, 2);
+
+--
+-- Dump dei dati per la tabella `city`
+--
+
+INSERT INTO `city` (`city_id`, `city_name`, `city_cap`) VALUES
+(1, 'Rimini', '47921'),
+(2, 'Cesena', '47023'),
+(3, 'Riccione', '47832'),
+(4, 'Pesaro', '61121'),
+(5, 'Fano', '61032'),
+(6, 'Cattolica', '47841'),
+(7, 'Santarcangelo di Romagna', '47024'),
+(8, 'Cesenatico', '47019'),
+(9, 'Sarsina', '47027'),
+(10, 'Faenza', '48018');
+
+--
+-- Dump dei dati per la tabella `comment`
+--
+
+INSERT INTO `comment` (`comment_id`, `post_id`, `user_id`, `message`, `date`) VALUES
+(1, 1, 2, 'vi piace??', '2024-05-31 18:45:00'),
+(2, 2, 1, 'ma quello che abbraccia è gengar??', '2024-05-31 18:51:00'),
+(3, 7, 3, 'confermo, mi sono informato da spotted Cesena', '2024-05-31 18:54:00');
+
+--
+-- Dump dei dati per la tabella `follow`
+--
+
+INSERT INTO `follow` (`follower`, `followed`) VALUES
 (1, 2),
-(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
 (2, 1),
-(3, 4),
-(4, 5),
-(5, 6),
-(6, 1);
-(6,2);
-(6,3);
-(6,4);
-(6,5);
+(2, 3),
+(2, 4),
+(2, 5),
+(2, 6),
+(2, 7),
+(3, 1),
+(3, 2),
+(3, 6),
+(3, 7);
 
-INSERT INTO NOTIFICATION (for_user_id, from_user_id, post_id, date, message, seen)
-VALUES
-(1, 2, 1, '2023-05-01 09:00:00', 'Federico liked your post.', 0),
-(2, 1, 2, '2023-05-02 10:00:00', 'Gioele commented on your post.', 0),
-(3, 4, 3, '2023-05-03 11:00:00', 'Alessandro liked your post.', 0),
-(4, 5, 4, '2023-05-04 12:00:00', 'Mirco commented on your post.', 0),
-(5, 6, 5, '2023-05-05 13:00:00', 'Example liked your post.', 0),
-(6, 3, 6, '2023-05-06 14:00:00', 'Javid commented on your post.', 0);
+--
+-- Dump dei dati per la tabella `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`user_id`, `date_and_time`) VALUES
+(1, '2024-05-31 18:36:17'),
+(2, '2024-05-31 18:36:45'),
+(3, '2024-05-31 18:37:11'),
+(4, '2024-05-31 18:38:43'),
+(5, '2024-05-31 18:39:09'),
+(6, '2024-05-31 18:41:02'),
+(7, '2024-05-31 18:41:39');
+
+--
+-- Dump dei dati per la tabella `media`
+--
+
+INSERT INTO `media` (`media_id`, `file_name`, `post_id`) VALUES
+(1, 'default-pic.png', NULL),
+(2, 'astroPic.jpg', NULL),
+(3, 'gatto13.jpg', 1),
+(4, 'gatto15.jpg', 2),
+(5, 'gatto11.jpg', 3),
+(6, 'gatto2.jpg', 4),
+(7, 'diottaPic.jpg', NULL),
+(8, 'gatto1.jpg', 5),
+(9, 'gioPic.jpg', NULL),
+(10, 'cane-scodinzolante.gif', 6),
+(11, 'gatto7.jpg', 7);
+
+--
+-- Dump dei dati per la tabella `notification`
+--
+
+INSERT INTO `notification` (`notification_id`, `for_user_id`, `from_user_id`, `post_id`, `date`, `message`, `seen`) VALUES
+(1, 3, 2, NULL, '2024-05-31 18:42:31', 'started following you!', 0),
+(2, 7, 2, NULL, '2024-05-31 18:42:37', 'started following you!', 0),
+(3, 1, 2, NULL, '2024-05-31 18:42:42', 'started following you!', 1),
+(4, 4, 2, NULL, '2024-05-31 18:42:47', 'started following you!', 0),
+(5, 5, 2, NULL, '2024-05-31 18:43:01', 'started following you!', 0),
+(6, 6, 2, NULL, '2024-05-31 18:43:10', 'started following you!', 0),
+(7, 2, 1, NULL, '2024-05-31 18:46:58', 'started following you!', 0),
+(8, 5, 1, NULL, '2024-05-31 18:47:03', 'started following you!', 0),
+(9, 6, 1, NULL, '2024-05-31 18:47:07', 'started following you!', 0),
+(10, 4, 1, NULL, '2024-05-31 18:47:23', 'started following you!', 0),
+(11, 7, 1, NULL, '2024-05-31 18:47:41', 'started following you!', 0),
+(12, 2, 1, 2, '2024-05-31 18:51:00', 'Commented your post: \"ma quello che abbraccia è gengar??\"', 0),
+(13, 2, 1, 2, '2024-05-31 18:51:02', 'really liked your post!', 0),
+(14, 2, 1, 1, '2024-05-31 18:51:07', 'really liked your post!', 0),
+(15, 2, 1, 3, '2024-05-31 18:51:09', 'really liked your post!', 0),
+(16, 1, 3, NULL, '2024-05-31 18:51:58', 'started following you!', 0),
+(17, 2, 3, NULL, '2024-05-31 18:52:02', 'started following you!', 0),
+(18, 7, 3, NULL, '2024-05-31 18:52:07', 'started following you!', 0),
+(19, 6, 3, NULL, '2024-05-31 18:52:12', 'started following you!', 0);
+
+--
+-- Dump dei dati per la tabella `post`
+--
+
+INSERT INTO `post` (`post_id`, `description`, `date`, `user_id`) VALUES
+(1, 'pepinooo', '2024-05-31', 2),
+(2, 'questo sn letteralmente io :)))', '2024-05-31', 2),
+(3, 'hiiiii :3', '2024-05-31', 2),
+(4, 'ma che cccarinooooooo', '2024-05-31', 1),
+(5, 'troppo bellino pure questo', '2024-05-31', 1),
+(6, 'è fuori tema questa??', '2024-05-31', 3),
+(7, 'trovato mentre andavo in uni, era abbandonato mi sa...', '2024-05-31', 3);
+
+--
+-- Dump dei dati per la tabella `post_like`
+--
+
+INSERT INTO `post_like` (`post_id`, `user_id`) VALUES
+(1, 1),
+(1, 2),
+(2, 1),
+(2, 2),
+(3, 1),
+(3, 2);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
