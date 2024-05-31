@@ -239,6 +239,14 @@ input[type="number"] {
   cursor: pointer;
 }
 
+.post-image {
+  max-width: 500px;
+  max-height: 500px;
+  min-width: 300px;
+  min-height: 300px;
+  object-fit: cover; /* Ensure images cover the space without distortion */
+}
+
 /*  ---------------------  imported from old style.css  ---------------------  */
 
 #submitId,

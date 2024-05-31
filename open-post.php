@@ -68,7 +68,7 @@ if (isset($currentPost)):
                             <div class="carousel-inner">
                                 <?php foreach ($images as $index => $image): ?>
                                     <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                        <img src="./img/<?php echo $image; ?>" class="d-block w-100 h-100" alt="Post Image">
+                                        <img src="./img/<?php echo $image; ?>" class="d-block w-100 h-100 post-image" alt="Post Image" >
                                     </div>
                                 <?php endforeach; ?>
                             </div>
@@ -86,8 +86,7 @@ if (isset($currentPost)):
                         </div>
                     <?php else: ?>
                         <!-- Immagine singola se c'è solo un'immagine -->
-                        <img src="./img/<?php echo $images[0]; ?>" alt="Post Image" class="border border-dark"
-                            style="max-height: 600px; min-width: 500px">
+                        <img src="./img/<?php echo $images[0]; ?>" alt="Post Image" class="border border-dark post-image">
                     <?php endif; ?>
                 </div>
 
