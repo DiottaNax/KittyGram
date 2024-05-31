@@ -231,25 +231,6 @@ class DatabaseHelper
         return $stmt->insert_id;
     }
 
-    public function getCommentsById($idPost)
-    {
-        $query = "
-            SELECT a.username, a.user_id, c.comment_id, c.date, c.message, m.file_name AS profile_pic
-            FROM comment c 
-            INNER JOIN account a ON c.user_id = a.user_id
-            LEFT JOIN media m ON a.profile_pic_id = m.media_id
-            WHERE c.post_id = ?
-            ORDER BY c.date DESC
-            ";
-
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $idPost);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     public function getPostOwnerId($post_id)
     {
         $query = "
@@ -285,7 +266,6 @@ class DatabaseHelper
 
         return $stmt->insert_id;
     }
-
 
 
     public function getFeed($user_id)
@@ -336,19 +316,6 @@ class DatabaseHelper
         return $feed;
     }
 
-
-    public function getMediaFromId($media_id)
-    {
-        $query = "SELECT file_name FROM MEDIA WHERE media_id = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $media_id);
-        $stmt->execute();
-        $stmt->bind_result($file_name);
-        $stmt->fetch();
-
-        return $file_name;
-    }
-
     function getMediasByPostId($post_id)
     {
         $query = "SELECT file_name FROM MEDIA WHERE post_id = ?";
@@ -374,34 +341,6 @@ class DatabaseHelper
         $stmt->bind_param("si", $fileName, $post_id);
         $stmt->execute();
         return $stmt->insert_id;
-    }
-
-    public function getFollowedByUsername($username)
-    {
-        $query = "SELECT followed FROM FOLLOW JOIN ACCOUNT ON FOLLOW.follower = ACCOUNT.user_id WHERE ACCOUNT.username = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-
-    }
-
-    public function getUserByUsername($username)
-    {
-        $query = "
-            SELECT first_name, last_name, description, email, user_id, profile_pic_id
-            FROM account 
-            WHERE username = ?
-        ";
-        //get all the user's data by username, except the password and the salt
-
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function getFollowedAccount($user_id)
@@ -472,15 +411,16 @@ class DatabaseHelper
         return $stmt->execute();
     }
 
-    public function isCityRegistered($nameOrCap)
+    public function isCityRegistered($name)
     {
-        $query = "SELECT city_id FROM city WHERE city.city_name = ? OR city.city_cap = ? LIMIT 1;";
+        $query = "SELECT city_id FROM city WHERE city.city_name = ? LIMIT 1;";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ss", $nameOrCap, $nameOrCap);
+        $stmt->bind_param("s", $name);
         $stmt->execute();
-        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        $stmt->bind_result($result);
+        $stmt->fetch();
 
-        return isset($result[0]) ? $result[0] : 0;
+        return isset($result) ? $result : 0;
     }
 
     public function searchCityStartingWith($preamble)
