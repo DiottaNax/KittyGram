@@ -169,6 +169,17 @@ class DatabaseHelper
         return true;
     }
 
+    public function getNumLikes($post_id) {
+        $query = "SELECT COUNT(*) FROM post_like WHERE post_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $stmt->bind_result($num_likes);
+        $stmt->fetch();
+
+        return isset($num_likes) ? $num_likes : 0;
+    }
+
     public function userLikesPost($idPost, $userId)
     {
         $query = "
