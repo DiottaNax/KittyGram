@@ -411,15 +411,16 @@ class DatabaseHelper
         return $stmt->execute();
     }
 
-    public function isCityRegistered($nameOrCap)
+    public function isCityRegistered($name)
     {
-        $query = "SELECT city_id FROM city WHERE city.city_name = ? OR city.city_cap = ? LIMIT 1;";
+        $query = "SELECT city_id FROM city WHERE city.city_name = ? LIMIT 1;";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ss", $nameOrCap, $nameOrCap);
+        $stmt->bind_param("s", $name);
         $stmt->execute();
-        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        $stmt->bind_result($result);
+        $stmt->fetch();
 
-        return isset($result[0]) ? $result[0] : 0;
+        return isset($result) ? $result : 0;
     }
 
     public function searchCityStartingWith($preamble)
