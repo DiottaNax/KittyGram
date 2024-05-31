@@ -35,16 +35,16 @@ if (isset($currentPost)):
         <script src="js/sendNotification.js"></script>
         <script src="js/adoptionModal.js"></script>
         <script src="js/addComment.js"></script>
+        <title>User Post</title>
 
         <!-- Inclusione della navbar -->
         <?php echo require_once ("./components/navbar.php") ?>
         <?php $viewer = $dbh->getAccountFromUsername($_SESSION['username']); ?>
-        <title>User Post</title>
     </head>
 
     <body>
         <!-- post container -->
-        <div class="container-fluid py-4 d-flex justify-content-center">
+        <div class="container-fluid py-4 d-flex justify-content-center align-items-center min-vh-100">
             <div class="row auto-cols w-100">
                 <!-- Colonna per l'immagine del post -->
                 <div class="col mt-5 mb-5 py-4 d-flex justify-content-center" style="min-width: 600px">
@@ -68,7 +68,8 @@ if (isset($currentPost)):
                             <div class="carousel-inner">
                                 <?php foreach ($images as $index => $image): ?>
                                     <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                        <img src="./img/<?php echo $image; ?>" class="d-block w-100 h-100 post-image" alt="Post Image" >
+                                        <img src="./img/<?php echo $image; ?>" class="d-block w-100 h-100 post-image"
+                                            alt="Post Image">
                                     </div>
                                 <?php endforeach; ?>
                             </div>
@@ -225,7 +226,7 @@ if (isset($currentPost)):
                 </div>
             </div>
         </div>
-        </div>
+
     </body>
 
     </html>
