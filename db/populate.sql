@@ -1,25 +1,28 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Creato il: Giu 01, 2024 alle 01:32
--- Versione del server: 10.4.32-MariaDB
--- Versione PHP: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `kittygram`
 --
+
+USE KittyGram;
+
+--
+-- Dump immagini di profilo
+--
+
+INSERT INTO `media` (`media_id`, `file_name`, `post_id`) VALUES
+(2, 'astroPic.jpg', NULL),
+(3, 'diottaPic.jpg', NULL),
+(4, 'gioPic.jpg', NULL),
+(5, 'agataPic.jpg', NULL),
+(6, 'marcoPic.jpg', NULL),
+(7, 'eugiPic.jpg', NULL),
+(8, 'volumePic.jpg', NULL),
+(9, 'Immagine WhatsApp 2024-05-31 ore 22.26.08_a6887824.jpg', NULL),
+(10, 'photo_5967775178991715072_y2.jpg', NULL),
+(11, 'Immagine WhatsApp 2024-05-31 ore 22.59.45_edad0bd9.jpg', NULL),
+(12, 'Immagine WhatsApp 2024-05-31 ore 23.32.00_a38cd1cd.jpg', NULL),
+(13, 'photo_5967775178991715130_y.jpg', NULL),
+(14, 'photo_5967775178991715130_y1.jpg', NULL);
+
 
 --
 -- Dump dei dati per la tabella `account`
@@ -33,12 +36,45 @@ INSERT INTO `account` (`user_id`, `username`, `email`, `password`, `salt`, `firs
 (5, 'silvi.marco', 'marcos@gmail.com', 'c15155ee965814445b3a1fbc2016d79d32d93f25473e0b4dd20db309bc20411915473ab8e161b722ca4aa22ade0125a1aaecb8e0a889749208568e54b3e4a91c', '6f481de821dffaaa0519f488723e957bdb9ff871497e002e608eb0847b150f801a9f1e070d4c946547b263e287af0310af5177468dbd8ce5c9a883faf31dd89e', 'Marco', 'Silvi', '📍  Fossombrone\r\n📚  Fisica, UniBo', 6, NULL),
 (6, 'volume_campus_cesena', 'volume@gmail.com', 'ae94d57d34f826ea183da9c854f67d63e9178a527df83cb3ec45d43ef01b509aee7c25310d2ea73b8a2cf66d1ae504a3f9c2989a600859f6e2de335a7ddad3bf', '5230f560b21d66ea4f722e71feac195d05aad3fc000e994477ce5475bd0f3ceeea3f65fe42d6eebb3ceaa173646da57f874931229a8640b2ebef47055aa7f2c3', 'VOLUME', 'CESENA', 'Spazio ※ Ascolto ※ Alimento\r\n\r\n\r\n📞 Prenota ora quello che vuoi dal menu: \r\n      32*******5\r\n\r\n🕒 Dal Lunedì al Venerdì: 8:30-18:00\r\n📖 Studio\r\n☕ Caffetteria\r\n🍹 Aperitivi\r\n\r\nwww.aidoru.org/spaces-volume.html', 8, NULL),
 (7, 'eugeniasantii', 'gegia@gmail.com', '041b61ec9da10547d90817c4cb6db8e168417bd97144819ea26dc26b812caa4a39e7e01aa92e2d9519982c3ca04bc5d300888a3bf1e6b5f8e5026995a4ad02f0', '9737aef01bf9d309e974edf6e30fc220066b5e49ecb5fe7f87329236383676e8b3b10bb19f12acc28949aea4e99281f02a5278e8993899d7c618c2b1557563ed', 'Eugenia', 'Santi', '📸 Instagram:  @eugeniasantii', 7, NULL),
-(8, 'vidaamerii', 'vidaloca@gmail.com', '758bf723234095ff767fac94822371af3262cbd9b7c025c3c419d9278e017e66ccdad877ac593c5847784714eea9643e8beb2ea6cca6c622708e1873f3db541c', 'f6c843771323bd866834afd5867c0fc3f9e846a792096cf286e88b01db486affa85bf66dbe8a6904ed67c7cbd98fe887087ba2e70e62354f3aa50921c4055c15', 'Vida', 'Ameri', 'sì, sono la sorella di astrobaleno', 24, NULL),
-(9, 'marti.diotta', 'martidiotta@gmail.com', '547587bfccd6ed21a4335fb5637a7e3b34dc06b833b38a4b3523595277c27227026c1e7d65bdea483afa1f0e86d07938c2b6daa09f9c993b5839ecc97bf7eef6', '174aa151becc8399cf59466b8482f61054275bcf4e96a2ce789a05b8c3e89398c4ac2e377a81bc7e9f3fc8f207b8bf16e6a2312f64895565fd4b9a9601b40830', 'Martina', 'Diotallevi', 'ciao mondo!👾🪼', 32, NULL),
-(10, 'gaiuz_mazza', 'gaiuzmazza@gmail.com', '7bb8de75faf168e8fd9665399974224a63e4dd68d1530776cb782d3f3105890c6300179f41cf25e61877aed188e8d8c40bee753f0544982fcfce6d4ba24b64a2', '99ccfd1b803ee4c4099552b2ed1b34cf62823591012b8eee7a53e9f3cb62f908c9c7597fbdaf8f0ddccc70451a31524d26d0750ec82bf89d695021547b06ee14', 'Gaiuz', 'Mazzoni', ':3', 34, NULL),
-(11, 'ash_pkmn_trainer', 'ashketchum@gmail.com', '472b619301b8a15dc1e1544a781dc7a8f9094bb710f7b0ecb8d720265ce6b35067c0cd008bca1d81685be04d675c3e3151b89a9fee542fc4678f98293d72533d', 'fbf856c4148b1d60191fb6cafbe231d09815667029a39100354cadca00f924cf2d479ec78d485c7d22b3b2e4a2572073e0b3d0b0ed14459795bfb4d37d62a356', 'Ash', 'Ketchum', 'Diventerò un Maestro di Pokémon!', 27, NULL),
+(8, 'vidaamerii', 'vidaloca@gmail.com', '758bf723234095ff767fac94822371af3262cbd9b7c025c3c419d9278e017e66ccdad877ac593c5847784714eea9643e8beb2ea6cca6c622708e1873f3db541c', 'f6c843771323bd866834afd5867c0fc3f9e846a792096cf286e88b01db486affa85bf66dbe8a6904ed67c7cbd98fe887087ba2e70e62354f3aa50921c4055c15', 'Vida', 'Ameri', 'sì, sono la sorella di astrobaleno', 9, NULL),
+(9, 'marti.diotta', 'martidiotta@gmail.com', '547587bfccd6ed21a4335fb5637a7e3b34dc06b833b38a4b3523595277c27227026c1e7d65bdea483afa1f0e86d07938c2b6daa09f9c993b5839ecc97bf7eef6', '174aa151becc8399cf59466b8482f61054275bcf4e96a2ce789a05b8c3e89398c4ac2e377a81bc7e9f3fc8f207b8bf16e6a2312f64895565fd4b9a9601b40830', 'Martina', 'Diotallevi', 'ciao mondo!👾🪼', 11, NULL),
+(10, 'gaiuz_mazza', 'gaiuzmazza@gmail.com', '7bb8de75faf168e8fd9665399974224a63e4dd68d1530776cb782d3f3105890c6300179f41cf25e61877aed188e8d8c40bee753f0544982fcfce6d4ba24b64a2', '99ccfd1b803ee4c4099552b2ed1b34cf62823591012b8eee7a53e9f3cb62f908c9c7597fbdaf8f0ddccc70451a31524d26d0750ec82bf89d695021547b06ee14', 'Gaiuz', 'Mazzoni', ':3', 12, NULL),
+(11, 'ash_pkmn_trainer', 'ashketchum@gmail.com', '472b619301b8a15dc1e1544a781dc7a8f9094bb710f7b0ecb8d720265ce6b35067c0cd008bca1d81685be04d675c3e3151b89a9fee542fc4678f98293d72533d', 'fbf856c4148b1d60191fb6cafbe231d09815667029a39100354cadca00f924cf2d479ec78d485c7d22b3b2e4a2572073e0b3d0b0ed14459795bfb4d37d62a356', 'Ash', 'Ketchum', 'Diventerò un Maestro di Pokémon!', 10, NULL),
 (12, 'nonsononessuno', 'mrdefault@gmail.com', '158b2ee667191b4150d9d24fe412a6de92a40c8d3dffe3de715225e741c6b8af4f66bfd0b71aa04a1f1d616bd79946436822eeb1ebbab3ff2aae844d5093ec42', '6db3a178b1d309f292dbacfcc41527343e6a1f80313a168adebec22d82e8b6a26deab86d6a7428e47eb565e657cf729e87e672f1d9ecea74a16297c13151588e', 'Mr', 'Default', 'fingete che io abbia scritto una bio qui', 1, NULL),
-(13, 'pseudemm', 'pseudemm@gmail.com', 'c0f6c91614751acfd5d2be6204005870b9df9526096cae29501465ddbded7579c123686101af16d124902f75d3f041dfc3133eb87adbebfa58bcba6d13c34210', 'db02848c2ba6d12552c3e48e3f1eba2e6ab51661cd22b21455c029e35bbb3797f6481eef2c5e311ba78e6595871a0af69b42373e8bc7e4176248ec4e055f1f0d', 'Emma', 'Nucci', '\"Tall, blonde and Emma Nucci\"', 36, NULL);
+(13, 'pseudemm', 'pseudemm@gmail.com', 'c0f6c91614751acfd5d2be6204005870b9df9526096cae29501465ddbded7579c123686101af16d124902f75d3f041dfc3133eb87adbebfa58bcba6d13c34210', 'db02848c2ba6d12552c3e48e3f1eba2e6ab51661cd22b21455c029e35bbb3797f6481eef2c5e311ba78e6595871a0af69b42373e8bc7e4176248ec4e055f1f0d', 'Emma', 'Nucci', '\"Tall, blonde and Emma Nucci\"', 14, NULL);
+
+
+--
+-- Dump dei dati per la tabella `post`
+--
+
+INSERT INTO `post` (`post_id`, `description`, `date`, `user_id`) VALUES
+(1, 'pepinooo', '2024-05-31 15:23:53', 2),
+(2, 'questo sn letteralmente io :)))', '2024-05-31 15:39:11', 2),
+(3, 'hiiiii :3', '2024-05-31 15:41:24', 2),
+(4, 'ma che cccarinooooooo', '2024-05-31 16:03:09', 1),
+(5, 'troppo bellino pure questo', '2024-05-31 16:09:56', 1),
+(6, 'è fuori tema questa??', '2024-05-31 16:37:12', 3),
+(7, 'trovato mentre andavo in uni, era abbandonato mi sa...', '2024-05-31 17:03:40', 3),
+(8, 'Un nostro cliente ci ha chiesto di pubblicare la foto della cucciolata! ', '2024-05-31 17:22:34', 6),
+(9, 'altra cucciolata da un cliente, scriveteci per info!', '2024-05-31 17:47:13', 6),
+(10, 'a sinistra sono io e a destra astro ahahahahahhahahah', '2024-05-31 18:00:00', 5),
+(11, 'Ciao a tutti, Volume Cesena ha una nuova mascotte!!', '2024-05-31 19:12:46', 6),
+(12, 'Proponete voi un nome per il nuovo arrivato!', '2024-05-31 21:11:08', 6),
+(13, 'non mi lascia studiare biologia... 🙄', '2024-05-31 21:54:48', 7),
+(14, 'è l''ora di uno snack mi sa', '2024-05-31 21:55:17', 7),
+(15, 'io sempre 💀', '2024-05-31 21:56:02', 7),
+(16, 'percepitemi così', '2024-05-31 22:28:04', 8),
+(17, 'this is me btw', '2024-05-31 22:43:19', 10),
+(18, 'Lo Skitty della mia amica Vera!', '2024-05-31 22:55:52', 11),
+(19, 'Appena atterrato a Paldea! 😍👌', '2024-05-31 22:56:23', 11),
+(20, 'Woooow uno Shinx!!! Prima volta che ne vedo uno dal vivo, incredibile! 🥰🥰', '2024-05-31 22:57:13', 11),
+(21, 'Ehm questo briccone io non lo voglio...', '2024-05-31 22:57:44', 11),
+(22, 'Eiciao, lui è Trinity, il mio speciale gatto western che vorrebbe rifarsi una nuova vita altrove', '2024-05-31 23:09:35', 2),
+(23, 'this is me if u even care btw', '2024-06-01 01:20:48', 13),
+(24, 'Pay attention, pay attention, finna show you how to get it', '2024-06-01 01:22:45', 13),
+(25, 'he smol', '2024-06-01 01:23:02', 13),
+(26, 'raga sono seria, qualcuno è interessato ad adottare questi cucciolini?', '2024-06-01 01:23:44', 13);
 
 --
 -- Dump dei dati per la tabella `adoption`
@@ -51,22 +87,6 @@ INSERT INTO `adoption` (`post_id`, `adopted`, `city_id`) VALUES
 (21, 0, 4),
 (22, 0, 5),
 (26, 0, 5);
-
---
--- Dump dei dati per la tabella `city`
---
-
-INSERT INTO `city` (`city_id`, `city_name`, `city_cap`) VALUES
-(1, 'Rimini', '47921'),
-(2, 'Cesena', '47023'),
-(3, 'Riccione', '47832'),
-(4, 'Pesaro', '61121'),
-(5, 'Fano', '61032'),
-(6, 'Cattolica', '47841'),
-(7, 'Santarcangelo di Romagna', '47024'),
-(8, 'Cesenatico', '47019'),
-(9, 'Sarsina', '47027'),
-(10, 'Faenza', '48018');
 
 --
 -- Dump dei dati per la tabella `comment`
@@ -83,7 +103,7 @@ INSERT INTO `comment` (`comment_id`, `post_id`, `user_id`, `message`, `date`) VA
 (8, 10, 2, 'ODDIO E VEROOOOOOOO', '2024-05-31 20:12:00'),
 (9, 7, 2, 'secondo me spotted è una buona fonte', '2024-05-31 20:14:00'),
 (10, 2, 2, 'sii ahahahh', '2024-05-31 21:51:17'),
-(11, 13, 2, 'mmm idk mi sembra un po\' una scusa...', '2024-05-31 22:02:23'),
+(11, 13, 2, 'mmm idk mi sembra un po'' una scusa...', '2024-05-31 22:02:23'),
 (12, 15, 2, 'us core', '2024-05-31 22:02:35'),
 (13, 15, 3, 'confermo', '2024-05-31 22:04:19'),
 (14, 14, 3, 'che bollito', '2024-05-31 22:04:28'),
@@ -109,9 +129,9 @@ INSERT INTO `comment` (`comment_id`, `post_id`, `user_id`, `message`, `date`) VA
 (34, 2, 9, 'umbreon vs gengar!!!', '2024-05-31 22:33:06'),
 (35, 4, 9, 'portalo a casaaaa', '2024-05-31 22:33:53'),
 (36, 5, 9, 'fossi così dolce anche con le persone che hai attorno...', '2024-05-31 22:34:12'),
-(37, 1, 4, 'ma sei uguale com\'è possibile aiuto', '2024-05-31 22:36:08'),
-(38, 2, 4, 'l\'hai contagiato coi pokémon??', '2024-05-31 22:36:26'),
-(39, 3, 4, 'bello c\'è poco da dire', '2024-05-31 22:36:40'),
+(37, 1, 4, 'ma sei uguale com''è possibile aiuto', '2024-05-31 22:36:08'),
+(38, 2, 4, 'l''hai contagiato coi pokémon??', '2024-05-31 22:36:26'),
+(39, 3, 4, 'bello c''è poco da dire', '2024-05-31 22:36:40'),
 (40, 2, 4, 'ooo comunque ancora devi regalarmi quel peluche pokémon che mi avevi promesso!!!', '2024-05-31 22:37:31'),
 (41, 5, 4, 'carino!!', '2024-05-31 22:37:58'),
 (42, 10, 1, '...', '2024-05-31 22:38:28'),
@@ -138,7 +158,7 @@ INSERT INTO `comment` (`comment_id`, `post_id`, `user_id`, `message`, `date`) VA
 (63, 16, 8, 'no javid sono io vedi che non capisci', '2024-05-31 23:17:58'),
 (64, 16, 2, 'scusa..', '2024-05-31 23:18:41'),
 (65, 8, 2, 'penso proprio che farò richiesta! troppo teneri!! 🥹❤️', '2024-06-01 00:35:49'),
-(66, 8, 3, 'davvero simpatici, penso che però farò richiesta sull\'altro post', '2024-06-01 00:38:13'),
+(66, 8, 3, 'davvero simpatici, penso che però farò richiesta sull''altro post', '2024-06-01 00:38:13'),
 (67, 9, 3, 'vi ho scritto, fate sapere', '2024-06-01 00:38:37'),
 (68, 12, 1, 'benjamin', '2024-06-01 00:40:15'),
 (69, 11, 1, 'bellissimo cappello, mi ricorda il mio amico astro ahah', '2024-06-01 00:40:39'),
@@ -162,7 +182,7 @@ INSERT INTO `comment` (`comment_id`, `post_id`, `user_id`, `message`, `date`) VA
 (87, 23, 13, 'VIDA ANCHE TE HAI KITTYGRAM', '2024-06-01 01:29:17'),
 (88, 24, 13, 'lo ascolta sempre', '2024-06-01 01:29:27'),
 (89, 25, 13, 'heloo :3', '2024-06-01 01:29:35'),
-(90, 23, 8, 'eh sai com\'è, l\'ha fatto mio fratello....', '2024-06-01 01:30:09'),
+(90, 23, 8, 'eh sai com''è, l''ha fatto mio fratello....', '2024-06-01 01:30:09'),
 (91, 24, 2, 'AW CARINO 😭😭💖💖💖', '2024-06-01 01:31:51'),
 (92, 25, 2, 'damn he chillin!', '2024-06-01 01:32:14');
 
@@ -253,48 +273,34 @@ INSERT INTO `login_attempts` (`user_id`, `date_and_time`) VALUES
 -- Dump dei dati per la tabella `media`
 --
 
-INSERT INTO `media` (`media_id`, `file_name`, `post_id`) VALUES
-(1, 'default-pic.png', NULL),
-(2, 'astroPic.jpg', NULL),
-(3, 'diottaPic.jpg', NULL),
-(4, 'gioPic.jpg', NULL),
-(5, 'agataPic.jpg', NULL),
-(6, 'marcoPic.jpg', NULL),
-(7, 'eugiPic.jpg', NULL),
-(8, 'volumePic.jpg', NULL),
-(9, 'gatto13.jpg', 1),
-(10, 'gatto15.jpg', 2),
-(11, 'gatto11.jpg', 3),
-(12, 'gatto2.jpg', 4),
-(13, 'gatto1.jpg', 5),
-(14, 'cane-scodinzolante.gif', 6),
-(15, 'gatto7.jpg', 7),
-(16, 'cucciolata.jpg', 8),
-(17, 'cucciolata2.jpg', 9),
-(18, 'gatto5.jpg', 10),
-(19, 'verticale5.jpg', 11),
-(20, 'verticale4.jpg', 12),
-(21, 'verticale2.jpg', 13),
-(22, 'photo_5962984611124462184_y.jpg', 14),
-(23, '8714a2f01457ae5652ffd435924746a6.jpg', 15),
-(24, 'Immagine WhatsApp 2024-05-31 ore 22.26.08_a6887824.jpg', NULL),
-(25, 'photo_5962984611124462186_y.jpg', 16),
-(26, 'orizzontale5.jpg', 17),
-(27, 'photo_5967775178991715072_y2.jpg', NULL),
-(28, 'Skitty_di_Vera.jpg', 18),
-(29, 'photo_5967775178991715068_y.jpg', 19),
-(30, 'photo_5967775178991715070_y.jpg', 20),
-(31, 'photo_5967775178991715069_x.jpg', 21),
-(32, 'Immagine WhatsApp 2024-05-31 ore 22.59.45_edad0bd9.jpg', NULL),
-(33, 'b813319c28f86933ab45dec76ac898a3.jpg', 22),
-(34, 'Immagine WhatsApp 2024-05-31 ore 23.32.00_a38cd1cd.jpg', NULL),
-(35, 'photo_5967775178991715130_y.jpg', NULL),
-(36, 'photo_5967775178991715130_y1.jpg', NULL),
-(37, 'photo_5967775178991715131_y.jpg', 23),
-(38, 'photo_5967775178991715132_y.jpg', 24),
-(39, 'photo_5967775178991715134_y.jpg', 25),
-(40, 'photo_5967775178991715135_y.jpg', 26),
-(41, 'photo_5967775178991715133_y.jpg', 26);
+INSERT INTO `media` (`file_name`, `post_id`) VALUES
+('gatto13.jpg', 1),
+('gatto15.jpg', 2),
+('gatto11.jpg', 3),
+('gatto2.jpg', 4),
+('gatto1.jpg', 5),
+('cane-scodinzolante.gif', 6),
+('gatto7.jpg', 7),
+('cucciolata.jpg', 8),
+('cucciolata2.jpg', 9),
+('gatto5.jpg', 10),
+('verticale5.jpg', 11),
+('verticale4.jpg', 12),
+('verticale2.jpg', 13),
+('photo_5962984611124462184_y.jpg', 14),
+('8714a2f01457ae5652ffd435924746a6.jpg', 15),
+('photo_5962984611124462186_y.jpg', 16),
+('orizzontale5.jpg', 17),
+('Skitty_di_Vera.jpg', 18),
+('photo_5967775178991715068_y.jpg', 19),
+('photo_5967775178991715070_y.jpg', 20),
+('photo_5967775178991715069_x.jpg', 21),
+('b813319c28f86933ab45dec76ac898a3.jpg', 22),
+('photo_5967775178991715131_y.jpg', 23),
+('photo_5967775178991715132_y.jpg', 24),
+('photo_5967775178991715134_y.jpg', 25),
+('photo_5967775178991715135_y.jpg', 26),
+('photo_5967775178991715133_y.jpg', 26);
 
 --
 -- Dump dei dati per la tabella `notification`
@@ -345,7 +351,7 @@ INSERT INTO `notification` (`notification_id`, `for_user_id`, `from_user_id`, `p
 (42, 7, 2, 13, '2024-05-31 22:01:49', 'really liked your post!', 0),
 (43, 7, 2, 14, '2024-05-31 22:01:53', 'really liked your post!', 0),
 (44, 7, 2, 15, '2024-05-31 22:01:56', 'really liked your post!', 0),
-(45, 7, 2, 13, '2024-05-31 22:02:23', 'Commented your post: \"mmm idk mi sembra un po\' una scusa...\"', 0),
+(45, 7, 2, 13, '2024-05-31 22:02:23', 'Commented your post: \"mmm idk mi sembra un po'' una scusa...\"', 0),
 (46, 7, 2, 15, '2024-05-31 22:02:35', 'Commented your post: \"us core\"', 0),
 (47, 7, 3, 15, '2024-05-31 22:04:14', 'really liked your post!', 0),
 (48, 7, 3, 15, '2024-05-31 22:04:19', 'Commented your post: \"confermo\"', 0),
@@ -403,9 +409,9 @@ INSERT INTO `notification` (`notification_id`, `for_user_id`, `from_user_id`, `p
 (100, 2, 4, 3, '2024-05-31 22:35:50', 'really liked your post!', 0),
 (101, 2, 4, 2, '2024-05-31 22:35:52', 'really liked your post!', 0),
 (102, 2, 4, 1, '2024-05-31 22:35:54', 'really liked your post!', 0),
-(103, 2, 4, 1, '2024-05-31 22:36:08', 'Commented your post: \"ma sei uguale com\'è possibile aiuto\"', 0),
-(104, 2, 4, 2, '2024-05-31 22:36:26', 'Commented your post: \"l\'hai contagiato coi pokémon??\"', 0),
-(105, 2, 4, 3, '2024-05-31 22:36:40', 'Commented your post: \"bello c\'è poco da dire\"', 0),
+(103, 2, 4, 1, '2024-05-31 22:36:08', 'Commented your post: \"ma sei uguale com''è possibile aiuto\"', 0),
+(104, 2, 4, 2, '2024-05-31 22:36:26', 'Commented your post: \"l''hai contagiato coi pokémon??\"', 0),
+(105, 2, 4, 3, '2024-05-31 22:36:40', 'Commented your post: \"bello c''è poco da dire\"', 0),
 (106, 2, 4, 2, '2024-05-31 22:37:31', 'Commented your post: \"ooo comunque ancora devi regalarmi quel peluche pokémon che ...\"', 0),
 (107, 1, 4, 5, '2024-05-31 22:37:41', 'really liked your post!', 0),
 (108, 1, 4, 4, '2024-05-31 22:37:51', 'really liked your post!', 0),
@@ -493,7 +499,7 @@ INSERT INTO `notification` (`notification_id`, `for_user_id`, `from_user_id`, `p
 (190, 10, 3, 17, '2024-06-01 00:37:26', 'really liked your post!', 0),
 (191, 6, 3, 9, '2024-06-01 00:37:37', 'really liked your post!', 0),
 (192, 6, 3, 8, '2024-06-01 00:37:47', 'really liked your post!', 0),
-(193, 6, 3, 8, '2024-06-01 00:38:13', 'Commented your post: \"davvero simpatici, penso che però farò richiesta sull\'altro ...\"', 0),
+(193, 6, 3, 8, '2024-06-01 00:38:13', 'Commented your post: \"davvero simpatici, penso che però farò richiesta sull''altro ...\"', 0),
 (194, 6, 3, 9, '2024-06-01 00:38:37', 'Commented your post: \"vi ho scritto, fate sapere\"', 0),
 (195, 6, 3, 9, '2024-06-01 00:39:35', 'sent you an adoption request!', 0),
 (196, 6, 1, 12, '2024-06-01 00:40:15', 'Commented your post: \"benjamin\"', 0),
@@ -535,7 +541,7 @@ INSERT INTO `notification` (`notification_id`, `for_user_id`, `from_user_id`, `p
 (232, 13, 8, 26, '2024-06-01 01:27:17', 'really liked your post!', 0),
 (233, 13, 8, 26, '2024-06-01 01:27:32', 'Commented your post: \"carini 😭😭😭\"', 0),
 (234, 13, 8, 26, '2024-06-01 01:27:55', 'sent you an adoption request!', 0),
-(235, 13, 8, 23, '2024-06-01 01:30:09', 'Commented your post: \"eh sai com\'è, l\'ha fatto mio fratello....\"', 0),
+(235, 13, 8, 23, '2024-06-01 01:30:09', 'Commented your post: \"eh sai com''è, l''ha fatto mio fratello....\"', 0),
 (236, 13, 2, NULL, '2024-06-01 01:30:28', 'started following you!', 0),
 (237, 13, 2, 25, '2024-06-01 01:30:31', 'really liked your post!', 0),
 (238, 13, 2, 24, '2024-06-01 01:30:35', 'really liked your post!', 0),
@@ -544,38 +550,6 @@ INSERT INTO `notification` (`notification_id`, `for_user_id`, `from_user_id`, `p
 (241, 13, 2, 26, '2024-06-01 01:31:09', 'sent you an adoption request!', 0),
 (242, 13, 2, 24, '2024-06-01 01:31:51', 'Commented your post: \"AW CARINO 😭😭💖💖💖\"', 0),
 (243, 13, 2, 25, '2024-06-01 01:32:14', 'Commented your post: \"damn he chillin!\"', 0);
-
---
--- Dump dei dati per la tabella `post`
---
-
-INSERT INTO `post` (`post_id`, `description`, `date`, `user_id`) VALUES
-(1, 'pepinooo', '2024-05-31 15:23:53', 2),
-(2, 'questo sn letteralmente io :)))', '2024-05-31 15:39:11', 2),
-(3, 'hiiiii :3', '2024-05-31 15:41:24', 2),
-(4, 'ma che cccarinooooooo', '2024-05-31 16:03:09', 1),
-(5, 'troppo bellino pure questo', '2024-05-31 16:09:56', 1),
-(6, 'è fuori tema questa??', '2024-05-31 16:37:12', 3),
-(7, 'trovato mentre andavo in uni, era abbandonato mi sa...', '2024-05-31 17:03:40', 3),
-(8, 'Un nostro cliente ci ha chiesto di pubblicare la foto della cucciolata! ', '2024-05-31 17:22:34', 6),
-(9, 'altra cucciolata da un cliente, scriveteci per info!', '2024-05-31 17:47:13', 6),
-(10, 'a sinistra sono io e a destra astro ahahahahahhahahah', '2024-05-31 18:00:00', 5),
-(11, 'Ciao a tutti, Volume Cesena ha una nuova mascotte!!', '2024-05-31 19:12:46', 6),
-(12, 'Proponete voi un nome per il nuovo arrivato!', '2024-05-31 21:11:08', 6),
-(13, 'non mi lascia studiare biologia... 🙄', '2024-05-31 21:54:48', 7),
-(14, 'è l\'ora di uno snack mi sa', '2024-05-31 21:55:17', 7),
-(15, 'io sempre 💀', '2024-05-31 21:56:02', 7),
-(16, 'percepitemi così', '2024-05-31 22:28:04', 8),
-(17, 'this is me btw', '2024-05-31 22:43:19', 10),
-(18, 'Lo Skitty della mia amica Vera!', '2024-05-31 22:55:52', 11),
-(19, 'Appena atterrato a Paldea! 😍👌', '2024-05-31 22:56:23', 11),
-(20, 'Woooow uno Shinx!!! Prima volta che ne vedo uno dal vivo, incredibile! 🥰🥰', '2024-05-31 22:57:13', 11),
-(21, 'Ehm questo briccone io non lo voglio...', '2024-05-31 22:57:44', 11),
-(22, 'Eiciao, lui è Trinity, il mio speciale gatto western che vorrebbe rifarsi una nuova vita altrove', '2024-05-31 23:09:35', 2),
-(23, 'this is me if u even care btw', '2024-06-01 01:20:48', 13),
-(24, 'Pay attention, pay attention, finna show you how to get it', '2024-06-01 01:22:45', 13),
-(25, 'he smol', '2024-06-01 01:23:02', 13),
-(26, 'raga sono seria, qualcuno è interessato ad adottare questi cucciolini?', '2024-06-01 01:23:44', 13);
 
 --
 -- Dump dei dati per la tabella `post_like`
@@ -697,15 +671,10 @@ INSERT INTO `user_adopting` (`post_id`, `user_id`, `cell`, `presentation`) VALUE
 (7, 12, '4445670899', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora in'),
 (8, 2, '3335380866', 'eiciao ragazzi sono astro! sarei molto interessato ad adottare i micini in questione poiché finora ho sempre solo avuto gatti neri ahah! fatemi sapere, il mio numero lo avete :)\r\n\r\nun saluto, Astro'),
 (9, 1, '3703440358', 'ciao ragazzi, sarei molto interessato, contattatemi il prima possibile perfavore! :D'),
-(9, 3, '3459208503', 'Ciao, io sarei interessato perché mia mamma odia i topi e da un po\' cercava un amico felino che potesse aiutarla contro i suoi nemici mortali, fate sapere\r\n\r\ngrazie'),
+(9, 3, '3459208503', 'Ciao, io sarei interessato perché mia mamma odia i topi e da un po'' cercava un amico felino che potesse aiutarla contro i suoi nemici mortali, fate sapere\r\n\r\ngrazie'),
 (22, 1, '3703440358', 'yo astro sono diotta, io sarei disposto ad occuparmi di Trinity se vuoi, dopotutto me la cavo bene coi gatti'),
 (22, 3, '3459208503', 'Ciao bel, Trinity mi ispira però non riesco a venire a Fano a prenderlo, puoi salire tu a Sarsina?'),
 (22, 10, '3441239870', 'ti pregoooo voglio troppo il gatto cowboy! andrebbe virale su tiktok!!!!'),
 (22, 12, '44476899', 'farò la richiesta più lunga possibile:\r\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, s'),
 (26, 2, '3335380866', 'eiciao emma, io sarei interessato, scrivimi su whatsapp o su ig vedi tu ciaooo :3'),
 (26, 8, '3233567869', 'ti prego emmaaaa li voglio troppo io!!!');
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

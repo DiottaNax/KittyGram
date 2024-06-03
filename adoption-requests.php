@@ -67,7 +67,7 @@ if (isset($_GET['post_id'])):
                                 <img src="./img/<?php echo $submitter['pic']; ?>" class="rounded-circle me-2" alt="profile-pic"
                                     width="35" height="35" />
                                 <div class="text-start">
-                                    <h5 class="card-title mb-1"><?php echo $submitter['username']; ?></h5>
+                                    <a class="card-title" href="open-profile.php?username=<?php echo $submitter['username']; ?>"><h5 class="card-title mb-1">@<?php echo $submitter['username']; ?></h5></a>
                                     <p class="card-subtitle text-muted small mb-0"><?php echo $adoptionRequest['cell'] ?></p>
                                 </div>
                             </div>
