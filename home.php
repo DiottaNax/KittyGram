@@ -18,6 +18,7 @@
   <script src="./js/like.js"></script>
   <?php require_once ("db-config.php") ?>
   <title>Home Page</title>
+  <link rel="icon" type="image/x-icon" href="./img/KittyGram_Icon.ico">
 </head>
 
 <body class="d-flex justify-content-center py-4">

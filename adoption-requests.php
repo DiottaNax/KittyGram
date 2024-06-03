@@ -31,6 +31,7 @@ if (isset($_GET['post_id'])):
 
 
             <title>Adoption Requests</title>
+            <link rel="icon" type="image/x-icon" href="./img/KittyGram_Icon.ico">
         </head>
 
         <body>

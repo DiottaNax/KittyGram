@@ -27,6 +27,7 @@ if (isset($_GET['username']) && $dbh->isUsernameTaken($_GET['username'])): ?>
     ?>
     <script src="./js/UserProfile.js"></script>
     <title>KittyGram Profile: <?php echo $accountResult['username'] ?></title>
+    <link rel="icon" type="image/x-icon" href="./img/KittyGram_Icon.ico">
 
     <!-- Script Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>User's Settings</title>
+    <link rel="icon" type="image/x-icon" href="./img/KittyGram_Icon.ico">
 
     <!-- Collegamenti ai fogli di stile -->
     <link rel="stylesheet" href="css/style.css">

@@ -36,6 +36,7 @@ if (isset($currentPost)):
         <script src="js/adoptionModal.js"></script>
         <script src="js/addComment.js"></script>
         <title>User Post</title>
+        <link rel="icon" type="image/x-icon" href="./img/KittyGram_Icon.ico">
 
         <!-- Inclusione della navbar -->
         <?php echo require_once ("./components/navbar.php") ?>

@@ -19,6 +19,7 @@
     <?php require_once ("db-config.php"); ?>
 
     <title>Sign Up Page</title>
+    <link rel="icon" type="image/x-icon" href="./img/KittyGram_Icon.ico">
 </head>
 
 <body class="container-fluid d-flex justify-content-center align-items-center py-5">
