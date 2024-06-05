@@ -9,6 +9,9 @@ Kittygram is a social networking site developed for the Web Technologies course 
 [![GitHub forks](https://img.shields.io/github/forks/DiottaNax/KittyGram)](https://github.com/DiottaNax/KittyGram/network)
 [![GitHub issues](https://img.shields.io/github/issues/DiottaNax/KittyGram)](https://github.com/DiottaNax/KittyGram/issues)
 
+
+## How to Use
+
 The Social Network has been tested using [XAMPP](https://www.apachefriends.org/index.html), to do so:
 
 1. Open XAMPP and start MySql and Apache Server.
