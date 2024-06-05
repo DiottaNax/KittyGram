@@ -4,7 +4,7 @@
 
 Kittygram is a social networking site developed for the Web Technologies course at "Unibo" - Department of Computer Science and Engineering in Cesena, focused on posting and adopting cats. You can share photos of your cats with friends or discover adorable new kitties on the Explore page. Anyone can offer a loving home to a cat in need of adoption and watch these adorable creatures find a new family.
 
-[![GitHub license](https://img.shields.io/github/license/DiottaNax/KittyGram)](https://github.com/DiottaNax/KittyGram/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/DiottaNax/KittyGram)](https://www.gnu.org/licenses/gpl-3.0.html)
 [![GitHub stars](https://img.shields.io/github/stars/DiottaNax/KittyGram)](https://github.com/DiottaNax/KittyGram/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/DiottaNax/KittyGram)](https://github.com/DiottaNax/KittyGram/network)
 [![GitHub issues](https://img.shields.io/github/issues/DiottaNax/KittyGram)](https://github.com/DiottaNax/KittyGram/issues)
